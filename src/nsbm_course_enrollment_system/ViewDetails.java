@@ -5,7 +5,20 @@
  */
 package nsbm_course_enrollment_system;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
+import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 
 /**
  *
@@ -20,6 +33,101 @@ public class ViewDetails extends javax.swing.JFrame {
         initComponents();
     }
 
+    
+    public Connection getConnection()
+    {
+        Connection con =null;
+        PreparedStatement ps=null;
+        ResultSet res=null;
+        
+        try {
+            con = DriverManager.getConnection("jdbc:mysql://localhost/nsbm_db","root","");
+            //JOptionPane.showMessageDialog(null,"Congratulation. Register Successful.");
+            return con;
+        } catch (java.sql.SQLException ex) {
+            Logger.getLogger(AddStuDetails.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null,"Not Connected");
+            return null;
+        }
+    }
+    
+
+    
+    
+    public void show_details()
+    {
+        String courseType=(String) selectType.getSelectedItem();
+        String Fac =(String) selectFac.getSelectedItem();
+        Connection con=getConnection();
+        PreparedStatement ps=null;
+        ResultSet res=null;
+        try {
+            if (courseType.equals("Bachelor")){
+                if (Fac.equals("All")){
+                    ps = con.prepareStatement("SELECT * from students where CourseType='Bachelor'");
+                }
+                else{
+                    ps = con.prepareStatement("SELECT * from students where CourseType='Bachelor' AND Faculty='"+Fac+"'");
+                }
+            }
+            else if (courseType.equals("Master")){
+                if (Fac.equals("All")){
+                    ps = con.prepareStatement("SELECT * from students where CourseType='Master'");
+                }
+                else{
+                    ps = con.prepareStatement("SELECT * from students where CourseType='Master' AND Faculty='"+Fac+"'");
+                }
+            }
+            else{
+                if(Fac.equals("All")){
+                    ps = con.prepareStatement("SELECT * from students");
+                }
+                else{
+                    ps = con.prepareStatement("SELECT * from students where Faculty='"+Fac+"'");
+                }
+            }
+            
+            res=ps.executeQuery(); 
+            
+            resultSetToTableModel(res,Stu_table);
+        } catch (SQLException ex) {
+            Logger.getLogger(ViewDetails.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }
+    
+    public void resultSetToTableModel(ResultSet rs,JTable table) throws SQLException
+    {
+        //create new tableModel.
+        DefaultTableModel tableModel=new DefaultTableModel();
+        
+        //retrieve meta data from resultset
+        ResultSetMetaData metaData = rs.getMetaData();
+        
+        //get no of column from metadata
+        int columnCount =metaData.getColumnCount();
+        
+        //get all column namesfrom metadata and add column to table model. 
+        for (int column=1 ; column<=columnCount;column++){
+            tableModel.addColumn(metaData.getColumnLabel(column));
+        }
+        
+        //create array of object withsize of column count from meta data.
+        Object[] row=new Object[columnCount];
+        
+        //scroll through result set
+        while (rs.next()){
+            //get object from column with specific index of result set to array of objects.
+            for (int columnIndex=0 ;columnIndex <columnCount ;columnIndex++){
+                row[columnIndex]=rs.getObject(columnIndex+1);
+            }
+            //add that row to tablemodel as an argument with that array of objects.
+            tableModel.addRow(row);
+        }
+        //add that table model to our table.
+        table.setModel(tableModel);
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -35,8 +143,14 @@ public class ViewDetails extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         adds = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        stu_table = new javax.swing.JTable();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        Stu_table = new javax.swing.JTable();
+        View = new java.awt.Button();
+        jLabel3 = new javax.swing.JLabel();
+        selectType = new javax.swing.JComboBox<>();
+        fac = new javax.swing.JLabel();
+        selectFac = new javax.swing.JComboBox<>();
+        Filter = new java.awt.Label();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -121,19 +235,48 @@ public class ViewDetails extends javax.swing.JFrame {
             .addGap(0, 12, Short.MAX_VALUE)
         );
 
-        stu_table.setAutoCreateColumnsFromModel(false);
-        stu_table.setAutoCreateRowSorter(true);
-        stu_table.setBackground(new java.awt.Color(240, 240, 240));
-        stu_table.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        stu_table.setModel(new javax.swing.table.DefaultTableModel(
+        Stu_table.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        Stu_table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null, null}
+
             },
             new String [] {
-                "Stu_id", "FirstName", "LastName", "BirthDay", "Address", "MobileNo", "Email", "Gender", "Faculty", "CourseType"
+                "Stu_id", "FirstName", "LastName", "BirthDay", "Address", "MobileNo", "Email", "Gender", "Faculty", "Course_type", "Semester"
             }
         ));
-        jScrollPane1.setViewportView(stu_table);
+        Stu_table.setColumnSelectionAllowed(true);
+        jScrollPane2.setViewportView(Stu_table);
+        Stu_table.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+
+        View.setActionCommand("View");
+        View.setBackground(new java.awt.Color(44, 62, 80));
+        View.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        View.setForeground(new java.awt.Color(255, 255, 255));
+        View.setLabel("View");
+        View.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ViewActionPerformed(evt);
+            }
+        });
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel3.setText("Course Type");
+
+        selectType.setForeground(new java.awt.Color(102, 102, 102));
+        selectType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "All", "Master", "Bachelor", " " }));
+
+        fac.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        fac.setForeground(new java.awt.Color(102, 102, 102));
+        fac.setText("Faculty");
+
+        selectFac.setForeground(new java.awt.Color(102, 102, 102));
+        selectFac.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "All", "School Of Business", "School Of Computing", "School Of Engineering" }));
+
+        Filter.setAlignment(java.awt.Label.CENTER);
+        Filter.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        Filter.setForeground(new java.awt.Color(51, 51, 51));
+        Filter.setText("Filters");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -142,19 +285,51 @@ public class ViewDetails extends javax.swing.JFrame {
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addGap(69, 69, 69)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 919, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap(132, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(fac)
+                            .addComponent(jLabel3))
+                        .addGap(40, 40, 40)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(selectType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(selectFac, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(86, 86, 86))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(191, 191, 191)
+                        .addComponent(Filter, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addComponent(View, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 477, Short.MAX_VALUE))
+            .addComponent(jScrollPane2)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(63, 63, 63)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 326, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(View, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(Filter, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel3)
+                            .addComponent(selectType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(10, 10, 10)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(fac)
+                            .addComponent(selectFac, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(30, 30, 30)))
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
+
+        Filter.getAccessibleContext().setAccessibleName("Filter");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -175,6 +350,11 @@ public class ViewDetails extends javax.swing.JFrame {
         resetColor(jPanel4);
     }//GEN-LAST:event_jPanel4MouseExited
 
+    private void ViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ViewActionPerformed
+        // TODO add your handling code here:
+        show_details();
+    }//GEN-LAST:event_ViewActionPerformed
+
     
       public void setColor(JPanel panel){
         panel.setBackground(new java.awt.Color(44,28,47));
@@ -193,6 +373,7 @@ public class ViewDetails extends javax.swing.JFrame {
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
+        
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -210,6 +391,7 @@ public class ViewDetails extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(ViewDetails.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -220,13 +402,20 @@ public class ViewDetails extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private java.awt.Label Filter;
+    private javax.swing.JTable Stu_table;
+    private java.awt.Button View;
     private javax.swing.JLabel adds;
+    private javax.swing.JLabel fac;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable stu_table;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JComboBox<String> selectFac;
+    private javax.swing.JComboBox<String> selectType;
     // End of variables declaration//GEN-END:variables
+
 }

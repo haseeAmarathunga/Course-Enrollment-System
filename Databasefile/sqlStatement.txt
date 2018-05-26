@@ -1,0 +1,11 @@
+create table masterCS(
+    Stu_id char(9) PRIMARY KEY,
+    FirstName VARCHAR(20),
+    LastName VARCHAR(20),
+    BirthDay VARCHAR(20),
+    Address VARCHAR(100),
+    MobileNo char(10),
+    Email VARCHAR(50),
+    Gender VARCHAR(6),
+    Semester VARCHAR(10)
+    );

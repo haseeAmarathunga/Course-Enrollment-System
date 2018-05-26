@@ -533,7 +533,7 @@ public class AddStuDetails extends javax.swing.JFrame {
 
     private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterActionPerformed
         // TODO add your handling code here:
-        System.out.println(checkInput());
+        //System.out.println(checkInput());
         if (checkInput() && getGender()!=null){
             if (!(agree.isSelected())){
                 JOptionPane.showMessageDialog(null, "Please agree.");

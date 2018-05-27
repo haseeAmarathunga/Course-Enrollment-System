@@ -51,7 +51,23 @@ public class ViewDetails extends javax.swing.JFrame {
         }
     }
     
-
+    public void search_name(){
+        String stuName=(String) StuName.getText();
+       
+        Connection con=getConnection();
+        PreparedStatement ps=null;
+        ResultSet res=null;
+        try {
+            ps = con.prepareStatement("SELECT * from students where FirstName LIKE '%"+stuName+"%' OR LastName LIKE'%"+stuName+"%'");
+            
+            res=ps.executeQuery(); 
+            
+            resultSetToTableModel(res,Stu_table);
+        } catch (SQLException ex) {
+            Logger.getLogger(ViewDetails.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }
     
     
     public void show_details()
@@ -150,7 +166,8 @@ public class ViewDetails extends javax.swing.JFrame {
         selectType = new javax.swing.JComboBox<>();
         fac = new javax.swing.JLabel();
         selectFac = new javax.swing.JComboBox<>();
-        Filter = new java.awt.Label();
+        StuName = new javax.swing.JTextField();
+        Search = new java.awt.Button();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -250,6 +267,7 @@ public class ViewDetails extends javax.swing.JFrame {
 
         View.setActionCommand("View");
         View.setBackground(new java.awt.Color(44, 62, 80));
+        View.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         View.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         View.setForeground(new java.awt.Color(255, 255, 255));
         View.setLabel("View");
@@ -264,7 +282,8 @@ public class ViewDetails extends javax.swing.JFrame {
         jLabel3.setText("Course Type");
 
         selectType.setForeground(new java.awt.Color(102, 102, 102));
-        selectType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "All", "Master", "Bachelor", " " }));
+        selectType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "All", "Master", "Bachelor" }));
+        selectType.setSelectedItem(View);
 
         fac.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         fac.setForeground(new java.awt.Color(102, 102, 102));
@@ -273,10 +292,20 @@ public class ViewDetails extends javax.swing.JFrame {
         selectFac.setForeground(new java.awt.Color(102, 102, 102));
         selectFac.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "All", "School Of Business", "School Of Computing", "School Of Engineering" }));
 
-        Filter.setAlignment(java.awt.Label.CENTER);
-        Filter.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        Filter.setForeground(new java.awt.Color(51, 51, 51));
-        Filter.setText("Filters");
+        StuName.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        StuName.setForeground(new java.awt.Color(51, 51, 51));
+        StuName.setToolTipText("Enter Name");
+
+        Search.setActionCommand("View");
+        Search.setBackground(new java.awt.Color(102, 102, 102));
+        Search.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        Search.setForeground(new java.awt.Color(255, 255, 255));
+        Search.setLabel("Search");
+        Search.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SearchActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -284,52 +313,53 @@ public class ViewDetails extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jScrollPane2)
             .addGroup(layout.createSequentialGroup()
+                .addGap(115, 115, 115)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(fac)
+                    .addComponent(jLabel3))
+                .addGap(40, 40, 40)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(132, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(fac)
-                            .addComponent(jLabel3))
-                        .addGap(40, 40, 40)
+                        .addComponent(View, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(Search, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(280, 280, 280))
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(selectType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(selectFac, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(86, 86, 86))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(191, 191, 191)
-                        .addComponent(Filter, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addComponent(View, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 477, Short.MAX_VALUE))
-            .addComponent(jScrollPane2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(StuName, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(254, 254, 254))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(View, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(Filter, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3)
                             .addComponent(selectType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(10, 10, 10)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(fac)
-                            .addComponent(selectFac, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(30, 30, 30)))
+                            .addComponent(selectFac, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(402, 402, 402)
+                        .addComponent(StuName, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(View, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Search, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
-
-        Filter.getAccessibleContext().setAccessibleName("Filter");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -349,6 +379,11 @@ public class ViewDetails extends javax.swing.JFrame {
         // TODO add your handling code here:
         resetColor(jPanel4);
     }//GEN-LAST:event_jPanel4MouseExited
+
+    private void SearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchActionPerformed
+        // TODO add your handling code here:
+        search_name();
+    }//GEN-LAST:event_SearchActionPerformed
 
     private void ViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ViewActionPerformed
         // TODO add your handling code here:
@@ -402,7 +437,8 @@ public class ViewDetails extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private java.awt.Label Filter;
+    private java.awt.Button Search;
+    private javax.swing.JTextField StuName;
     private javax.swing.JTable Stu_table;
     private java.awt.Button View;
     private javax.swing.JLabel adds;

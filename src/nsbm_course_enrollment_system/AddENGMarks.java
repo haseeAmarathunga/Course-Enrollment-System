@@ -11,12 +11,12 @@ import javax.swing.JPanel;
  *
  * @author ClashHacker
  */
-public class AddMarks extends javax.swing.JFrame {
+public class AddENGMarks extends javax.swing.JFrame {
 
     /**
-     * Creates new form AddMarks
+     * Creates new form AddENGMarks
      */
-    public AddMarks() {
+    public AddENGMarks() {
         initComponents();
     }
 
@@ -29,34 +29,33 @@ public class AddMarks extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel2 = new javax.swing.JPanel();
+        faculty = new javax.swing.JComboBox<>();
         exit = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         adds = new javax.swing.JLabel();
-        CSBtn = new javax.swing.JButton();
-        BUSBtn = new javax.swing.JButton();
-        ENGBtn = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        btnRegister = new javax.swing.JButton();
+        lastName = new javax.swing.JTextField();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel9 = new javax.swing.JLabel();
+        agree = new javax.swing.JCheckBox();
+        stu_id = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(1091, 499));
         setResizable(false);
 
-        jPanel2.setBackground(new java.awt.Color(44, 62, 80));
-        jPanel2.setToolTipText("");
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 12, Short.MAX_VALUE)
-        );
+        faculty.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        faculty.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Statistics", "Matrix", "Calculus", "Computer science", "Programming", "Arduino", "Electricals", "Mathematical methods", "Sivil Engineering" }));
+        faculty.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                facultyActionPerformed(evt);
+            }
+        });
 
         exit.setBackground(new java.awt.Color(255, 51, 51));
         exit.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -72,7 +71,7 @@ public class AddMarks extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("ADD STUDENTS Marks");
+        jLabel1.setText("ADD Engineer Students Marks");
 
         jPanel4.setBackground(new java.awt.Color(44, 62, 80));
         jPanel4.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -119,8 +118,8 @@ public class AddMarks extends javax.swing.JFrame {
                 .addGap(36, 36, 36)
                 .addComponent(adds, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 307, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 379, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 478, Short.MAX_VALUE)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(2, 2, 2))
         );
@@ -137,33 +136,58 @@ public class AddMarks extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        CSBtn.setBackground(new java.awt.Color(44, 62, 80));
-        CSBtn.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        CSBtn.setForeground(new java.awt.Color(255, 255, 255));
-        CSBtn.setText("Computer Science");
-        CSBtn.addActionListener(new java.awt.event.ActionListener() {
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel3.setText("Stu_ID :");
+
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel5.setText("Subject  :");
+
+        btnRegister.setBackground(new java.awt.Color(44, 62, 80));
+        btnRegister.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnRegister.setForeground(new java.awt.Color(255, 255, 255));
+        btnRegister.setText("Add Marks");
+        btnRegister.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CSBtnActionPerformed(evt);
+                btnRegisterActionPerformed(evt);
             }
         });
 
-        BUSBtn.setBackground(new java.awt.Color(44, 62, 80));
-        BUSBtn.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        BUSBtn.setForeground(new java.awt.Color(255, 255, 255));
-        BUSBtn.setText("Business Studies");
-        BUSBtn.addActionListener(new java.awt.event.ActionListener() {
+        lastName.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lastName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BUSBtnActionPerformed(evt);
+                lastNameActionPerformed(evt);
             }
         });
 
-        ENGBtn.setBackground(new java.awt.Color(44, 62, 80));
-        ENGBtn.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        ENGBtn.setForeground(new java.awt.Color(255, 255, 255));
-        ENGBtn.setText("Engineering");
-        ENGBtn.addActionListener(new java.awt.event.ActionListener() {
+        jPanel2.setBackground(new java.awt.Color(44, 62, 80));
+        jPanel2.setToolTipText("");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 12, Short.MAX_VALUE)
+        );
+
+        jLabel9.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel9.setText("Marks :");
+
+        agree.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        agree.setText("I  agree above details are Correct.");
+        agree.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ENGBtnActionPerformed(evt);
+                agreeActionPerformed(evt);
+            }
+        });
+
+        stu_id.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        stu_id.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                stu_idActionPerformed(evt);
             }
         });
 
@@ -173,30 +197,54 @@ public class AddMarks extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(403, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(exit, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(exit, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(ENGBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(BUSBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(CSBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(386, 386, 386))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(139, 139, 139)
+                                .addComponent(agree))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(69, 69, 69)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(btnRegister, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.TRAILING))
+                                        .addGap(44, 44, 44)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(stu_id, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(lastName, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(faculty, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 89, Short.MAX_VALUE)
-                .addComponent(CSBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(40, 40, 40)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(stu_id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(BUSBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(ENGBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(23, 23, 23)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(faculty, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(25, 25, 25)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel9)
+                    .addComponent(lastName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(54, 54, 54)
+                .addComponent(agree)
+                .addGap(26, 26, 26)
+                .addComponent(btnRegister, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 102, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -207,6 +255,10 @@ public class AddMarks extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void facultyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_facultyActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_facultyActionPerformed
+
     private void exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitActionPerformed
         // TODO add your handling code here:
         System.exit(0);
@@ -214,7 +266,7 @@ public class AddMarks extends javax.swing.JFrame {
 
     private void jPanel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MouseClicked
         // TODO add your handling code here:
-        new Student().show();
+        new AddMarks().show();
         this.setVisible(false);
     }//GEN-LAST:event_jPanel4MouseClicked
 
@@ -228,25 +280,24 @@ public class AddMarks extends javax.swing.JFrame {
         resetColor(jPanel4);
     }//GEN-LAST:event_jPanel4MouseExited
 
-    private void BUSBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BUSBtnActionPerformed
+    private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterActionPerformed
         // TODO add your handling code here:
-        new AddBUSIMarks().show();
-        this.setVisible(false);
-    }//GEN-LAST:event_BUSBtnActionPerformed
+        //System.out.println(checkInput());
+    }//GEN-LAST:event_btnRegisterActionPerformed
 
-    private void CSBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CSBtnActionPerformed
+    private void lastNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lastNameActionPerformed
         // TODO add your handling code here:
-        new AddCSMarks().show();
-        this.setVisible(false);
-    }//GEN-LAST:event_CSBtnActionPerformed
+    }//GEN-LAST:event_lastNameActionPerformed
 
-    private void ENGBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ENGBtnActionPerformed
+    private void agreeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agreeActionPerformed
         // TODO add your handling code here:
-        new AddENGMarks().show();
-        this.setVisible(false);
-    }//GEN-LAST:event_ENGBtnActionPerformed
+    }//GEN-LAST:event_agreeActionPerformed
 
-    public void setColor(JPanel panel){
+    private void stu_idActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stu_idActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_stu_idActionPerformed
+
+     public void setColor(JPanel panel){
         panel.setBackground(new java.awt.Color(44,28,47));
         
     }
@@ -271,34 +322,39 @@ public class AddMarks extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AddMarks.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AddENGMarks.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AddMarks.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AddENGMarks.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AddMarks.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AddENGMarks.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AddMarks.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AddENGMarks.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AddMarks().setVisible(true);
+                new AddENGMarks().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton BUSBtn;
-    private javax.swing.JButton CSBtn;
-    private javax.swing.JButton ENGBtn;
     private javax.swing.JLabel adds;
+    private javax.swing.JCheckBox agree;
+    private javax.swing.JButton btnRegister;
     private javax.swing.JButton exit;
+    private javax.swing.JComboBox<String> faculty;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JTextField lastName;
+    private javax.swing.JTextField stu_id;
     // End of variables declaration//GEN-END:variables
 }

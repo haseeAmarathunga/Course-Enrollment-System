@@ -45,7 +45,7 @@
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Component id="viewPanel" max="32767" attributes="0"/>
                                   <Component id="addPanel" max="32767" attributes="0"/>
-                                  <Component id="addPanel1" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="addMarks" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="219" max="-2" attributes="0"/>
                           </Group>
@@ -67,7 +67,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="addPanel" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="addPanel1" min="-2" max="-2" attributes="0"/>
+                      <Component id="addMarks" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                       <Component id="exit" min="-2" pref="31" max="-2" attributes="0"/>
                   </Group>
@@ -379,16 +379,16 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="exitActionPerformed"/>
       </Events>
     </Component>
-    <Container class="javax.swing.JPanel" name="addPanel1">
+    <Container class="javax.swing.JPanel" name="addMarks">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="50" green="3e" red="2c" type="rgb"/>
         </Property>
       </Properties>
       <Events>
-        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="addPanel1MouseClicked"/>
-        <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="addPanel1MouseEntered"/>
-        <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="addPanel1MouseExited"/>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="addMarksMouseClicked"/>
+        <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="addMarksMouseEntered"/>
+        <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="addMarksMouseExited"/>
       </Events>
 
       <Layout>
@@ -430,7 +430,7 @@
         <Component class="javax.swing.JLabel" name="view1">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/nsbm_course_enrollment_system/Images/icons8-search-64.png"/>
+              <Image iconType="3" name="/nsbm_course_enrollment_system/Images/icons8-plus-64.png"/>
             </Property>
           </Properties>
         </Component>

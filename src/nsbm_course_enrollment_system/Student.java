@@ -44,7 +44,7 @@ public class Student extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jLabel16 = new javax.swing.JLabel();
         exit = new javax.swing.JButton();
-        addPanel1 = new javax.swing.JPanel();
+        addMarks = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         view1 = new javax.swing.JLabel();
 
@@ -247,16 +247,16 @@ public class Student extends javax.swing.JFrame {
             }
         });
 
-        addPanel1.setBackground(new java.awt.Color(44, 62, 80));
-        addPanel1.addMouseListener(new java.awt.event.MouseAdapter() {
+        addMarks.setBackground(new java.awt.Color(44, 62, 80));
+        addMarks.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                addPanel1MouseClicked(evt);
+                addMarksMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                addPanel1MouseEntered(evt);
+                addMarksMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                addPanel1MouseExited(evt);
+                addMarksMouseExited(evt);
             }
         });
 
@@ -264,24 +264,24 @@ public class Student extends javax.swing.JFrame {
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("ADD Marks");
 
-        view1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/nsbm_course_enrollment_system/Images/icons8-search-64.png"))); // NOI18N
+        view1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/nsbm_course_enrollment_system/Images/icons8-plus-64.png"))); // NOI18N
 
-        javax.swing.GroupLayout addPanel1Layout = new javax.swing.GroupLayout(addPanel1);
-        addPanel1.setLayout(addPanel1Layout);
-        addPanel1Layout.setHorizontalGroup(
-            addPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, addPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout addMarksLayout = new javax.swing.GroupLayout(addMarks);
+        addMarks.setLayout(addMarksLayout);
+        addMarksLayout.setHorizontalGroup(
+            addMarksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, addMarksLayout.createSequentialGroup()
                 .addContainerGap(80, Short.MAX_VALUE)
                 .addComponent(view1, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(51, 51, 51))
         );
-        addPanel1Layout.setVerticalGroup(
-            addPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(addPanel1Layout.createSequentialGroup()
+        addMarksLayout.setVerticalGroup(
+            addMarksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(addMarksLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(addPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(addMarksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(view1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
@@ -304,7 +304,7 @@ public class Student extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(viewPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(addPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(addPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(addMarks, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(219, 219, 219))))))
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
@@ -319,7 +319,7 @@ public class Student extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(addPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(addPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(addMarks, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(exit, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -383,17 +383,21 @@ public class Student extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_exitActionPerformed
 
-    private void addPanel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addPanel1MouseClicked
+    private void addMarksMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addMarksMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_addPanel1MouseClicked
+        new AddMarks().show();
+        this.setVisible(false);
+    }//GEN-LAST:event_addMarksMouseClicked
 
-    private void addPanel1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addPanel1MouseEntered
+    private void addMarksMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addMarksMouseEntered
         // TODO add your handling code here:
-    }//GEN-LAST:event_addPanel1MouseEntered
+        setColor(addMarks);
+    }//GEN-LAST:event_addMarksMouseEntered
 
-    private void addPanel1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addPanel1MouseExited
+    private void addMarksMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addMarksMouseExited
         // TODO add your handling code here:
-    }//GEN-LAST:event_addPanel1MouseExited
+        resetColor(addMarks);
+    }//GEN-LAST:event_addMarksMouseExited
 
      public void setColor(JPanel panel){
         panel.setBackground(new java.awt.Color(44,28,47));
@@ -440,8 +444,8 @@ public class Student extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel add;
+    private javax.swing.JPanel addMarks;
     private javax.swing.JPanel addPanel;
-    private javax.swing.JPanel addPanel1;
     private javax.swing.JButton exit;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel16;

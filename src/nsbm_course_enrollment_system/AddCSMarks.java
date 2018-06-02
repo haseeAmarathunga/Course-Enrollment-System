@@ -5,6 +5,14 @@
  */
 package nsbm_course_enrollment_system;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -19,6 +27,39 @@ public class AddCSMarks extends javax.swing.JFrame {
     public AddCSMarks() {
         initComponents();
     }
+    
+    public Connection getConnection()
+    {
+        Connection con =null;
+        PreparedStatement ps=null;
+        ResultSet res=null;
+        
+        try {
+            con = DriverManager.getConnection("jdbc:mysql://localhost/nsbm_db","root","");
+            JOptionPane.showMessageDialog(null,"Marks Added Successfull.");
+            return con;
+        } catch (java.sql.SQLException ex) {
+            Logger.getLogger(AddStuDetails.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null,"Not Connected");
+            return null;
+        }
+    }
+    
+    public boolean checkInput(){
+        if (stu_id.getText().equals("")
+            || marksBtn.getText().equals("")
+           ){
+            return false;
+        }
+        else{
+            try{
+                
+                return true;
+            }catch(Exception ex){
+                return false;
+            }
+        }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -31,7 +72,7 @@ public class AddCSMarks extends javax.swing.JFrame {
 
         jLabel5 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        faculty = new javax.swing.JComboBox<>();
+        subBtn = new javax.swing.JComboBox<>();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
@@ -40,7 +81,7 @@ public class AddCSMarks extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         agree = new javax.swing.JCheckBox();
         jLabel3 = new javax.swing.JLabel();
-        lastName = new javax.swing.JTextField();
+        marksBtn = new javax.swing.JTextField();
         stu_id = new javax.swing.JTextField();
         exit = new javax.swing.JButton();
         btnRegister = new javax.swing.JButton();
@@ -58,11 +99,11 @@ public class AddCSMarks extends javax.swing.JFrame {
         jLabel9.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel9.setText("Marks :");
 
-        faculty.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        faculty.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "CS1001", "CS1002", "CS1003", "CS1004", "CS1005", "CS1006", "CS1007", "CS1008", "CS1009", " " }));
-        faculty.addActionListener(new java.awt.event.ActionListener() {
+        subBtn.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        subBtn.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "CS1001", "CS1002", "CS1003", "CS1004", "CS1005", "CS1006", "CS1007", "CS1008", "CS1009", " " }));
+        subBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                facultyActionPerformed(evt);
+                subBtnActionPerformed(evt);
             }
         });
 
@@ -160,10 +201,10 @@ public class AddCSMarks extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel3.setText("Stu_ID :");
 
-        lastName.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        lastName.addActionListener(new java.awt.event.ActionListener() {
+        marksBtn.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        marksBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                lastNameActionPerformed(evt);
+                marksBtnActionPerformed(evt);
             }
         });
 
@@ -245,8 +286,8 @@ public class AddCSMarks extends javax.swing.JFrame {
                                         .addGap(44, 44, 44)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                             .addComponent(stu_id, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(lastName, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(faculty, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                            .addComponent(marksBtn, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(subBtn, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                         .addGap(180, 180, 180)
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
@@ -265,11 +306,11 @@ public class AddCSMarks extends javax.swing.JFrame {
                         .addGap(28, 28, 28)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel5)
-                            .addComponent(faculty, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(subBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(25, 25, 25)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel9)
-                            .addComponent(lastName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(marksBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(54, 54, 54)
                         .addComponent(agree)
                         .addGap(26, 26, 26)
@@ -289,9 +330,9 @@ public class AddCSMarks extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void facultyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_facultyActionPerformed
+    private void subBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_subBtnActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_facultyActionPerformed
+    }//GEN-LAST:event_subBtnActionPerformed
 
     private void jPanel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MouseClicked
         // TODO add your handling code here:
@@ -313,9 +354,9 @@ public class AddCSMarks extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_agreeActionPerformed
 
-    private void lastNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lastNameActionPerformed
+    private void marksBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_marksBtnActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_lastNameActionPerformed
+    }//GEN-LAST:event_marksBtnActionPerformed
 
     private void stu_idActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stu_idActionPerformed
         // TODO add your handling code here:
@@ -328,7 +369,36 @@ public class AddCSMarks extends javax.swing.JFrame {
 
     private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterActionPerformed
         // TODO add your handling code here:
+        String sub=(String) subBtn.getSelectedItem();
+        double mark=Double.parseDouble(marksBtn.getText());
         //System.out.println(checkInput());
+        if (checkInput()){
+            if (!(agree.isSelected())){
+                JOptionPane.showMessageDialog(null, "Please agree.");
+            }
+            else{
+            Connection con=getConnection();
+            try {
+                PreparedStatement ps = con.prepareStatement("UPDATE markscs SET "+sub+"="+mark+"WHERE Stu_id='"+stu_id.getText()+"'");
+                
+                //ps.setString(1,stu_id.getText());
+                //ps.setFloat(2,mark);
+            
+                
+                ps.executeUpdate();
+                //clear();
+                
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, ex.getMessage());
+            }
+            
+            }
+        }
+        else{
+           JOptionPane.showMessageDialog(null, "Please fill the all fields");
+        }
+        
+       
     }//GEN-LAST:event_btnRegisterActionPerformed
 
      public void setColor(JPanel panel){
@@ -379,7 +449,6 @@ public class AddCSMarks extends javax.swing.JFrame {
     private javax.swing.JCheckBox agree;
     private javax.swing.JButton btnRegister;
     private javax.swing.JButton exit;
-    private javax.swing.JComboBox<String> faculty;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -391,7 +460,8 @@ public class AddCSMarks extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField lastName;
+    private javax.swing.JTextField marksBtn;
     private javax.swing.JTextField stu_id;
+    private javax.swing.JComboBox<String> subBtn;
     // End of variables declaration//GEN-END:variables
 }

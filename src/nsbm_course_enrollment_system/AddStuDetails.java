@@ -83,6 +83,11 @@ public class AddStuDetails extends javax.swing.JFrame {
         
     }
     
+    public void UpdateMarkTable()
+    {
+            
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -577,12 +582,29 @@ public class AddStuDetails extends javax.swing.JFrame {
                 ps.setString(11, (String) semester.getSelectedItem());
                 
                 ps.executeUpdate();
-                clear();
                 
+                
+                
+               
+             
             } catch (SQLException ex) {
                 JOptionPane.showMessageDialog(null, ex.getMessage());
             }
             
+            //System.out.println(faculty.getSelectedItem());
+     
+                try {
+                    if((String) faculty.getSelectedItem()=="School Of Computing"){
+                        PreparedStatement ps = con.prepareStatement("INSERT INTO markscs VALUES('"+stu_id.getText()+"',0,0,0,0,0,0,0,0,0)");
+                        ps.executeUpdate();
+                    }
+                    
+                } catch (SQLException ex) {
+                    Logger.getLogger(AddStuDetails.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            
+            clear();
+                
             }
         }
         else{

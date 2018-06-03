@@ -112,8 +112,18 @@ public class ViewDetails extends javax.swing.JFrame {
         
     }
     
+    public String getSelectedTable()
+    {
+        int column=0;
+        int row=Stu_table.getSelectedRow();
+        String value=Stu_table.getModel().getValueAt(row,column).toString();
+        return value;
+    }
+    
      public void delete_details()
     {
+        String Gettext=getSelectedTable();
+        Stu_idBtn.setText(Gettext);
         String Stu_id=(String) Stu_idBtn.getText();
         Connection con=getConnection();
         PreparedStatement ps=null;

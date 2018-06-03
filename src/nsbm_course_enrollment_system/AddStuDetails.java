@@ -598,6 +598,14 @@ public class AddStuDetails extends javax.swing.JFrame {
                         PreparedStatement ps = con.prepareStatement("INSERT INTO markscs VALUES('"+stu_id.getText()+"',0,0,0,0,0,0,0,0,0)");
                         ps.executeUpdate();
                     }
+                    else if((String) faculty.getSelectedItem()=="School Of Business"){
+                        PreparedStatement ps = con.prepareStatement("INSERT INTO marksbus VALUES('"+stu_id.getText()+"',0,0,0,0,0,0)");
+                        ps.executeUpdate();
+                    }
+                    else if((String) faculty.getSelectedItem()=="School Of Engineering"){
+                        PreparedStatement ps = con.prepareStatement("INSERT INTO markseng VALUES('"+stu_id.getText()+"',0,0,0,0,0,0,0,0,0)");
+                        ps.executeUpdate();
+                    }
                     
                 } catch (SQLException ex) {
                     Logger.getLogger(AddStuDetails.class.getName()).log(Level.SEVERE, null, ex);

@@ -5,6 +5,14 @@
  */
 package nsbm_course_enrollment_system;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -19,6 +27,39 @@ public class AddBUSIMarks extends javax.swing.JFrame {
     public AddBUSIMarks() {
         initComponents();
     }
+    
+    public Connection getConnection()
+    {
+        Connection con =null;
+        PreparedStatement ps=null;
+        ResultSet res=null;
+        
+        try {
+            con = DriverManager.getConnection("jdbc:mysql://localhost/nsbm_db","root","");
+            JOptionPane.showMessageDialog(null,"Marks Added Successfull.");
+            return con;
+        } catch (java.sql.SQLException ex) {
+            Logger.getLogger(AddStuDetails.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null,"Not Connected");
+            return null;
+        }
+    }
+    
+    public boolean checkInput(){
+        if (stu_id.getText().equals("")
+            || marksBtn.getText().equals("")
+           ){
+            return false;
+        }
+        else{
+            try{
+                
+                return true;
+            }catch(Exception ex){
+                return false;
+            }
+        }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -31,17 +72,17 @@ public class AddBUSIMarks extends javax.swing.JFrame {
 
         jLabel3 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        lastName = new javax.swing.JTextField();
+        marksBtn = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         stu_id = new javax.swing.JTextField();
-        faculty = new javax.swing.JComboBox<>();
+        subBtn = new javax.swing.JComboBox<>();
         exit = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         adds = new javax.swing.JLabel();
-        btnRegister = new javax.swing.JButton();
+        btnAddMarks = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         agree = new javax.swing.JCheckBox();
         jPanel3 = new javax.swing.JPanel();
@@ -58,10 +99,10 @@ public class AddBUSIMarks extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel5.setText("Subject  :");
 
-        lastName.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        lastName.addActionListener(new java.awt.event.ActionListener() {
+        marksBtn.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        marksBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                lastNameActionPerformed(evt);
+                marksBtnActionPerformed(evt);
             }
         });
 
@@ -75,11 +116,11 @@ public class AddBUSIMarks extends javax.swing.JFrame {
             }
         });
 
-        faculty.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        faculty.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "BS1001", "BS1002", "BS1003", "BS1004", "BS1005", "BS1006" }));
-        faculty.addActionListener(new java.awt.event.ActionListener() {
+        subBtn.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        subBtn.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "BS1001", "BS1002", "BS1003", "BS1004", "BS1005", "BS1006" }));
+        subBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                facultyActionPerformed(evt);
+                subBtnActionPerformed(evt);
             }
         });
 
@@ -162,13 +203,13 @@ public class AddBUSIMarks extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        btnRegister.setBackground(new java.awt.Color(44, 62, 80));
-        btnRegister.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btnRegister.setForeground(new java.awt.Color(255, 255, 255));
-        btnRegister.setText("Add Marks");
-        btnRegister.addActionListener(new java.awt.event.ActionListener() {
+        btnAddMarks.setBackground(new java.awt.Color(44, 62, 80));
+        btnAddMarks.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnAddMarks.setForeground(new java.awt.Color(255, 255, 255));
+        btnAddMarks.setText("Add Marks");
+        btnAddMarks.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRegisterActionPerformed(evt);
+                btnAddMarksActionPerformed(evt);
             }
         });
 
@@ -187,7 +228,7 @@ public class AddBUSIMarks extends javax.swing.JFrame {
         );
 
         agree.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        agree.setText("I  agree above details are Correct.");
+        agree.setText("I  agree above mark is Correct.");
         agree.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 agreeActionPerformed(evt);
@@ -234,7 +275,7 @@ public class AddBUSIMarks extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(69, 69, 69)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(btnRegister, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnAddMarks, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING)
@@ -243,8 +284,8 @@ public class AddBUSIMarks extends javax.swing.JFrame {
                                 .addGap(44, 44, 44)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(stu_id, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lastName, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(faculty, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                    .addComponent(marksBtn, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(subBtn, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(108, 108, 108))
@@ -262,15 +303,15 @@ public class AddBUSIMarks extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel5)
-                            .addComponent(faculty, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(subBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(25, 25, 25)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel9)
-                            .addComponent(lastName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(marksBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(54, 54, 54)
                         .addComponent(agree)
                         .addGap(26, 26, 26)
-                        .addComponent(btnRegister, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnAddMarks, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 92, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -283,17 +324,17 @@ public class AddBUSIMarks extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void lastNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lastNameActionPerformed
+    private void marksBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_marksBtnActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_lastNameActionPerformed
+    }//GEN-LAST:event_marksBtnActionPerformed
 
     private void stu_idActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stu_idActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_stu_idActionPerformed
 
-    private void facultyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_facultyActionPerformed
+    private void subBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_subBtnActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_facultyActionPerformed
+    }//GEN-LAST:event_subBtnActionPerformed
 
     private void exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitActionPerformed
         // TODO add your handling code here:
@@ -316,10 +357,40 @@ public class AddBUSIMarks extends javax.swing.JFrame {
         resetColor(jPanel4);
     }//GEN-LAST:event_jPanel4MouseExited
 
-    private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterActionPerformed
+    private void btnAddMarksActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddMarksActionPerformed
         // TODO add your handling code here:
         //System.out.println(checkInput());
-    }//GEN-LAST:event_btnRegisterActionPerformed
+        String sub=(String) subBtn.getSelectedItem();
+        double mark=Double.parseDouble(marksBtn.getText());
+        //System.out.println(checkInput());
+        if (checkInput()){
+            if (!(agree.isSelected())){
+                JOptionPane.showMessageDialog(null, "Please agree.");
+            }
+            else{
+            Connection con=getConnection();
+            try {
+                PreparedStatement ps = con.prepareStatement("UPDATE marksbus SET "+sub+"="+mark+"WHERE Stu_id='"+stu_id.getText()+"'");
+                
+                //ps.setString(1,stu_id.getText());
+                //ps.setFloat(2,mark);
+            
+                
+                ps.executeUpdate();
+                //clear();
+                
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, ex.getMessage());
+            }
+            
+            }
+        }
+        else{
+           JOptionPane.showMessageDialog(null, "Please fill the all fields");
+        }
+        
+      
+    }//GEN-LAST:event_btnAddMarksActionPerformed
 
     private void agreeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agreeActionPerformed
         // TODO add your handling code here:
@@ -371,9 +442,8 @@ public class AddBUSIMarks extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel adds;
     private javax.swing.JCheckBox agree;
-    private javax.swing.JButton btnRegister;
+    private javax.swing.JButton btnAddMarks;
     private javax.swing.JButton exit;
-    private javax.swing.JComboBox<String> faculty;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -385,7 +455,8 @@ public class AddBUSIMarks extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField lastName;
+    private javax.swing.JTextField marksBtn;
     private javax.swing.JTextField stu_id;
+    private javax.swing.JComboBox<String> subBtn;
     // End of variables declaration//GEN-END:variables
 }

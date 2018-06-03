@@ -84,7 +84,7 @@ public class AddCSMarks extends javax.swing.JFrame {
         marksBtn = new javax.swing.JTextField();
         stu_id = new javax.swing.JTextField();
         exit = new javax.swing.JButton();
-        btnRegister = new javax.swing.JButton();
+        btnAddMarks = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
@@ -225,13 +225,13 @@ public class AddCSMarks extends javax.swing.JFrame {
             }
         });
 
-        btnRegister.setBackground(new java.awt.Color(44, 62, 80));
-        btnRegister.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btnRegister.setForeground(new java.awt.Color(255, 255, 255));
-        btnRegister.setText("Add Marks");
-        btnRegister.addActionListener(new java.awt.event.ActionListener() {
+        btnAddMarks.setBackground(new java.awt.Color(44, 62, 80));
+        btnAddMarks.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnAddMarks.setForeground(new java.awt.Color(255, 255, 255));
+        btnAddMarks.setText("Add Marks");
+        btnAddMarks.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRegisterActionPerformed(evt);
+                btnAddMarksActionPerformed(evt);
             }
         });
 
@@ -277,7 +277,7 @@ public class AddCSMarks extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(69, 69, 69)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(btnRegister, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnAddMarks, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING)
@@ -314,7 +314,7 @@ public class AddCSMarks extends javax.swing.JFrame {
                         .addGap(54, 54, 54)
                         .addComponent(agree)
                         .addGap(26, 26, 26)
-                        .addComponent(btnRegister, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnAddMarks, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
@@ -367,7 +367,7 @@ public class AddCSMarks extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_exitActionPerformed
 
-    private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterActionPerformed
+    private void btnAddMarksActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddMarksActionPerformed
         // TODO add your handling code here:
         String sub=(String) subBtn.getSelectedItem();
         double mark=Double.parseDouble(marksBtn.getText());
@@ -399,7 +399,7 @@ public class AddCSMarks extends javax.swing.JFrame {
         }
         
        
-    }//GEN-LAST:event_btnRegisterActionPerformed
+    }//GEN-LAST:event_btnAddMarksActionPerformed
 
      public void setColor(JPanel panel){
         panel.setBackground(new java.awt.Color(44,28,47));
@@ -447,7 +447,7 @@ public class AddCSMarks extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel adds;
     private javax.swing.JCheckBox agree;
-    private javax.swing.JButton btnRegister;
+    private javax.swing.JButton btnAddMarks;
     private javax.swing.JButton exit;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

@@ -10,6 +10,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -366,14 +367,21 @@ public class ViewCSGrade extends javax.swing.JFrame {
             else{
             Connection con=getConnection();
             try {
-                PreparedStatement ps = con.prepareStatement("SELECT "+Sub_id+" FROM markscs WHERE Stu_id='"+Stu_id+"'");
-                System.out.println(ps);
-                //ps.setString(1,stu_id.getText());
-                //ps.setFloat(2,mark);
-            
+                //create the java statment
+                Statement st=con.createStatement();
+                //execute the query and get the java resultSet
+                ResultSet rs=st.executeQuery("SELECT "+Sub_id+" FROM markscs WHERE Stu_id='"+Stu_id+"'");
                 
-                //ps.executeUpdate();
-                //clear();
+                //PreparedStatement ps = con.prepareStatement("SELECT "+Sub_id+" FROM markscs WHERE Stu_id='"+Stu_id+"'");
+                while (rs.next()){
+                    //System.out.println(Sub_id);
+                    float mark=rs.getInt(Sub_id);
+                    //System.out.println("Marks : "+mark);
+                    String grade=getGrade(mark);
+                    resultBtn.setText(grade);
+                }
+                st.close();
+         
                 
             } catch (SQLException ex) {
                 JOptionPane.showMessageDialog(null, ex.getMessage());

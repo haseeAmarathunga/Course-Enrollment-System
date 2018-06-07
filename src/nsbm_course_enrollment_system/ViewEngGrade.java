@@ -5,6 +5,15 @@
  */
 package nsbm_course_enrollment_system;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -18,6 +27,23 @@ public class ViewEngGrade extends javax.swing.JFrame {
      */
     public ViewEngGrade() {
         initComponents();
+    }
+    
+     public Connection getConnection()
+    {
+        Connection con =null;
+        PreparedStatement ps=null;
+        ResultSet res=null;
+        
+        try {
+            con = DriverManager.getConnection("jdbc:mysql://localhost/nsbm_db","root","");
+            //JOptionPane.showMessageDialog(null,"Marks Added Successfull.");
+            return con;
+        } catch (java.sql.SQLException ex) {
+            Logger.getLogger(AddStuDetails.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null,"Not Connected");
+            return null;
+        }
     }
     
     public String getGrade(float mark)
@@ -315,6 +341,35 @@ public class ViewEngGrade extends javax.swing.JFrame {
 
     private void btnGradeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGradeActionPerformed
         // TODO add your handling code here:
+        String Stu_id=stu_id.getText();
+        String Sub_id=(String) subBtn.getSelectedItem();
+        //String g=getGrade();
+        if (Stu_id.equals("")){
+                JOptionPane.showMessageDialog(null, "Please Enter Stu_id.");
+            }
+            else{
+            Connection con=getConnection();
+            
+            try {
+                //create the java statment
+                Statement st=con.createStatement();
+                //execute the query and get the java resultSet
+                ResultSet rs=st.executeQuery("SELECT "+Sub_id+" FROM markseng WHERE Stu_id='"+Stu_id+"'");
+                
+                //PreparedStatement ps = con.prepareStatement("SELECT "+Sub_id+" FROM markscs WHERE Stu_id='"+Stu_id+"'");
+                while (rs.next()){
+                    //System.out.println(Sub_id);
+                    float mark=rs.getInt(Sub_id);
+                    //System.out.println("Marks : "+mark);
+                    String grade=getGrade(mark);
+                    resultBtn.setText(grade);
+                }
+                st.close();
+                } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, ex.getMessage());
+            }
+            
+            }
   
     }//GEN-LAST:event_btnGradeActionPerformed
 

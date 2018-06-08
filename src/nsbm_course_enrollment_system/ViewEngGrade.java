@@ -362,7 +362,7 @@ public class ViewEngGrade extends javax.swing.JFrame {
                     float mark=rs.getInt(Sub_id);
                     //System.out.println("Marks : "+mark);
                     String grade=getGrade(mark);
-                    resultBtn.setText(grade);
+                    resultBtn.setText(grade);//set grade to show textpane
                 }
                 st.close();
                 } catch (SQLException ex) {

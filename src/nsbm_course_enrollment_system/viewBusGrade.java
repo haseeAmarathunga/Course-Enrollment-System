@@ -346,7 +346,7 @@ public class viewBusGrade extends javax.swing.JFrame {
                     //System.out.println(Sub_id);
                     float mark=rs.getInt(Sub_id);
                     String grade=getGrade(mark);
-                    resultBtn.setText(grade);
+                    resultBtn.setText(grade);//set grade to show textpane
                 }
                
  

@@ -612,15 +612,15 @@ public class AddStuDetails extends javax.swing.JFrame {
      
                 try {
                     if((String) faculty.getSelectedItem()=="School Of Computing"){
-                        PreparedStatement ps = con.prepareStatement("INSERT INTO markscs VALUES('"+stu_id.getText()+"',0,0,0,0,0,0,0,0,0)");
+                        PreparedStatement ps = con.prepareStatement("INSERT INTO markscs11 VALUES('"+stu_id.getText()+"',0,0,0,0,0,0,0,0,0)");
                         ps.executeUpdate();
                     }
                     else if((String) faculty.getSelectedItem()=="School Of Business"){
-                        PreparedStatement ps = con.prepareStatement("INSERT INTO marksbus VALUES('"+stu_id.getText()+"',0,0,0,0,0,0)");
+                        PreparedStatement ps = con.prepareStatement("INSERT INTO marksbus11 VALUES('"+stu_id.getText()+"',0,0,0,0,0,0)");
                         ps.executeUpdate();
                     }
                     else if((String) faculty.getSelectedItem()=="School Of Engineering"){
-                        PreparedStatement ps = con.prepareStatement("INSERT INTO markseng VALUES('"+stu_id.getText()+"',0,0,0,0,0,0,0,0,0)");
+                        PreparedStatement ps = con.prepareStatement("INSERT INTO markseng11 VALUES('"+stu_id.getText()+"',0,0,0,0,0,0,0,0,0)");
                         ps.executeUpdate();
                     }
                     

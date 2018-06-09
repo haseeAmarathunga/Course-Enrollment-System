@@ -9,3 +9,34 @@ create table masterCS(
     Gender VARCHAR(6),
     Semester VARCHAR(10)
     );
+
+
+
+CREATE TABLE marksbus12
+(
+    Stu_id CHAR(9) PRIMARY KEY,
+    BS1007 FLOAT,
+    BS1008 FLOAT,
+    BS1009 FLOAT,
+    BS1010 FLOAT
+     
+);
+
+CREATE TABLE markscs12(
+    Stu_idCHAR( 9 ) PRIMARY KEY ,
+    CS1010 FLOAT,
+    CS1011 FLOAT,
+    CS1012 FLOAT,
+    CS1013 FLOAT
+);
+
+
+CREATE TABLE markseng12
+(
+    Stu_id CHAR(9) PRIMARY KEY,
+    EN1010 FLOAT,
+    EN1011 FLOAT,
+    EN1012 FLOAT,
+    EN1013 FLOAT
+     
+);

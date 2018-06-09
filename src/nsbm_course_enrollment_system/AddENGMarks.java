@@ -345,7 +345,7 @@ public class AddENGMarks extends javax.swing.JFrame {
             else{
             Connection con=getConnection();
             try {
-                PreparedStatement ps = con.prepareStatement("UPDATE markseng SET "+sub+"="+mark+"WHERE Stu_id='"+stu_id.getText()+"'");
+                PreparedStatement ps = con.prepareStatement("UPDATE markseng11 SET "+sub+"="+mark+"WHERE Stu_id='"+stu_id.getText()+"'");
                 
                 //ps.setString(1,stu_id.getText());
                 //ps.setFloat(2,mark);

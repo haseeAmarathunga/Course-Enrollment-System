@@ -308,7 +308,7 @@ public class ViewDetails extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Stu_id", "FirstName", "LastName", "BirthDay", "Address", "MobileNo", "Email", "Gender", "Faculty", "Course_type", "Semester"
+                "Stu_id", "FirstName", "LastName", "BirthDay", "Address", "MobileNo", "Email", "Gender", "Faculty", "Course_type", "Semester", "Year"
             }
         ));
         Stu_table.setColumnSelectionAllowed(true);

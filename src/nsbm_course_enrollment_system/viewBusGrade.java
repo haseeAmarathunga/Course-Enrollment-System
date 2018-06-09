@@ -59,7 +59,17 @@ public class viewBusGrade extends javax.swing.JFrame {
         else if (mark>=45) return "C-";
         else if (mark>=40) return "D+";
         else if (mark>=35) return "D";
-        else return "F";
+        else if (mark>0) return "F";
+        else return "AB";
+    }
+    public String showPass(float mark){
+        if (mark>=50){
+            return "Passed";
+        }
+
+        else{
+            return "Repeat";
+        }
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -87,6 +97,7 @@ public class viewBusGrade extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         adds = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        passBtn = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -249,6 +260,10 @@ public class viewBusGrade extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel3.setText("Stu_ID :");
 
+        passBtn.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        passBtn.setForeground(new java.awt.Color(255, 102, 102));
+        passBtn.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -272,13 +287,15 @@ public class viewBusGrade extends javax.swing.JFrame {
                                     .addComponent(stu_id, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(subBtn, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(layout.createSequentialGroup()
+                                .addGap(205, 205, 205)
+                                .addComponent(btnGrade, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
                                 .addGap(82, 82, 82)
                                 .addComponent(jLabel9)
                                 .addGap(44, 44, 44)
-                                .addComponent(resultBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(205, 205, 205)
-                                .addComponent(btnGrade, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(resultBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(32, 32, 32)
+                                .addComponent(passBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(180, 180, 180)
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
@@ -310,7 +327,9 @@ public class viewBusGrade extends javax.swing.JFrame {
                                 .addComponent(jLabel9)
                                 .addGap(60, 60, 60))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(resultBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(passBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(resultBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 48, Short.MAX_VALUE))
                                 .addGap(35, 35, 35)))))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -335,10 +354,12 @@ public class viewBusGrade extends javax.swing.JFrame {
             Connection con=getConnection();
             
             try {
+                resultBtn.setText("");
+                passBtn.setText("");
                 //create the java statment
                 Statement st=con.createStatement();
                 //execute the query and get the java resultSet
-                ResultSet rs=st.executeQuery("SELECT "+Sub_id+" FROM marksbus WHERE Stu_id='"+Stu_id+"'");
+                ResultSet rs=st.executeQuery("SELECT "+Sub_id+" FROM marksbus11 WHERE Stu_id='"+Stu_id+"'");
                 
                 //PreparedStatement ps = con.prepareStatement("SELECT "+Sub_id+" FROM markscs WHERE Stu_id='"+Stu_id+"'");
                 
@@ -347,6 +368,8 @@ public class viewBusGrade extends javax.swing.JFrame {
                     float mark=rs.getInt(Sub_id);
                     String grade=getGrade(mark);
                     resultBtn.setText(grade);//set grade to show textpane
+                    String pass=showPass(mark);
+                    passBtn.setText(pass);
                 }
                
  
@@ -449,6 +472,7 @@ public class viewBusGrade extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JLabel passBtn;
     private javax.swing.JTextField resultBtn;
     private javax.swing.JTextField stu_id;
     private javax.swing.JComboBox<String> subBtn;

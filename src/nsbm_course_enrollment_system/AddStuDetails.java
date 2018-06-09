@@ -120,8 +120,6 @@ public class AddStuDetails extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         faculty = new javax.swing.JComboBox<>();
         course = new javax.swing.JComboBox<>();
-        jLabel11 = new javax.swing.JLabel();
-        semester = new javax.swing.JComboBox<>();
         mobileNo = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
         email = new javax.swing.JTextField();
@@ -130,6 +128,10 @@ public class AddStuDetails extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         agree = new javax.swing.JCheckBox();
         exit = new javax.swing.JButton();
+        year = new javax.swing.JComboBox<>();
+        jLabel14 = new javax.swing.JLabel();
+        semester = new javax.swing.JComboBox<>();
+        jLabel15 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -291,12 +293,6 @@ public class AddStuDetails extends javax.swing.JFrame {
         course.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         course.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Master", "Bachelor" }));
 
-        jLabel11.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel11.setText("Semester :");
-
-        semester.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        semester.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "First Sem", "Mid Sem" }));
-
         mobileNo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         mobileNo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -359,6 +355,18 @@ public class AddStuDetails extends javax.swing.JFrame {
             }
         });
 
+        year.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        year.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1st", "2nd", "3rd" }));
+
+        jLabel14.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel14.setText("Year :");
+
+        semester.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        semester.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "First Sem", "Mid Sem" }));
+
+        jLabel15.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel15.setText("Semester :");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -394,15 +402,9 @@ public class AddStuDetails extends javax.swing.JFrame {
                         .addComponent(course, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(131, 131, 131)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGap(137, 137, 137)
-                                .addComponent(jLabel11)
-                                .addGap(48, 48, 48)
-                                .addComponent(semester, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(172, 172, 172))
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(131, 131, 131)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(jLabel4)
                                     .addComponent(jLabel6)
@@ -411,10 +413,20 @@ public class AddStuDetails extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(mobileNo)
                                     .addComponent(firstName)
-                                    .addComponent(birthDay))))
-                        .addGap(120, 120, 120))
+                                    .addComponent(birthDay))
+                                .addGap(120, 120, 120))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel14)
+                                    .addComponent(jLabel15))
+                                .addGap(48, 48, 48)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(semester, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(year, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 154, Short.MAX_VALUE)
                         .addComponent(jLabel8)
                         .addGap(45, 45, 45)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -477,9 +489,13 @@ public class AddStuDetails extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
                     .addComponent(course, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel11)
+                    .addComponent(jLabel14)
+                    .addComponent(year, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel15)
                     .addComponent(semester, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(35, 35, 35)
+                .addGap(6, 6, 6)
                 .addComponent(agree)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 5, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -566,8 +582,8 @@ public class AddStuDetails extends javax.swing.JFrame {
             Connection con=getConnection();
             try {
                 PreparedStatement ps = con.prepareStatement("INSERT INTO students(Stu_id,FirstName,"
-                        + "LastName,BirthDay,Address,MobileNo,Email,Gender,Faculty,CourseType,Semester)"
-                        + " VALUES(?,?,?,?,?,?,?,?,?,?,?)");
+                        + "LastName,BirthDay,Address,MobileNo,Email,Gender,Faculty,CourseType,Semester,year)"
+                        + " VALUES(?,?,?,?,?,?,?,?,?,?,?,?)");
                 
                 ps.setString(1,stu_id.getText());
                 ps.setString(2,firstName.getText());
@@ -580,6 +596,7 @@ public class AddStuDetails extends javax.swing.JFrame {
                 ps.setString(9, (String) faculty.getSelectedItem());
                 ps.setString(10, (String) course.getSelectedItem());
                 ps.setString(11, (String) semester.getSelectedItem());
+                ps.setString(12, (String) year.getSelectedItem());
                 
                 ps.executeUpdate();
                 
@@ -684,9 +701,10 @@ public class AddStuDetails extends javax.swing.JFrame {
     private javax.swing.ButtonGroup gender;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -703,5 +721,6 @@ public class AddStuDetails extends javax.swing.JFrame {
     private javax.swing.JTextField mobileNo;
     private javax.swing.JComboBox<String> semester;
     private javax.swing.JTextField stu_id;
+    private javax.swing.JComboBox<String> year;
     // End of variables declaration//GEN-END:variables
 }

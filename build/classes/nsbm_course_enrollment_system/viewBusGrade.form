@@ -169,9 +169,8 @@
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jScrollPane1" pref="254" max="32767" attributes="0"/>
+              <Group type="102" alignment="1" attributes="0">
+                  <Component id="jScrollPane1" pref="266" max="32767" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -192,7 +191,7 @@
                   <Font name="Monospaced" size="16" style="0"/>
                 </Property>
                 <Property name="rows" type="int" value="5"/>
-                <Property name="text" type="java.lang.String" value="BS1001 - Business Studies&#xa;BS1002 - System Analysis&#xa;BS1003 - Computer System&#xa;BS1004 - Labouratory&#xa;BS1005 - Programming Concept&#xa;BS1006 - Presentation Studies&#xa;"/>
+                <Property name="text" type="java.lang.String" value="&#x9;1st Semester&#xa;BS1001 - Business Studies&#xa;BS1002 - System Analysis&#xa;BS1003 - Computer System&#xa;BS1004 - Labouratory&#xa;&#xa;&#x9;2nd Semester&#xa;BS1005 - Programming Concept&#xa;BS1006 - Presentation Studies&#xa;BS1007 - Networking&#xa;BS1008 - Web Analysing"/>
               </Properties>
             </Component>
           </SubComponents>
@@ -223,13 +222,15 @@
           <Font name="Tahoma" size="14" style="0"/>
         </Property>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="6">
+          <StringArray count="8">
             <StringItem index="0" value="BS1001"/>
             <StringItem index="1" value="BS1002"/>
             <StringItem index="2" value="BS1003"/>
             <StringItem index="3" value="BS1004"/>
             <StringItem index="4" value="BS1005"/>
             <StringItem index="5" value="BS1006"/>
+            <StringItem index="6" value="BS1007"/>
+            <StringItem index="7" value="BS1008"/>
           </StringArray>
         </Property>
       </Properties>

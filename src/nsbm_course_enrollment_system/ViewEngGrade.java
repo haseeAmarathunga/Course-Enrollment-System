@@ -196,7 +196,7 @@ public class ViewEngGrade extends javax.swing.JFrame {
         jTextArea1.setColumns(20);
         jTextArea1.setFont(new java.awt.Font("Monospaced", 0, 16)); // NOI18N
         jTextArea1.setRows(5);
-        jTextArea1.setText("ENG1001 - Statistics\nENG1002 - Matrix\nENG1003 - Calculus\nENG1004 - Computer science\nENG1005 - Programming\nENG1006 - Arduino\nENG1007 - Electricals\nENG1008 - Mathematical methods\nENG1009 - Sivil Engineering");
+        jTextArea1.setText("\t1st Semester\nENG1001 - Statistics\nENG1002 - Matrix\nENG1003 - Calculus\nENG1004 - Computer science\n\n\t2nd Semester\nENG1005 - Programming\nENG1006 - Arduino\nENG1007 - Electricals\nENG1008 - Mathematical methods");
         jScrollPane1.setViewportView(jTextArea1);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -210,9 +210,8 @@ public class ViewEngGrade extends javax.swing.JFrame {
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 254, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 265, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -230,7 +229,7 @@ public class ViewEngGrade extends javax.swing.JFrame {
         });
 
         subBtn.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        subBtn.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ENG1001", "ENG1002", "ENG1003", "ENG1004", "ENG1005", "ENG1006", "ENG1007", "ENG1008", "ENG1009" }));
+        subBtn.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ENG1001", "ENG1002", "ENG1003", "ENG1004", "ENG1005", "ENG1006", "ENG1007", "ENG1008" }));
         subBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 subBtnActionPerformed(evt);

@@ -130,8 +130,6 @@ public class AddStuDetails extends javax.swing.JFrame {
         exit = new javax.swing.JButton();
         year = new javax.swing.JComboBox<>();
         jLabel14 = new javax.swing.JLabel();
-        semester = new javax.swing.JComboBox<>();
-        jLabel15 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -361,12 +359,6 @@ public class AddStuDetails extends javax.swing.JFrame {
         jLabel14.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel14.setText("Year :");
 
-        semester.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        semester.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "First Sem", "Mid Sem" }));
-
-        jLabel15.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel15.setText("Semester :");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -416,15 +408,11 @@ public class AddStuDetails extends javax.swing.JFrame {
                                     .addComponent(birthDay))
                                 .addGap(120, 120, 120))
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(6, 6, 6)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel14)
-                                    .addComponent(jLabel15))
+                                .addGap(40, 40, 40)
+                                .addComponent(jLabel14)
                                 .addGap(48, 48, 48)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(semester, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(year, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                .addComponent(year, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(324, Short.MAX_VALUE))))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 154, Short.MAX_VALUE)
                         .addComponent(jLabel8)
@@ -491,11 +479,7 @@ public class AddStuDetails extends javax.swing.JFrame {
                     .addComponent(course, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel14)
                     .addComponent(year, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel15)
-                    .addComponent(semester, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(6, 6, 6)
+                .addGap(35, 35, 35)
                 .addComponent(agree)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 5, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -582,8 +566,8 @@ public class AddStuDetails extends javax.swing.JFrame {
             Connection con=getConnection();
             try {
                 PreparedStatement ps = con.prepareStatement("INSERT INTO students(Stu_id,FirstName,"
-                        + "LastName,BirthDay,Address,MobileNo,Email,Gender,Faculty,CourseType,Semester,year)"
-                        + " VALUES(?,?,?,?,?,?,?,?,?,?,?,?)");
+                        + "LastName,BirthDay,Address,MobileNo,Email,Gender,Faculty,CourseType,year)"
+                        + " VALUES(?,?,?,?,?,?,?,?,?,?,?)");
                 
                 ps.setString(1,stu_id.getText());
                 ps.setString(2,firstName.getText());
@@ -595,7 +579,6 @@ public class AddStuDetails extends javax.swing.JFrame {
                 ps.setString(8,getGender());
                 ps.setString(9, (String) faculty.getSelectedItem());
                 ps.setString(10, (String) course.getSelectedItem());
-                ps.setString(11, (String) semester.getSelectedItem());
                 ps.setString(12, (String) year.getSelectedItem());
                 
                 ps.executeUpdate();
@@ -612,15 +595,15 @@ public class AddStuDetails extends javax.swing.JFrame {
      
                 try {
                     if((String) faculty.getSelectedItem()=="School Of Computing"){
-                        PreparedStatement ps = con.prepareStatement("INSERT INTO markscs11 VALUES('"+stu_id.getText()+"',0,0,0,0,0,0,0,0,0)");
+                        PreparedStatement ps = con.prepareStatement("INSERT INTO markscs11 VALUES('"+stu_id.getText()+"',0,0,0,0,0,0,0,0)");
                         ps.executeUpdate();
                     }
                     else if((String) faculty.getSelectedItem()=="School Of Business"){
-                        PreparedStatement ps = con.prepareStatement("INSERT INTO marksbus11 VALUES('"+stu_id.getText()+"',0,0,0,0,0,0)");
+                        PreparedStatement ps = con.prepareStatement("INSERT INTO marksbus11 VALUES('"+stu_id.getText()+"',0,0,0,0,0,0,0,0)");
                         ps.executeUpdate();
                     }
                     else if((String) faculty.getSelectedItem()=="School Of Engineering"){
-                        PreparedStatement ps = con.prepareStatement("INSERT INTO markseng11 VALUES('"+stu_id.getText()+"',0,0,0,0,0,0,0,0,0)");
+                        PreparedStatement ps = con.prepareStatement("INSERT INTO markseng11 VALUES('"+stu_id.getText()+"',0,0,0,0,0,0,0,0)");
                         ps.executeUpdate();
                     }
                     
@@ -704,7 +687,6 @@ public class AddStuDetails extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -719,7 +701,6 @@ public class AddStuDetails extends javax.swing.JFrame {
     private javax.swing.JTextField lastName;
     private javax.swing.JRadioButton male;
     private javax.swing.JTextField mobileNo;
-    private javax.swing.JComboBox<String> semester;
     private javax.swing.JTextField stu_id;
     private javax.swing.JComboBox<String> year;
     // End of variables declaration//GEN-END:variables

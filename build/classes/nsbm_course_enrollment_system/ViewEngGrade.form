@@ -276,9 +276,8 @@
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jScrollPane1" pref="254" max="32767" attributes="0"/>
+              <Group type="102" alignment="1" attributes="0">
+                  <Component id="jScrollPane1" pref="265" max="32767" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -299,7 +298,7 @@
                   <Font name="Monospaced" size="16" style="0"/>
                 </Property>
                 <Property name="rows" type="int" value="5"/>
-                <Property name="text" type="java.lang.String" value="ENG1001 - Statistics&#xa;ENG1002 - Matrix&#xa;ENG1003 - Calculus&#xa;ENG1004 - Computer science&#xa;ENG1005 - Programming&#xa;ENG1006 - Arduino&#xa;ENG1007 - Electricals&#xa;ENG1008 - Mathematical methods&#xa;ENG1009 - Sivil Engineering"/>
+                <Property name="text" type="java.lang.String" value="&#x9;1st Semester&#xa;ENG1001 - Statistics&#xa;ENG1002 - Matrix&#xa;ENG1003 - Calculus&#xa;ENG1004 - Computer science&#xa;&#xa;&#x9;2nd Semester&#xa;ENG1005 - Programming&#xa;ENG1006 - Arduino&#xa;ENG1007 - Electricals&#xa;ENG1008 - Mathematical methods"/>
               </Properties>
             </Component>
           </SubComponents>
@@ -338,7 +337,7 @@
           <Font name="Tahoma" size="14" style="0"/>
         </Property>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="9">
+          <StringArray count="8">
             <StringItem index="0" value="ENG1001"/>
             <StringItem index="1" value="ENG1002"/>
             <StringItem index="2" value="ENG1003"/>
@@ -347,7 +346,6 @@
             <StringItem index="5" value="ENG1006"/>
             <StringItem index="6" value="ENG1007"/>
             <StringItem index="7" value="ENG1008"/>
-            <StringItem index="8" value="ENG1009"/>
           </StringArray>
         </Property>
       </Properties>

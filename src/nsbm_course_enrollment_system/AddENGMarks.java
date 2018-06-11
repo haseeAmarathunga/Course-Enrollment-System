@@ -93,7 +93,7 @@ public class AddENGMarks extends javax.swing.JFrame {
         setResizable(false);
 
         subBtn.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        subBtn.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ENG1001", "ENG1002", "ENG1003", "ENG1004", "ENG1005", "ENG1006", "ENG1007", "ENG1008", "ENG1009" }));
+        subBtn.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ENG1001", "ENG1002", "ENG1003", "ENG1004", "ENG1005", "ENG1006", "ENG1007", "ENG1008" }));
         subBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 subBtnActionPerformed(evt);
@@ -114,7 +114,7 @@ public class AddENGMarks extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("ADD Engineer Students Marks");
+        jLabel1.setText("ADD 1st Year Engineer Students Marks");
 
         jPanel4.setBackground(new java.awt.Color(44, 62, 80));
         jPanel4.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -161,8 +161,8 @@ public class AddENGMarks extends javax.swing.JFrame {
                 .addGap(36, 36, 36)
                 .addComponent(adds, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 379, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 478, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 489, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(2, 2, 2))
         );
@@ -237,7 +237,7 @@ public class AddENGMarks extends javax.swing.JFrame {
         jTextArea1.setColumns(20);
         jTextArea1.setFont(new java.awt.Font("Monospaced", 0, 16)); // NOI18N
         jTextArea1.setRows(5);
-        jTextArea1.setText("ENG1001 - Statistics\nENG1002 - Matrix\nENG1003 - Calculus\nENG1004 - Computer science\nENG1005 - Programming\nENG1006 - Arduino\nENG1007 - Electricals\nENG1008 - Mathematical methods\nENG1009 - Sivil Engineering");
+        jTextArea1.setText("\t1st Semester\nENG1001 - Statistics\nENG1002 - Matrix\nENG1003 - Calculus\nENG1004 - Computer science\n\n\t2nd Semester\nENG1005 - Programming\nENG1006 - Arduino\nENG1007 - Electricals\nENG1008 - Mathematical methods");
         jScrollPane1.setViewportView(jTextArea1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -269,7 +269,7 @@ public class AddENGMarks extends javax.swing.JFrame {
                                     .addComponent(stu_id, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(marksBtn, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(subBtn, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 117, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 362, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(176, 176, 176))
         );
@@ -295,8 +295,8 @@ public class AddENGMarks extends javax.swing.JFrame {
                         .addComponent(agree)
                         .addGap(26, 26, 26)
                         .addComponent(btnAddMarks, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 102, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 64, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -318,7 +318,7 @@ public class AddENGMarks extends javax.swing.JFrame {
 
     private void jPanel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MouseClicked
         // TODO add your handling code here:
-        new AddMarks().show();
+        new addMarksSelectYear3().show();
         this.setVisible(false);
     }//GEN-LAST:event_jPanel4MouseClicked
 

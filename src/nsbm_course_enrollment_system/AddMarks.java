@@ -276,7 +276,7 @@ public class AddMarks extends javax.swing.JFrame {
     private void cspanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cspanelMouseClicked
         // TODO add your handling code here:
         //System.exit(0);
-        new AddCSMarks().show();
+        new AddMarksSelectYear().show();
         this.setVisible(false);
     }//GEN-LAST:event_cspanelMouseClicked
 
@@ -311,13 +311,13 @@ public class AddMarks extends javax.swing.JFrame {
 
     private void buspanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buspanelMouseClicked
         // TODO add your handling code here:
-        new AddBUSIMarks().show();
+        new AddMarksSelectYear2().show();
         this.setVisible(false);
     }//GEN-LAST:event_buspanelMouseClicked
 
     private void enpanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_enpanelMouseClicked
         // TODO add your handling code here:
-        new AddENGMarks().show();
+        new addMarksSelectYear3().show();
         this.setVisible(false);
     }//GEN-LAST:event_enpanelMouseClicked
 

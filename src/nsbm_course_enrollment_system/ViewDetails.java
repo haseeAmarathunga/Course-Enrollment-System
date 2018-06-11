@@ -86,9 +86,12 @@ public class ViewDetails extends javax.swing.JFrame {
                 else if (Fac.equals("All") && !year.equals("All")){
                         ps = con.prepareStatement("SELECT * from students where CourseType='Bachelor' and year='"+year+"'");
                 }
+                else if (!Fac.equals("All") && year.equals("All")){
+                        ps = con.prepareStatement("SELECT * from students where CourseType='Bachelor' and Faculty='"+Fac+"'");
+                }
                 
                 else{
-                    ps = con.prepareStatement("SELECT * from students where CourseType='Bachelor' AND Faculty='"+Fac+" and year='"+year+"'");
+                    ps = con.prepareStatement("SELECT * from students where CourseType='Bachelor' AND Faculty='"+Fac+"' and year='"+year+"'");
                 }
             }
             else if (courseType.equals("Master")){
@@ -98,9 +101,12 @@ public class ViewDetails extends javax.swing.JFrame {
                 else if (Fac.equals("All") && !year.equals("All")){
                         ps = con.prepareStatement("SELECT * from students where CourseType='Master' and year='"+year+"'");
                 }
+                else if (!Fac.equals("All") && year.equals("All")){
+                        ps = con.prepareStatement("SELECT * from students where CourseType='Master' and Faculty='"+Fac+"'");
+                }
                 
                 else{
-                    ps = con.prepareStatement("SELECT * from students where CourseType='Master' AND Faculty='"+Fac+" and year='"+year+"'");
+                    ps = con.prepareStatement("SELECT * from students where CourseType='Master' AND Faculty='"+Fac+"' and year='"+year+"'");
                 }
             }
             else{
@@ -110,9 +116,12 @@ public class ViewDetails extends javax.swing.JFrame {
                 else if (Fac.equals("All") && !year.equals("All")){
                         ps = con.prepareStatement("SELECT * from students where  year='"+year+"'");
                 }
+                else if (!Fac.equals("All") && year.equals("All")){
+                        ps = con.prepareStatement("SELECT * from students where  Faculty='"+Fac+"'");
+                }
                 
                 else{
-                    ps = con.prepareStatement("SELECT * from students where Faculty='"+Fac+" and year='"+year+"'");
+                    ps = con.prepareStatement("SELECT * from students where Faculty='"+Fac+"' and year='"+year+"'");
                 }
             }
             
@@ -136,21 +145,38 @@ public class ViewDetails extends javax.swing.JFrame {
      public void delete_details()
     {
         String Gettext=getSelectedTable();
-        Stu_idBtn.setText(Gettext);
-        String Stu_id=(String) Stu_idBtn.getText();
+        //Stu_idBtn.setText(Gettext);
+        //String Stu_id=(String) Stu_idBtn.getText();
+        String Stu_id=Gettext;
         Connection con=getConnection();
         PreparedStatement ps=null;
         try {
             //ResultSet res=null;
+            if (Stu_id!=""){
             ps = con.prepareStatement("DELETE from students where Stu_id='"+Stu_id+"'");
             ps.executeUpdate();
             JOptionPane.showMessageDialog(null, Stu_id+" Deleted.");
             show_details();
+            }
             
         } catch (SQLException ex) {
             Logger.getLogger(ViewDetails.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
+        try {
+            //ResultSet res=null;
+            if (Stu_id!=""){
+                System.out.println(Stu_id.substring(4,6));
+                if (Stu_id.substring(4,6).equals("cs")){
+                    System.out.println("check");
+                    ps = con.prepareStatement("DELETE from markscs11 where Stu_id='"+Stu_id+"'");
+                }
+                ps.executeUpdate();
+            }
             
+        } catch (SQLException ex) {
+            Logger.getLogger(ViewDetails.class.getName()).log(Level.SEVERE, null, ex);
+        }
             
             //resultSetToTableModel(res,Stu_table);
         
@@ -214,7 +240,6 @@ public class ViewDetails extends javax.swing.JFrame {
         exit = new javax.swing.JButton();
         View = new javax.swing.JButton();
         Search = new javax.swing.JButton();
-        Stu_idBtn = new javax.swing.JTextField();
         DeleteBtn = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         Selectyear = new javax.swing.JComboBox<>();
@@ -355,7 +380,7 @@ public class ViewDetails extends javax.swing.JFrame {
         });
 
         Search.setBackground(new java.awt.Color(102, 102, 102));
-        Search.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        Search.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         Search.setForeground(new java.awt.Color(255, 255, 255));
         Search.setText("Search");
         Search.addActionListener(new java.awt.event.ActionListener() {
@@ -364,17 +389,8 @@ public class ViewDetails extends javax.swing.JFrame {
             }
         });
 
-        Stu_idBtn.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        Stu_idBtn.setForeground(new java.awt.Color(51, 51, 51));
-        Stu_idBtn.setToolTipText("Enter Stu_id");
-        Stu_idBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Stu_idBtnActionPerformed(evt);
-            }
-        });
-
         DeleteBtn.setBackground(new java.awt.Color(255, 51, 51));
-        DeleteBtn.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        DeleteBtn.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         DeleteBtn.setForeground(new java.awt.Color(255, 255, 255));
         DeleteBtn.setText("Delete");
         DeleteBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -404,34 +420,31 @@ public class ViewDetails extends javax.swing.JFrame {
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jScrollPane2)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(View, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(129, 129, 129))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(115, 115, 115)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel3)
-                            .addComponent(fac))
+                        .addGap(87, 87, 87)
+                        .addComponent(fac)
                         .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(Selectyear, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(selectType, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(65, 65, 65))
-                            .addComponent(selectFac, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 121, Short.MAX_VALUE)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Search, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(StuName, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(Selectyear, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(34, 34, 34)
+                        .addComponent(jLabel3)
+                        .addGap(18, 18, 18)
+                        .addComponent(selectType, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(69, 69, 69)
+                        .addComponent(jLabel4)
+                        .addGap(18, 18, 18)
+                        .addComponent(selectFac, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(View, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(15, 15, 15)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(StuName, javax.swing.GroupLayout.DEFAULT_SIZE, 185, Short.MAX_VALUE)
+                    .addComponent(Search, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(95, 95, 95)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(DeleteBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Stu_idBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(43, 43, 43)
+                .addComponent(DeleteBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(88, 88, 88)
                 .addComponent(exit, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -447,31 +460,29 @@ public class ViewDetails extends javax.swing.JFrame {
                         .addComponent(exit, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(11, 11, 11)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(fac)
-                                    .addGroup(layout.createSequentialGroup()
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                         .addComponent(Selectyear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                            .addComponent(selectType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jLabel3))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(selectType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel3)))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                             .addComponent(selectFac, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jLabel4))))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(View, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(Stu_idBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(0, 0, 0)
-                                    .addComponent(DeleteBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(StuName, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(0, 0, 0)
-                                    .addComponent(Search, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                            .addComponent(jLabel4)))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(View, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(DeleteBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addGap(7, 7, 7)
+                                .addComponent(StuName, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(4, 4, 4)
+                                .addComponent(Search, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 15, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -515,10 +526,6 @@ public class ViewDetails extends javax.swing.JFrame {
         // TODO add your handling code here:
         delete_details();
     }//GEN-LAST:event_DeleteBtnActionPerformed
-
-    private void Stu_idBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Stu_idBtnActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Stu_idBtnActionPerformed
 
     private void SelectyearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SelectyearActionPerformed
         // TODO add your handling code here:
@@ -575,7 +582,6 @@ public class ViewDetails extends javax.swing.JFrame {
     private javax.swing.JButton Search;
     private javax.swing.JComboBox<String> Selectyear;
     private javax.swing.JTextField StuName;
-    private javax.swing.JTextField Stu_idBtn;
     private javax.swing.JTable Stu_table;
     private javax.swing.JButton View;
     private javax.swing.JLabel adds;

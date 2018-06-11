@@ -579,7 +579,7 @@ public class AddStuDetails extends javax.swing.JFrame {
                 ps.setString(8,getGender());
                 ps.setString(9, (String) faculty.getSelectedItem());
                 ps.setString(10, (String) course.getSelectedItem());
-                ps.setString(12, (String) year.getSelectedItem());
+                ps.setString(11, (String) year.getSelectedItem());
                 
                 ps.executeUpdate();
                 
@@ -611,7 +611,7 @@ public class AddStuDetails extends javax.swing.JFrame {
                     Logger.getLogger(AddStuDetails.class.getName()).log(Level.SEVERE, null, ex);
                 }
             
-            clear();
+            //clear();
                 
             }
         }

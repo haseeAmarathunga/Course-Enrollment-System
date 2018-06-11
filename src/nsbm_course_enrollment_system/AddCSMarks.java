@@ -100,7 +100,7 @@ public class AddCSMarks extends javax.swing.JFrame {
         jLabel9.setText("Marks :");
 
         subBtn.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        subBtn.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "CS1001", "CS1002", "CS1003", "CS1004", "CS1005", "CS1006", "CS1007", "CS1008", "CS1009", " " }));
+        subBtn.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "CS1001", "CS1002", "CS1003", "CS1004", "CS1005", "CS1006", "CS1007", "CS1008" }));
         subBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 subBtnActionPerformed(evt);
@@ -111,7 +111,7 @@ public class AddCSMarks extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("ADD CS Students Marks");
+        jLabel1.setText("ADD 1st Year CS Students Marks");
 
         jPanel4.setBackground(new java.awt.Color(44, 62, 80));
         jPanel4.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -158,8 +158,8 @@ public class AddCSMarks extends javax.swing.JFrame {
                 .addGap(36, 36, 36)
                 .addComponent(adds, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 307, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 550, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 427, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(2, 2, 2))
         );
@@ -238,7 +238,7 @@ public class AddCSMarks extends javax.swing.JFrame {
         jTextArea1.setColumns(20);
         jTextArea1.setFont(new java.awt.Font("Monospaced", 0, 16)); // NOI18N
         jTextArea1.setRows(5);
-        jTextArea1.setText("CS1001 - Data Structure & Algorithm\nCS1002 - Programming\nCS1003 - Database\nCS1004 - Networking\nCS1005 - Labouratory\nCS1006 - Computer System\nCS1007 - Software Engineering\nCS1008 - Mathematical Methods\nCS1009 - Statistics\n");
+        jTextArea1.setText("\t1st Semester\nCS1001 - Data Structure & Algorithm\nCS1002 - Programming\nCS1003 - Database\nCS1004 - Networking\n\n\t2nd Semester\nCS1005 - Labouratory\nCS1006 - Computer System\nCS1007 - Software Engineering\nCS1008 - Mathematical Methods");
         jScrollPane1.setViewportView(jTextArea1);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -254,8 +254,8 @@ public class AddCSMarks extends javax.swing.JFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 254, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -290,7 +290,7 @@ public class AddCSMarks extends javax.swing.JFrame {
                                             .addComponent(subBtn, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                         .addGap(180, 180, 180)
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 70, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -336,7 +336,7 @@ public class AddCSMarks extends javax.swing.JFrame {
 
     private void jPanel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MouseClicked
         // TODO add your handling code here:
-        new AddMarks().show();
+        new AddMarksSelectYear().show();
         this.setVisible(false);
     }//GEN-LAST:event_jPanel4MouseClicked
 

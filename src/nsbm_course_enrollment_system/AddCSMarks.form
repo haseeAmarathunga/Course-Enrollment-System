@@ -63,7 +63,7 @@
                       </Group>
                       <EmptySpace min="-2" pref="180" max="-2" attributes="0"/>
                       <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="70" max="32767" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -137,7 +137,7 @@
           <Font name="Tahoma" size="14" style="0"/>
         </Property>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="10">
+          <StringArray count="8">
             <StringItem index="0" value="CS1001"/>
             <StringItem index="1" value="CS1002"/>
             <StringItem index="2" value="CS1003"/>
@@ -146,8 +146,6 @@
             <StringItem index="5" value="CS1006"/>
             <StringItem index="6" value="CS1007"/>
             <StringItem index="7" value="CS1008"/>
-            <StringItem index="8" value="CS1009"/>
-            <StringItem index="9" value=" "/>
           </StringArray>
         </Property>
       </Properties>
@@ -172,8 +170,8 @@
                   <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
                   <Component id="adds" min="-2" pref="67" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="jLabel1" min="-2" pref="307" max="-2" attributes="0"/>
-                  <EmptySpace pref="550" max="32767" attributes="0"/>
+                  <Component id="jLabel1" min="-2" pref="427" max="-2" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
                   <Component id="jPanel4" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
               </Group>
@@ -204,7 +202,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="ADD CS Students Marks"/>
+            <Property name="text" type="java.lang.String" value="ADD 1st Year CS Students Marks"/>
           </Properties>
         </Component>
         <Container class="javax.swing.JPanel" name="jPanel4">
@@ -375,8 +373,8 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jScrollPane1" pref="254" max="32767" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="jScrollPane1" min="-2" pref="276" max="-2" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -396,7 +394,7 @@
                   <Font name="Monospaced" size="16" style="0"/>
                 </Property>
                 <Property name="rows" type="int" value="5"/>
-                <Property name="text" type="java.lang.String" value="CS1001 - Data Structure &amp; Algorithm&#xa;CS1002 - Programming&#xa;CS1003 - Database&#xa;CS1004 - Networking&#xa;CS1005 - Labouratory&#xa;CS1006 - Computer System&#xa;CS1007 - Software Engineering&#xa;CS1008 - Mathematical Methods&#xa;CS1009 - Statistics&#xa;"/>
+                <Property name="text" type="java.lang.String" value="&#x9;1st Semester&#xa;CS1001 - Data Structure &amp; Algorithm&#xa;CS1002 - Programming&#xa;CS1003 - Database&#xa;CS1004 - Networking&#xa;&#xa;&#x9;2nd Semester&#xa;CS1005 - Labouratory&#xa;CS1006 - Computer System&#xa;CS1007 - Software Engineering&#xa;CS1008 - Mathematical Methods"/>
               </Properties>
             </Component>
           </SubComponents>

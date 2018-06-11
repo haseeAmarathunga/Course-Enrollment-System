@@ -39,15 +39,12 @@ public class AddMarks extends javax.swing.JFrame {
         CSBtn = new javax.swing.JButton();
         BUSBtn = new javax.swing.JButton();
         ENGBtn = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        CSBtn1 = new javax.swing.JButton();
-        BUSBtn1 = new javax.swing.JButton();
-        ENGBtn1 = new javax.swing.JButton();
-        CSBtn2 = new javax.swing.JButton();
-        BUSBtn2 = new javax.swing.JButton();
-        ENGBtn2 = new javax.swing.JButton();
+        CSBtn3 = new javax.swing.JButton();
+        BUSBtn3 = new javax.swing.JButton();
+        ENGBtn3 = new javax.swing.JButton();
+        CSBtn4 = new javax.swing.JButton();
+        BUSBtn4 = new javax.swing.JButton();
+        ENGBtn4 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(1091, 499));
@@ -149,7 +146,7 @@ public class AddMarks extends javax.swing.JFrame {
         CSBtn.setBackground(new java.awt.Color(44, 62, 80));
         CSBtn.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         CSBtn.setForeground(new java.awt.Color(255, 255, 255));
-        CSBtn.setText("Computer Science");
+        CSBtn.setText("Computer Science 1st Year");
         CSBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CSBtnActionPerformed(evt);
@@ -159,7 +156,7 @@ public class AddMarks extends javax.swing.JFrame {
         BUSBtn.setBackground(new java.awt.Color(44, 62, 80));
         BUSBtn.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         BUSBtn.setForeground(new java.awt.Color(255, 255, 255));
-        BUSBtn.setText("Business Studies");
+        BUSBtn.setText("Business Studies 1st Year");
         BUSBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BUSBtnActionPerformed(evt);
@@ -169,82 +166,70 @@ public class AddMarks extends javax.swing.JFrame {
         ENGBtn.setBackground(new java.awt.Color(44, 62, 80));
         ENGBtn.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         ENGBtn.setForeground(new java.awt.Color(255, 255, 255));
-        ENGBtn.setText("Engineering");
+        ENGBtn.setText("Engineering 1st Year");
         ENGBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ENGBtnActionPerformed(evt);
             }
         });
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(44, 62, 80));
-        jLabel3.setText("1st Year");
-
-        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(44, 62, 80));
-        jLabel4.setText("2nd Year");
-
-        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(44, 62, 80));
-        jLabel5.setText("3rd Year");
-
-        CSBtn1.setBackground(new java.awt.Color(44, 62, 80));
-        CSBtn1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        CSBtn1.setForeground(new java.awt.Color(255, 255, 255));
-        CSBtn1.setText("Computer Science");
-        CSBtn1.addActionListener(new java.awt.event.ActionListener() {
+        CSBtn3.setBackground(new java.awt.Color(153, 153, 153));
+        CSBtn3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        CSBtn3.setForeground(new java.awt.Color(255, 255, 255));
+        CSBtn3.setText("Computer Science 2nd Year");
+        CSBtn3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CSBtn1ActionPerformed(evt);
+                CSBtn3ActionPerformed(evt);
             }
         });
 
-        BUSBtn1.setBackground(new java.awt.Color(44, 62, 80));
-        BUSBtn1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        BUSBtn1.setForeground(new java.awt.Color(255, 255, 255));
-        BUSBtn1.setText("Business Studies");
-        BUSBtn1.addActionListener(new java.awt.event.ActionListener() {
+        BUSBtn3.setBackground(new java.awt.Color(153, 153, 153));
+        BUSBtn3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        BUSBtn3.setForeground(new java.awt.Color(255, 255, 255));
+        BUSBtn3.setText("Business Studies 2nd Year");
+        BUSBtn3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BUSBtn1ActionPerformed(evt);
+                BUSBtn3ActionPerformed(evt);
             }
         });
 
-        ENGBtn1.setBackground(new java.awt.Color(44, 62, 80));
-        ENGBtn1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        ENGBtn1.setForeground(new java.awt.Color(255, 255, 255));
-        ENGBtn1.setText("Engineering");
-        ENGBtn1.addActionListener(new java.awt.event.ActionListener() {
+        ENGBtn3.setBackground(new java.awt.Color(153, 153, 153));
+        ENGBtn3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        ENGBtn3.setForeground(new java.awt.Color(255, 255, 255));
+        ENGBtn3.setText("Engineering 2nd  Year");
+        ENGBtn3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ENGBtn1ActionPerformed(evt);
+                ENGBtn3ActionPerformed(evt);
             }
         });
 
-        CSBtn2.setBackground(new java.awt.Color(44, 62, 80));
-        CSBtn2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        CSBtn2.setForeground(new java.awt.Color(255, 255, 255));
-        CSBtn2.setText("Computer Science");
-        CSBtn2.addActionListener(new java.awt.event.ActionListener() {
+        CSBtn4.setBackground(new java.awt.Color(255, 51, 51));
+        CSBtn4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        CSBtn4.setForeground(new java.awt.Color(255, 255, 255));
+        CSBtn4.setText("Computer Science 3rd Year");
+        CSBtn4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CSBtn2ActionPerformed(evt);
+                CSBtn4ActionPerformed(evt);
             }
         });
 
-        BUSBtn2.setBackground(new java.awt.Color(44, 62, 80));
-        BUSBtn2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        BUSBtn2.setForeground(new java.awt.Color(255, 255, 255));
-        BUSBtn2.setText("Business Studies");
-        BUSBtn2.addActionListener(new java.awt.event.ActionListener() {
+        BUSBtn4.setBackground(new java.awt.Color(255, 51, 51));
+        BUSBtn4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        BUSBtn4.setForeground(new java.awt.Color(255, 255, 255));
+        BUSBtn4.setText("Business Studies 3rd Year");
+        BUSBtn4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BUSBtn2ActionPerformed(evt);
+                BUSBtn4ActionPerformed(evt);
             }
         });
 
-        ENGBtn2.setBackground(new java.awt.Color(44, 62, 80));
-        ENGBtn2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        ENGBtn2.setForeground(new java.awt.Color(255, 255, 255));
-        ENGBtn2.setText("Engineering");
-        ENGBtn2.addActionListener(new java.awt.event.ActionListener() {
+        ENGBtn4.setBackground(new java.awt.Color(255, 51, 51));
+        ENGBtn4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        ENGBtn4.setForeground(new java.awt.Color(255, 255, 255));
+        ENGBtn4.setText("Engineering 3rd Year");
+        ENGBtn4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ENGBtn2ActionPerformed(evt);
+                ENGBtn4ActionPerformed(evt);
             }
         });
 
@@ -255,71 +240,53 @@ public class AddMarks extends javax.swing.JFrame {
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(1013, Short.MAX_VALUE)
-                .addComponent(exit, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(199, 199, 199)
+                .addContainerGap(180, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(53, 53, 53)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(127, 127, 127)
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(128, 128, 128)
-                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(51, 51, 51))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(CSBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(ENGBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(BUSBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(34, 34, 34)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(CSBtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(ENGBtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(BUSBtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(37, 37, 37)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(CSBtn2, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(ENGBtn2, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(BUSBtn2, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(exit, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(CSBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(BUSBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(ENGBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(45, 45, 45)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(CSBtn3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(BUSBtn3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(ENGBtn3, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(45, 45, 45)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(CSBtn4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(BUSBtn4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(ENGBtn4, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(119, 119, 119))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(72, 72, 72)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 83, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel3)
-                        .addComponent(jLabel4))
-                    .addComponent(jLabel5))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(CSBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(BUSBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(ENGBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(CSBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(CSBtn3, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, 0)
+                        .addComponent(BUSBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, 0)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(ENGBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(ENGBtn3, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(CSBtn2, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(BUSBtn2, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(ENGBtn2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(CSBtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(BUSBtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(ENGBtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
+                        .addComponent(CSBtn4, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, 0)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(BUSBtn4, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(BUSBtn3, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, 0)
+                        .addComponent(ENGBtn4, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(47, 47, 47)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -369,29 +336,29 @@ public class AddMarks extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_ENGBtnActionPerformed
 
-    private void CSBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CSBtn1ActionPerformed
+    private void CSBtn3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CSBtn3ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_CSBtn1ActionPerformed
+    }//GEN-LAST:event_CSBtn3ActionPerformed
 
-    private void BUSBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BUSBtn1ActionPerformed
+    private void BUSBtn3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BUSBtn3ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_BUSBtn1ActionPerformed
+    }//GEN-LAST:event_BUSBtn3ActionPerformed
 
-    private void ENGBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ENGBtn1ActionPerformed
+    private void ENGBtn3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ENGBtn3ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_ENGBtn1ActionPerformed
+    }//GEN-LAST:event_ENGBtn3ActionPerformed
 
-    private void CSBtn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CSBtn2ActionPerformed
+    private void CSBtn4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CSBtn4ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_CSBtn2ActionPerformed
+    }//GEN-LAST:event_CSBtn4ActionPerformed
 
-    private void BUSBtn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BUSBtn2ActionPerformed
+    private void BUSBtn4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BUSBtn4ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_BUSBtn2ActionPerformed
+    }//GEN-LAST:event_BUSBtn4ActionPerformed
 
-    private void ENGBtn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ENGBtn2ActionPerformed
+    private void ENGBtn4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ENGBtn4ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_ENGBtn2ActionPerformed
+    }//GEN-LAST:event_ENGBtn4ActionPerformed
 
     public void setColor(JPanel panel){
         panel.setBackground(new java.awt.Color(44,28,47));
@@ -438,21 +405,18 @@ public class AddMarks extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BUSBtn;
-    private javax.swing.JButton BUSBtn1;
-    private javax.swing.JButton BUSBtn2;
+    private javax.swing.JButton BUSBtn3;
+    private javax.swing.JButton BUSBtn4;
     private javax.swing.JButton CSBtn;
-    private javax.swing.JButton CSBtn1;
-    private javax.swing.JButton CSBtn2;
+    private javax.swing.JButton CSBtn3;
+    private javax.swing.JButton CSBtn4;
     private javax.swing.JButton ENGBtn;
-    private javax.swing.JButton ENGBtn1;
-    private javax.swing.JButton ENGBtn2;
+    private javax.swing.JButton ENGBtn3;
+    private javax.swing.JButton ENGBtn4;
     private javax.swing.JLabel adds;
     private javax.swing.JButton exit;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;

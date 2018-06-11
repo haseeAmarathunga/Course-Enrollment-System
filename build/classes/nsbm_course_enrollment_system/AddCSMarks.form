@@ -259,7 +259,7 @@
         <Component class="javax.swing.JLabel" name="adds">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/nsbm_course_enrollment_system/Images/icons8-plus-64.png"/>
+              <Image iconType="3" name="/nsbm_course_enrollment_system/Images/add marks.png"/>
             </Property>
           </Properties>
         </Component>

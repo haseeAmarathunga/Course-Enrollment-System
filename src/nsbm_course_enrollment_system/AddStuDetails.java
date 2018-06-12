@@ -579,7 +579,6 @@ public class AddStuDetails extends javax.swing.JFrame {
                 ps.setString(8,getGender());
                 ps.setString(9, (String) faculty.getSelectedItem());
                 ps.setString(10, (String) course.getSelectedItem());
-                ps.setString(11, (String) year.getSelectedItem());
                 
                 ps.executeUpdate();
                 

@@ -90,13 +90,15 @@ public class CS_subject extends javax.swing.JFrame {
         Connection con=getConnection();
         PreparedStatement ps=null;
         String days=(String) day.getSelectedItem();
+        String sub=subject.getText();
+        String times=(String) time.getSelectedItem();
         try {
             //ResultSet res=null;
             if (subject.getText()!=""){
-            //ps = con.prepareStatement("UPDATE from timetable set "+ days+"=Stu_id+"'");
+            ps = con.prepareStatement("UPDATE timetablecs1 set "+ days+"='"+sub+"' WHERE time='"+times+"'");
             ps.executeUpdate();
-            //JOptionPane.showMessageDialog(null, Stu_id+" Deleted.");
-            //show_details();
+            JOptionPane.showMessageDialog(null," updated.");
+            viewTable();
             }
             
         } catch (SQLException ex) {
@@ -276,7 +278,7 @@ public class CS_subject extends javax.swing.JFrame {
         });
 
         Selectyear.setForeground(new java.awt.Color(102, 102, 102));
-        Selectyear.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "All", "1st", "2nd", "3rd" }));
+        Selectyear.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1st", "2nd", "3rd" }));
         Selectyear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 SelectyearActionPerformed(evt);
@@ -289,10 +291,10 @@ public class CS_subject extends javax.swing.JFrame {
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel4.setText("Faculty :");
+        jLabel4.setText("Course :");
 
         selectFac.setForeground(new java.awt.Color(102, 102, 102));
-        selectFac.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "All", "School Of Business", "School Of Computing", "School Of Engineering" }));
+        selectFac.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Computer Science", "Business Management", "Engineering" }));
 
         day.setForeground(new java.awt.Color(102, 102, 102));
         day.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "monday", "tuesday", "wednesday", "thursday", "friday" }));
@@ -354,11 +356,6 @@ public class CS_subject extends javax.swing.JFrame {
                 .addComponent(View, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(134, 134, 134)
-                        .addComponent(fac1)
-                        .addGap(18, 18, 18)
-                        .addComponent(day, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(105, 105, 105)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel5)
@@ -368,7 +365,12 @@ public class CS_subject extends javax.swing.JFrame {
                             .addComponent(time, 0, 146, Short.MAX_VALUE)
                             .addComponent(subject))
                         .addGap(28, 28, 28)
-                        .addComponent(updateBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(updateBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(133, 133, 133)
+                        .addComponent(fac1)
+                        .addGap(18, 18, 18)
+                        .addComponent(day, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
@@ -401,9 +403,9 @@ public class CS_subject extends javax.swing.JFrame {
                             .addComponent(selectFac, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel4)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(fac1)
-                            .addComponent(day, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(day, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(fac1))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(11, 11, 11)
@@ -474,6 +476,7 @@ public class CS_subject extends javax.swing.JFrame {
 
     private void updateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateBtnActionPerformed
         // TODO add your handling code here:
+        update_details();
     }//GEN-LAST:event_updateBtnActionPerformed
 
      public void setColor(JPanel panel){

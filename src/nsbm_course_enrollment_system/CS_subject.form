@@ -42,13 +42,7 @@
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="View" min="-2" pref="137" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="134" max="-2" attributes="0"/>
-                      <Component id="fac1" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="day" min="-2" pref="66" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
+                  <Group type="102" attributes="0">
                       <EmptySpace min="-2" pref="105" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
                           <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
@@ -61,6 +55,12 @@
                       </Group>
                       <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                       <Component id="updateBtn" min="-2" pref="137" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="133" max="-2" attributes="0"/>
+                      <Component id="fac1" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="day" min="-2" pref="66" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
@@ -106,9 +106,9 @@
                       </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="fac1" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="day" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="day" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="fac1" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Group type="102" attributes="0">
@@ -388,11 +388,10 @@
           <Color blue="66" green="66" red="66" type="rgb"/>
         </Property>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="4">
-            <StringItem index="0" value="All"/>
-            <StringItem index="1" value="1st"/>
-            <StringItem index="2" value="2nd"/>
-            <StringItem index="3" value="3rd"/>
+          <StringArray count="3">
+            <StringItem index="0" value="1st"/>
+            <StringItem index="1" value="2nd"/>
+            <StringItem index="2" value="3rd"/>
           </StringArray>
         </Property>
       </Properties>
@@ -422,7 +421,7 @@
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="66" green="66" red="66" type="rgb"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Faculty :"/>
+        <Property name="text" type="java.lang.String" value="Course :"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JComboBox" name="selectFac">
@@ -431,11 +430,10 @@
           <Color blue="66" green="66" red="66" type="rgb"/>
         </Property>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="4">
-            <StringItem index="0" value="All"/>
-            <StringItem index="1" value="School Of Business"/>
-            <StringItem index="2" value="School Of Computing"/>
-            <StringItem index="3" value="School Of Engineering"/>
+          <StringArray count="3">
+            <StringItem index="0" value="Computer Science"/>
+            <StringItem index="1" value="Business Management"/>
+            <StringItem index="2" value="Engineering"/>
           </StringArray>
         </Property>
       </Properties>

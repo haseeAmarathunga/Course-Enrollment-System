@@ -370,13 +370,16 @@ public class AddCSMarks extends javax.swing.JFrame {
     private void btnAddMarksActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddMarksActionPerformed
         // TODO add your handling code here:
         String sub=(String) subBtn.getSelectedItem();
-        double mark=Double.parseDouble(marksBtn.getText());
+      
         //System.out.println(checkInput());
+        System.out.println("check");
         if (checkInput()){
+       
             if (!(agree.isSelected())){
                 JOptionPane.showMessageDialog(null, "Please agree.");
             }
             else{
+            double mark=Double.parseDouble(marksBtn.getText());
             Connection con=getConnection();
             try {
                 PreparedStatement ps = con.prepareStatement("UPDATE markscs11 SET "+sub+"="+mark+"WHERE Stu_id='"+stu_id.getText()+"'");

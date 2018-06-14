@@ -336,7 +336,7 @@ public class AddENGMarks extends javax.swing.JFrame {
         // TODO add your handling code here:
         //System.out.println(checkInput());
         String sub=(String) subBtn.getSelectedItem();
-        double mark=Double.parseDouble(marksBtn.getText());
+        
         //System.out.println(checkInput());
         if (checkInput()){
             if (!(agree.isSelected())){
@@ -344,6 +344,7 @@ public class AddENGMarks extends javax.swing.JFrame {
             }
             else{
             Connection con=getConnection();
+            double mark=Double.parseDouble(marksBtn.getText());
             try {
                 PreparedStatement ps = con.prepareStatement("UPDATE markseng11 SET "+sub+"="+mark+"WHERE Stu_id='"+stu_id.getText()+"'");
                 

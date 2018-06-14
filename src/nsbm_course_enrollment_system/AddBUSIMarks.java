@@ -360,13 +360,14 @@ public class AddBUSIMarks extends javax.swing.JFrame {
         // TODO add your handling code here:
         //System.out.println(checkInput());
         String sub=(String) subBtn.getSelectedItem();
-        double mark=Double.parseDouble(marksBtn.getText());
+        
         //System.out.println(checkInput());
         if (checkInput()){
             if (!(agree.isSelected())){
                 JOptionPane.showMessageDialog(null, "Please agree.");
             }
             else{
+            double mark=Double.parseDouble(marksBtn.getText());
             Connection con=getConnection();
             try {
                 PreparedStatement ps = con.prepareStatement("UPDATE marksbus11 SET "+sub+"="+mark+"WHERE Stu_id='"+stu_id.getText()+"'");

@@ -97,7 +97,7 @@ public class CS_subject extends javax.swing.JFrame {
             if (subject.getText()!=""){
             ps = con.prepareStatement("UPDATE timetablecs1 set "+ days+"='"+sub+"' WHERE time='"+times+"'");
             ps.executeUpdate();
-            JOptionPane.showMessageDialog(null," updated.");
+            JOptionPane.showMessageDialog(null," UPDATE Successfull.");
             viewTable();
             }
             

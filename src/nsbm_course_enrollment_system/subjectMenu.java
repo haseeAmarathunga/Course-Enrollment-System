@@ -304,6 +304,8 @@ public class subjectMenu extends javax.swing.JFrame {
     private void cspanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cspanelMouseClicked
         // TODO add your handling code here:
         //System.exit(0);
+        new CS_subject().show();
+        this.setVisible(false);
     }//GEN-LAST:event_cspanelMouseClicked
 
     private void cspanelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cspanelMouseEntered

@@ -211,7 +211,7 @@ public class ViewDetails extends javax.swing.JFrame {
             //add that row to tablemodel as an argument with that array of objects.
             tableModel.addRow(row);
         }
-        //add that table model to our table.
+        //add that table model to my Table.
         table.setModel(tableModel);
     }
     

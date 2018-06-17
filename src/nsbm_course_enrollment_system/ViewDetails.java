@@ -327,6 +327,7 @@ public class ViewDetails extends javax.swing.JFrame {
             .addGap(0, 12, Short.MAX_VALUE)
         );
 
+        Stu_table.setBackground(new java.awt.Color(204, 255, 255));
         Stu_table.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         Stu_table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {

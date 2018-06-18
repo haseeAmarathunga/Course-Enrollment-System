@@ -94,11 +94,14 @@ public class CS_subject extends javax.swing.JFrame {
         String times=(String) time.getSelectedItem();
         try {
             //ResultSet res=null;
-            if (subject.getText()!=""){
+            if (!subject.getText().equals("")){
             ps = con.prepareStatement("UPDATE timetablecs1 set "+ days+"='"+sub+"' WHERE time='"+times+"'");
             ps.executeUpdate();
             JOptionPane.showMessageDialog(null," UPDATE Successfull.");
             viewTable();
+            }
+            else{
+                JOptionPane.showMessageDialog(null,"Please Input Subject.");
             }
             
         } catch (SQLException ex) {

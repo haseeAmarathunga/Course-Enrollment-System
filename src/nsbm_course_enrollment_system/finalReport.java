@@ -5,6 +5,16 @@
  */
 package nsbm_course_enrollment_system;
 
+import java.io.IOException;
+import static java.lang.ProcessBuilder.Redirect.to;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -20,6 +30,63 @@ public class finalReport extends javax.swing.JFrame {
         initComponents();
     }
 
+    public Connection getConnection()
+    {
+        Connection con =null;
+        PreparedStatement ps=null;
+        ResultSet res=null;
+        
+        try {
+            con = DriverManager.getConnection("jdbc:mysql://localhost/nsbm_db","root","");
+            //JOptionPane.showMessageDialog(null,"Congratulation. Register Successful.");
+            return con;
+        } catch (java.sql.SQLException ex) {
+            Logger.getLogger(AddStuDetails.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null,"Not Connected");
+            return null;
+        }
+    }
+    
+    public String getGrade(float mark)
+    {
+        if (mark>=90) return "A+";
+        else if (mark>=80) return "A";
+        else if (mark>=75) return "A-";
+        else if (mark>=70) return "B+";
+        else if (mark>=65) return "B";
+        else if (mark>=60) return "B-";
+        else if (mark>=55) return "C+";
+        else if (mark>=50) return "C";
+        else if (mark>=45) return "C-";
+        else if (mark>=40) return "D+";
+        else if (mark>=35) return "D";
+        else if (mark>=0) return "F";
+        else return "AB";
+    }
+    public String Repeat(float mark){
+        if (mark>=1.8) return "Passed";
+        else return "Repeat";
+    }
+    
+    public float getGPA(float mark)
+    {
+        if (mark>=90) return (float) 4.0;
+        else if (mark>=80) return (float) 3.8;
+        else if (mark>=75) return (float) 3.6;
+        else if (mark>=70) return (float) 3.0;
+        else if (mark>=65) return (float) 2.8;
+        else if (mark>=60) return (float) 2.6;
+        else if (mark>=55) return (float) 2.2;
+        else if (mark>=50) return (float) 2.0;
+        else if (mark>=45) return (float) 1.8;
+        else if (mark>=40) return (float) 1.4;
+        else if (mark>=35) return (float) 1.2;
+        else return 0;
+    }
+    
+
+    
+    
     
     
     public void viewReport(){
@@ -27,6 +94,55 @@ public class finalReport extends javax.swing.JFrame {
         String course =(String) selectType.getSelectedItem();
         String year=(String) Selectyear.getSelectedItem();
         
+        Connection con=getConnection();
+        PreparedStatement ps=null;
+        ResultSet res=null;
+    
+        //I developed that function only for 1st year CS Student.
+        try {
+            reportBox.setText("");
+            if (course.equals("Computer Science") && year.equals("1st")){
+            ps = con.prepareStatement("SELECT * from markscs11 where Stu_id='"+Stu_id+"'");
+            
+            res=ps.executeQuery(); 
+            
+            float GPA=0;
+            while (res.next()){
+                reportBox.append("Year Report :");
+                reportBox.append("("+res.getString(1)+")\tGrade\tGPA\n");
+                reportBox.append("\n\tCS1001 : ");
+                float a=getGPA((float) Double.parseDouble(res.getString(2)));
+                reportBox.append(res.getString(2)+"\t\t"+ getGrade((float) Double.parseDouble(res.getString(2)))+"\t"+a+"\t"+Repeat(a));
+                reportBox.append("\n\tCS1002 : ");
+                float b=getGPA((float) Double.parseDouble(res.getString(3)));
+                reportBox.append(res.getString(3)+"\t\t"+ getGrade((float) Double.parseDouble(res.getString(3)))+"\t"+b+"\t"+Repeat(b));
+                reportBox.append("\n\tCS1003 : ");
+                float c=getGPA((float) Double.parseDouble(res.getString(4)));
+                reportBox.append(res.getString(4)+"\t\t"+ getGrade((float) Double.parseDouble(res.getString(4)))+"\t"+c+"\t"+Repeat(c));
+                reportBox.append("\n\tCS1004 : ");
+                float d=getGPA((float) Double.parseDouble(res.getString(5)));
+                reportBox.append(res.getString(5)+"\t\t"+ getGrade((float) Double.parseDouble(res.getString(5)))+"\t"+d+"\t"+Repeat(d));
+                reportBox.append("\n\tCS1005 : ");
+                float e=getGPA((float) Double.parseDouble(res.getString(6)));
+                reportBox.append(res.getString(6)+"\t\t"+ getGrade((float) Double.parseDouble(res.getString(6)))+"\t"+e+"\t"+Repeat(e));
+                reportBox.append("\n\tCS1006 : ");
+                float f=getGPA((float) Double.parseDouble(res.getString(7)));
+                reportBox.append(res.getString(7)+"\t\t"+ getGrade((float) Double.parseDouble(res.getString(7)))+"\t"+f+"\t"+Repeat(f));
+                reportBox.append("\n\tCS1007 : ");
+                float g=getGPA((float) Double.parseDouble(res.getString(8)));
+                reportBox.append(res.getString(8)+"\t\t"+ getGrade((float) Double.parseDouble(res.getString(8)))+"\t"+g+"\t"+Repeat(g));
+                reportBox.append("\n\tCS1008 : ");
+                float h=getGPA((float) Double.parseDouble(res.getString(9)));
+                reportBox.append(res.getString(9)+"\t\t"+ getGrade((float) Double.parseDouble(res.getString(9)))+"\t"+h+"\t"+Repeat(h));
+                GPA=(a+b+c+d+e+f+g+h);
+                reportBox.append("\n\n\t\t\t     Year GPA : "+GPA/8);
+            }
+            
+            }
+            //resultSetToTableModel(res,Stu_table);
+        } catch (SQLException ex) {
+            Logger.getLogger(ViewDetails.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
     }
     
@@ -155,7 +271,9 @@ public class finalReport extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        reportBox.setEditable(false);
         reportBox.setColumns(20);
+        reportBox.setFont(new java.awt.Font("Monospaced", 1, 18)); // NOI18N
         reportBox.setRows(5);
         jScrollPane1.setViewportView(reportBox);
 
@@ -200,9 +318,9 @@ public class finalReport extends javax.swing.JFrame {
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(passBtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
                         .addComponent(fac)
                         .addGap(18, 18, 18)
                         .addComponent(Selectyear, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -211,12 +329,12 @@ public class finalReport extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(selectType, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(stuID, javax.swing.GroupLayout.DEFAULT_SIZE, 217, Short.MAX_VALUE)
+                        .addComponent(stuID, javax.swing.GroupLayout.DEFAULT_SIZE, 218, Short.MAX_VALUE)
                         .addGap(25, 25, 25)
                         .addComponent(View, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 776, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 776, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(exit, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -225,23 +343,23 @@ public class finalReport extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(passBtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addComponent(View, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(17, 17, 17)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(passBtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(Selectyear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(selectType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel3)
                             .addComponent(stuID, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(fac))
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(fac)
+                            .addComponent(View, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 329, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addGap(0, 0, 0)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(exit, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -259,6 +377,8 @@ public class finalReport extends javax.swing.JFrame {
 
     private void jPanel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MouseClicked
         // TODO add your handling code here:
+        new Student().show();
+        this.setVisible(false);
     }//GEN-LAST:event_jPanel4MouseClicked
 
     private void jPanel4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MouseEntered
@@ -277,6 +397,7 @@ public class finalReport extends javax.swing.JFrame {
 
     private void ViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ViewActionPerformed
         // TODO add your handling code here:
+        viewReport();
         
     }//GEN-LAST:event_ViewActionPerformed
 

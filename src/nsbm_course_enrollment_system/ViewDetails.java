@@ -143,6 +143,7 @@ public class ViewDetails extends javax.swing.JFrame {
     }
     
     public void updateData(){
+        
         String column=(String) selected.getSelectedItem();
         String Stu_id=stuID.getText();
         String value=newVal.getText();
@@ -282,7 +283,7 @@ public class ViewDetails extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("VIEW STUDENTS Details");
+        jLabel1.setText("VIEW/UPDATE & DELETE STUDENTS Details");
 
         jPanel4.setBackground(new java.awt.Color(44, 62, 80));
         jPanel4.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -329,7 +330,7 @@ public class ViewDetails extends javax.swing.JFrame {
                 .addGap(36, 36, 36)
                 .addComponent(adds, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 307, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 556, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(2, 2, 2))
@@ -369,6 +370,11 @@ public class ViewDetails extends javax.swing.JFrame {
             }
         ));
         Stu_table.setColumnSelectionAllowed(true);
+        Stu_table.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Stu_tableMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(Stu_table);
         Stu_table.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
 
@@ -639,6 +645,12 @@ public class ViewDetails extends javax.swing.JFrame {
         // TODO add your handling code here:
         updateData();
     }//GEN-LAST:event_updateBtnActionPerformed
+
+    private void Stu_tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Stu_tableMouseClicked
+        // TODO add your handling code here:
+        String s=getSelectedTable();
+        stuID.setText(s);
+    }//GEN-LAST:event_Stu_tableMouseClicked
 
     
       public void setColor(JPanel panel){

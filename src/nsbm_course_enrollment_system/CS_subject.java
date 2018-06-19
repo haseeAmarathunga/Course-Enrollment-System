@@ -161,7 +161,6 @@ public class CS_subject extends javax.swing.JFrame {
         time = new javax.swing.JComboBox<>();
         updateBtn = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
-        StuName = new javax.swing.JTextField();
         subject = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -332,10 +331,6 @@ public class CS_subject extends javax.swing.JFrame {
         jLabel6.setForeground(new java.awt.Color(102, 102, 102));
         jLabel6.setText("Subject :");
 
-        StuName.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        StuName.setForeground(new java.awt.Color(51, 51, 51));
-        StuName.setToolTipText("Enter Name");
-
         subject.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -385,11 +380,6 @@ public class CS_subject extends javax.swing.JFrame {
                             .addComponent(exit, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addContainerGap())
                 .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(462, 462, 462)
-                    .addComponent(StuName, javax.swing.GroupLayout.DEFAULT_SIZE, 185, Short.MAX_VALUE)
-                    .addGap(463, 463, 463)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -433,11 +423,6 @@ public class CS_subject extends javax.swing.JFrame {
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(exit, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(29, 29, 29)))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(231, 231, 231)
-                    .addComponent(StuName, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(232, Short.MAX_VALUE)))
         );
 
         pack();
@@ -527,7 +512,6 @@ public class CS_subject extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> Selectyear;
-    private javax.swing.JTextField StuName;
     private javax.swing.JButton View;
     private javax.swing.JLabel adds;
     private javax.swing.JComboBox<String> day;

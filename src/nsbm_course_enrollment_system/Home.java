@@ -185,6 +185,9 @@ public class Home extends javax.swing.JFrame {
         jPanel6.setBackground(new java.awt.Color(44, 62, 80));
         jPanel6.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel6MouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jPanel6MouseEntered(evt);
             }
@@ -498,6 +501,12 @@ public class Home extends javax.swing.JFrame {
         new cources().show();
         this.setVisible(false);
     }//GEN-LAST:event_jPanel5MouseClicked
+
+    private void jPanel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel6MouseClicked
+        // TODO add your handling code here:
+        new lecMenu().show();
+        this.setVisible(false);
+    }//GEN-LAST:event_jPanel6MouseClicked
 
     public void setColor(JPanel panel){
         panel.setBackground(new java.awt.Color(44,28,47));

@@ -37,13 +37,13 @@
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                          <Component id="addPanel" pref="0" max="32767" attributes="0"/>
+                          <Component id="ViewGrade" max="32767" attributes="0"/>
+                          <Component id="addMarks" alignment="0" max="32767" attributes="0"/>
+                          <Component id="addPanel" alignment="0" max="32767" attributes="0"/>
                           <Component id="viewPanel" alignment="0" max="32767" attributes="0"/>
-                          <Component id="addMarks" alignment="1" max="32767" attributes="0"/>
-                          <Component id="ViewGrade" alignment="1" max="32767" attributes="0"/>
                           <Component id="ViewGrade1" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="140" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="89" max="-2" attributes="0"/>
                       <Component id="exit" min="-2" pref="68" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -233,7 +233,7 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="1" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
                   <Component id="add" min="-2" pref="67" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
@@ -299,7 +299,7 @@
                   <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
                   <Component id="view" min="-2" pref="67" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jLabel4" min="-2" pref="302" max="-2" attributes="0"/>
+                  <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
@@ -325,7 +325,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="VIEW/DELETE Details"/>
+            <Property name="text" type="java.lang.String" value="VIEW/UPDATE &amp; DELETE Details"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="view">

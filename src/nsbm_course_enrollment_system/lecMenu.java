@@ -437,8 +437,8 @@ public class lecMenu extends javax.swing.JFrame {
 
     private void addPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addPanelMouseClicked
         // TODO add your handling code here:
-        //new ViewDetails().show();
-        //this.setVisible(false);
+        new ViewLecDetails().show();
+        this.setVisible(false);
     }//GEN-LAST:event_addPanelMouseClicked
 
     private void addPanelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addPanelMouseEntered

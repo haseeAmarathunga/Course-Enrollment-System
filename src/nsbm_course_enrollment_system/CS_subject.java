@@ -114,16 +114,23 @@ public class CS_subject extends javax.swing.JFrame {
     }
     
     
-    public void viewTable(){       
+    public void viewTable(){
+        String yr=(String) year.getSelectedItem();
+        String fac=(String) selectFac.getSelectedItem();
         Connection con=getConnection();
         PreparedStatement ps=null;
         ResultSet res=null;
         try {
-            ps = con.prepareStatement("SELECT * from timetablecs1 ");
-            
-            res=ps.executeQuery(); 
-            timetable.setFont(new Font("Serif", Font.BOLD, 15));
-            resultSetToTableModel(res,timetable);
+            if (fac.equals("Bachelor") && yr.equals("1st")){
+                ps = con.prepareStatement("SELECT * from timetablecs1 ");
+
+                res=ps.executeQuery(); 
+                timetable.setFont(new Font("Serif", Font.BOLD, 15));
+                resultSetToTableModel(res,timetable);
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "This option Implemented only for 1st Year Bachelor CS Students.");
+            }
         } catch (SQLException ex) {
             Logger.getLogger(ViewDetails.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -151,7 +158,7 @@ public class CS_subject extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         adds = new javax.swing.JLabel();
         View = new javax.swing.JButton();
-        Selectyear = new javax.swing.JComboBox<>();
+        year = new javax.swing.JComboBox<>();
         fac = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         selectFac = new javax.swing.JComboBox<>();
@@ -279,11 +286,11 @@ public class CS_subject extends javax.swing.JFrame {
             }
         });
 
-        Selectyear.setForeground(new java.awt.Color(102, 102, 102));
-        Selectyear.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1st", "2nd", "3rd" }));
-        Selectyear.addActionListener(new java.awt.event.ActionListener() {
+        year.setForeground(new java.awt.Color(102, 102, 102));
+        year.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1st", "2nd", "3rd" }));
+        year.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SelectyearActionPerformed(evt);
+                yearActionPerformed(evt);
             }
         });
 
@@ -293,10 +300,10 @@ public class CS_subject extends javax.swing.JFrame {
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel4.setText("Course :");
+        jLabel4.setText("Course Type :");
 
         selectFac.setForeground(new java.awt.Color(102, 102, 102));
-        selectFac.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Computer Science", "Business Management", "Engineering" }));
+        selectFac.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Bachelor", "Master" }));
 
         day.setForeground(new java.awt.Color(102, 102, 102));
         day.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "monday", "tuesday", "wednesday", "thursday", "friday" }));
@@ -317,7 +324,7 @@ public class CS_subject extends javax.swing.JFrame {
         time.setForeground(new java.awt.Color(102, 102, 102));
         time.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "8-10", "10-12", "1-3", "3-5" }));
 
-        updateBtn.setBackground(new java.awt.Color(44, 62, 80));
+        updateBtn.setBackground(new java.awt.Color(0, 0, 0));
         updateBtn.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         updateBtn.setForeground(new java.awt.Color(255, 255, 255));
         updateBtn.setText("Update");
@@ -339,17 +346,17 @@ public class CS_subject extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addGap(35, 35, 35)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(fac)
-                        .addGap(18, 18, 18)
-                        .addComponent(Selectyear, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
+                        .addGap(35, 35, 35)
                         .addComponent(jLabel4)
                         .addGap(18, 18, 18)
-                        .addComponent(selectFac, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(selectFac, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(92, 92, 92)
+                        .addComponent(fac)
+                        .addGap(18, 18, 18)
+                        .addComponent(year, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addComponent(View, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -369,7 +376,7 @@ public class CS_subject extends javax.swing.JFrame {
                         .addComponent(fac1)
                         .addGap(18, 18, 18)
                         .addComponent(day, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(164, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addContainerGap()
@@ -384,17 +391,18 @@ public class CS_subject extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 383, Short.MAX_VALUE)
+                .addGap(0, 382, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(View, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(fac)
-                            .addComponent(Selectyear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(16, 16, 16)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(year, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(fac))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(selectFac, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4)))
+                            .addComponent(jLabel4)
+                            .addComponent(View, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(day, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -454,9 +462,9 @@ public class CS_subject extends javax.swing.JFrame {
         viewTable();
     }//GEN-LAST:event_ViewActionPerformed
 
-    private void SelectyearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SelectyearActionPerformed
+    private void yearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_yearActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_SelectyearActionPerformed
+    }//GEN-LAST:event_yearActionPerformed
 
     private void dayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dayActionPerformed
         // TODO add your handling code here:
@@ -511,7 +519,6 @@ public class CS_subject extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> Selectyear;
     private javax.swing.JButton View;
     private javax.swing.JLabel adds;
     private javax.swing.JComboBox<String> day;
@@ -532,5 +539,6 @@ public class CS_subject extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> time;
     private javax.swing.JTable timetable;
     private javax.swing.JButton updateBtn;
+    private javax.swing.JComboBox<String> year;
     // End of variables declaration//GEN-END:variables
 }

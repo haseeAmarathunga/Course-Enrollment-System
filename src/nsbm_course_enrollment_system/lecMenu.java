@@ -31,15 +31,9 @@ public class lecMenu extends javax.swing.JFrame {
 
         exit = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
-        addMarks = new javax.swing.JPanel();
-        jLabel5 = new javax.swing.JLabel();
-        view1 = new javax.swing.JLabel();
         viewPanel = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         add = new javax.swing.JLabel();
-        ViewGrade = new javax.swing.JPanel();
-        jLabel6 = new javax.swing.JLabel();
-        view2 = new javax.swing.JLabel();
         addPanel = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         view = new javax.swing.JLabel();
@@ -76,45 +70,6 @@ public class lecMenu extends javax.swing.JFrame {
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 12, Short.MAX_VALUE)
-        );
-
-        addMarks.setBackground(new java.awt.Color(44, 62, 80));
-        addMarks.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        addMarks.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                addMarksMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                addMarksMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                addMarksMouseExited(evt);
-            }
-        });
-
-        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("ADD Subjects");
-
-        view1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/nsbm_course_enrollment_system/Images/add marks.png"))); // NOI18N
-
-        javax.swing.GroupLayout addMarksLayout = new javax.swing.GroupLayout(addMarks);
-        addMarks.setLayout(addMarksLayout);
-        addMarksLayout.setHorizontalGroup(
-            addMarksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, addMarksLayout.createSequentialGroup()
-                .addGap(32, 32, 32)
-                .addComponent(view1, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        addMarksLayout.setVerticalGroup(
-            addMarksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(addMarksLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 64, Short.MAX_VALUE))
-            .addComponent(view1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         viewPanel.setBackground(new java.awt.Color(44, 62, 80));
@@ -155,45 +110,6 @@ public class lecMenu extends javax.swing.JFrame {
                 .addGroup(viewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(add, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-        );
-
-        ViewGrade.setBackground(new java.awt.Color(44, 62, 80));
-        ViewGrade.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        ViewGrade.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                ViewGradeMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                ViewGradeMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                ViewGradeMouseExited(evt);
-            }
-        });
-
-        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setText("View SUbjects");
-
-        view2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/nsbm_course_enrollment_system/Images/view Grade.png"))); // NOI18N
-
-        javax.swing.GroupLayout ViewGradeLayout = new javax.swing.GroupLayout(ViewGrade);
-        ViewGrade.setLayout(ViewGradeLayout);
-        ViewGradeLayout.setHorizontalGroup(
-            ViewGradeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ViewGradeLayout.createSequentialGroup()
-                .addGap(32, 32, 32)
-                .addComponent(view2, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        ViewGradeLayout.setVerticalGroup(
-            ViewGradeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(ViewGradeLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 64, Short.MAX_VALUE))
-            .addComponent(view2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         addPanel.setBackground(new java.awt.Color(44, 62, 80));
@@ -351,11 +267,9 @@ public class lecMenu extends javax.swing.JFrame {
                                 .addContainerGap())
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(ViewGrade, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(addMarks, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(addPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(viewPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(157, 157, 157))))))
+                                .addGap(160, 160, 160))))))
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
@@ -368,11 +282,7 @@ public class lecMenu extends javax.swing.JFrame {
                         .addComponent(viewPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, 0)
                         .addComponent(addPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, 0)
-                        .addComponent(addMarks, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, 0)
-                        .addComponent(ViewGrade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(38, 38, 38)
+                        .addGap(120, 120, 120)
                         .addComponent(exit, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(0, 0, 0)
@@ -386,22 +296,6 @@ public class lecMenu extends javax.swing.JFrame {
         // TODO add your handling code here:
         System.exit(0);
     }//GEN-LAST:event_exitActionPerformed
-
-    private void addMarksMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addMarksMouseClicked
-        // TODO add your handling code here:
-        //new AddMarks().show();
-        //this.setVisible(false);
-    }//GEN-LAST:event_addMarksMouseClicked
-
-    private void addMarksMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addMarksMouseEntered
-        // TODO add your handling code here:
-        setColor(addMarks);
-    }//GEN-LAST:event_addMarksMouseEntered
-
-    private void addMarksMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addMarksMouseExited
-        // TODO add your handling code here:
-        resetColor(addMarks);
-    }//GEN-LAST:event_addMarksMouseExited
 
     private void viewPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewPanelMouseClicked
         // TODO add your handling code here:
@@ -418,22 +312,6 @@ public class lecMenu extends javax.swing.JFrame {
         // TODO add your handling code here:
         resetColor(viewPanel);
     }//GEN-LAST:event_viewPanelMouseExited
-
-    private void ViewGradeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ViewGradeMouseClicked
-        // TODO add your handling code here:
-        //new ViewGrade().show();
-        //this.setVisible(false);
-    }//GEN-LAST:event_ViewGradeMouseClicked
-
-    private void ViewGradeMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ViewGradeMouseEntered
-        // TODO add your handling code here:
-        setColor(ViewGrade);
-    }//GEN-LAST:event_ViewGradeMouseEntered
-
-    private void ViewGradeMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ViewGradeMouseExited
-        // TODO add your handling code here:
-        resetColor(ViewGrade);
-    }//GEN-LAST:event_ViewGradeMouseExited
 
     private void addPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addPanelMouseClicked
         // TODO add your handling code here:
@@ -511,9 +389,7 @@ public class lecMenu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel ViewGrade;
     private javax.swing.JLabel add;
-    private javax.swing.JPanel addMarks;
     private javax.swing.JPanel addPanel;
     private javax.swing.JButton exit;
     private javax.swing.JLabel jLabel1;
@@ -522,16 +398,12 @@ public class lecMenu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JLabel stu;
     private javax.swing.JLabel view;
-    private javax.swing.JLabel view1;
-    private javax.swing.JLabel view2;
     private javax.swing.JPanel viewPanel;
     // End of variables declaration//GEN-END:variables
 }

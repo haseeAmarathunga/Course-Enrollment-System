@@ -5,6 +5,7 @@
  */
 package nsbm_course_enrollment_system;
 
+import java.awt.Color;
 import javax.swing.JPanel;
 
 /**
@@ -18,6 +19,7 @@ public class lecMenu extends javax.swing.JFrame {
      */
     public lecMenu() {
         initComponents();
+        this.getContentPane().setBackground(Color.white);
     }
 
     /**
@@ -31,7 +33,7 @@ public class lecMenu extends javax.swing.JFrame {
 
         exit = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
-        viewPanel = new javax.swing.JPanel();
+        addDetails = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         add = new javax.swing.JLabel();
         addPanel = new javax.swing.JPanel();
@@ -45,6 +47,9 @@ public class lecMenu extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jLabel16 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
+        addSub = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
+        add1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -72,17 +77,17 @@ public class lecMenu extends javax.swing.JFrame {
             .addGap(0, 12, Short.MAX_VALUE)
         );
 
-        viewPanel.setBackground(new java.awt.Color(44, 62, 80));
-        viewPanel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        viewPanel.addMouseListener(new java.awt.event.MouseAdapter() {
+        addDetails.setBackground(new java.awt.Color(44, 62, 80));
+        addDetails.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        addDetails.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                viewPanelMouseClicked(evt);
+                addDetailsMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                viewPanelMouseEntered(evt);
+                addDetailsMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                viewPanelMouseExited(evt);
+                addDetailsMouseExited(evt);
             }
         });
 
@@ -92,22 +97,22 @@ public class lecMenu extends javax.swing.JFrame {
 
         add.setIcon(new javax.swing.ImageIcon(getClass().getResource("/nsbm_course_enrollment_system/Images/icons8-add-new-filled-50.png"))); // NOI18N
 
-        javax.swing.GroupLayout viewPanelLayout = new javax.swing.GroupLayout(viewPanel);
-        viewPanel.setLayout(viewPanelLayout);
-        viewPanelLayout.setHorizontalGroup(
-            viewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(viewPanelLayout.createSequentialGroup()
+        javax.swing.GroupLayout addDetailsLayout = new javax.swing.GroupLayout(addDetails);
+        addDetails.setLayout(addDetailsLayout);
+        addDetailsLayout.setHorizontalGroup(
+            addDetailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(addDetailsLayout.createSequentialGroup()
                 .addGap(34, 34, 34)
                 .addComponent(add, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(224, Short.MAX_VALUE))
+                .addContainerGap(248, Short.MAX_VALUE))
         );
-        viewPanelLayout.setVerticalGroup(
-            viewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(viewPanelLayout.createSequentialGroup()
+        addDetailsLayout.setVerticalGroup(
+            addDetailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(addDetailsLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(viewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(addDetailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(add, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
@@ -204,23 +209,21 @@ public class lecMenu extends javax.swing.JFrame {
                 .addComponent(stu, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 412, Short.MAX_VALUE)
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(2, 2, 2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(stu))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addContainerGap(19, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(stu)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 21, Short.MAX_VALUE))
         );
 
-        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel3.setBackground(new java.awt.Color(255, 255, 210));
         jPanel3.setToolTipText("");
 
         jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/nsbm_course_enrollment_system/Images/nsbmla.png"))); // NOI18N
@@ -251,6 +254,46 @@ public class lecMenu extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        addSub.setBackground(new java.awt.Color(44, 62, 80));
+        addSub.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        addSub.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                addSubMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                addSubMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                addSubMouseExited(evt);
+            }
+        });
+
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setText("ADD Subjects to Lecturer");
+
+        add1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/nsbm_course_enrollment_system/Images/icons8-add-new-filled-50.png"))); // NOI18N
+
+        javax.swing.GroupLayout addSubLayout = new javax.swing.GroupLayout(addSub);
+        addSub.setLayout(addSubLayout);
+        addSubLayout.setHorizontalGroup(
+            addSubLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(addSubLayout.createSequentialGroup()
+                .addGap(34, 34, 34)
+                .addComponent(add1, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 331, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        addSubLayout.setVerticalGroup(
+            addSubLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(addSubLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(addSubLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(add1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -260,7 +303,7 @@ public class lecMenu extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 138, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(exit, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -268,7 +311,8 @@ public class lecMenu extends javax.swing.JFrame {
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addComponent(addPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(viewPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(addDetails, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(addSub, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addGap(160, 160, 160))))))
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
@@ -279,10 +323,12 @@ public class lecMenu extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(viewPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(addDetails, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, 0)
                         .addComponent(addPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(120, 120, 120)
+                        .addGap(0, 0, 0)
+                        .addComponent(addSub, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(39, 39, 39)
                         .addComponent(exit, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(0, 0, 0)
@@ -297,21 +343,21 @@ public class lecMenu extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_exitActionPerformed
 
-    private void viewPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewPanelMouseClicked
+    private void addDetailsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addDetailsMouseClicked
         // TODO add your handling code here:
         new Lecturer().show();
         this.setVisible(false);
-    }//GEN-LAST:event_viewPanelMouseClicked
+    }//GEN-LAST:event_addDetailsMouseClicked
 
-    private void viewPanelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewPanelMouseEntered
+    private void addDetailsMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addDetailsMouseEntered
         // TODO add your handling code here:
-        setColor(viewPanel);
-    }//GEN-LAST:event_viewPanelMouseEntered
+        setColor(addDetails);
+    }//GEN-LAST:event_addDetailsMouseEntered
 
-    private void viewPanelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewPanelMouseExited
+    private void addDetailsMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addDetailsMouseExited
         // TODO add your handling code here:
-        resetColor(viewPanel);
-    }//GEN-LAST:event_viewPanelMouseExited
+        resetColor(addDetails);
+    }//GEN-LAST:event_addDetailsMouseExited
 
     private void addPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addPanelMouseClicked
         // TODO add your handling code here:
@@ -345,8 +391,22 @@ public class lecMenu extends javax.swing.JFrame {
         resetColor(jPanel4);
     }//GEN-LAST:event_jPanel4MouseExited
 
+    private void addSubMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addSubMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_addSubMouseClicked
+
+    private void addSubMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addSubMouseEntered
+        // TODO add your handling code here:
+        setColor(addSub);
+    }//GEN-LAST:event_addSubMouseEntered
+
+    private void addSubMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addSubMouseExited
+        // TODO add your handling code here:
+        resetColor(addSub);
+    }//GEN-LAST:event_addSubMouseExited
+
     public void setColor(JPanel panel){
-        panel.setBackground(new java.awt.Color(44,28,47));
+        panel.setBackground(new java.awt.Color(44,100,98));
         
     }
     public void resetColor(JPanel panel){
@@ -390,7 +450,10 @@ public class lecMenu extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel add;
+    private javax.swing.JLabel add1;
+    private javax.swing.JPanel addDetails;
     private javax.swing.JPanel addPanel;
+    private javax.swing.JPanel addSub;
     private javax.swing.JButton exit;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel16;
@@ -398,12 +461,12 @@ public class lecMenu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JLabel stu;
     private javax.swing.JLabel view;
-    private javax.swing.JPanel viewPanel;
     // End of variables declaration//GEN-END:variables
 }

@@ -5,6 +5,7 @@
  */
 package nsbm_course_enrollment_system;
 
+import java.awt.Color;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -31,6 +32,8 @@ public class ViewDetails extends javax.swing.JFrame {
      */
     public ViewDetails() {
         initComponents();
+        this.getContentPane().setBackground(Color.white);
+        
     }
 
     
@@ -41,7 +44,7 @@ public class ViewDetails extends javax.swing.JFrame {
         ResultSet res=null;
         
         try {
-            con = DriverManager.getConnection("jdbc:mysql://localhost/nsbm_db","root","");
+            con = DriverManager.getConnection("jdbc:mysql://localhost/nsbm","root","");
             //JOptionPane.showMessageDialog(null,"Congratulation. Register Successful.");
             return con;
         } catch (java.sql.SQLException ex) {
@@ -53,18 +56,22 @@ public class ViewDetails extends javax.swing.JFrame {
     
     public void search_name(){
         String stuName=(String) StuName.getText();
-       
+        String Mycourse=(String) course.getSelectedItem();
+        String year=(String) Selectyear.getSelectedItem();
         Connection con=getConnection();
         PreparedStatement ps=null;
         ResultSet res=null;
         try {
-            ps = con.prepareStatement("SELECT * from students where FirstName LIKE '%"+stuName+"%' OR LastName LIKE'%"+stuName+"%'");
+            ps = con.prepareStatement("SELECT Stu_id,FullName,NIC,BirthDay,Address,"
+                    + "Gender,MobileNo,RegisteredDate FROM studentsug where FullName LIKE '%"+
+                    stuName+"%' Course='"+Mycourse+"' AND year='"+year+"'");
             
             res=ps.executeQuery(); 
             
             resultSetToTableModel(res,Stu_table);
-        } catch (SQLException ex) {
-            Logger.getLogger(ViewDetails.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "Please Enter Search Name.");
+            //Logger.getLogger(ViewDetails.class.getName()).log(Level.SEVERE, null, ex);
         }
         
     }
@@ -72,58 +79,19 @@ public class ViewDetails extends javax.swing.JFrame {
     
     public void show_details()
     {
-        String courseType=(String) selectType.getSelectedItem();
-        String Fac =(String) selectFac.getSelectedItem();
+        String Mycourse=(String) course.getSelectedItem();
+        String Fac =(String) faculty.getSelectedItem();
         Connection con=getConnection();
         PreparedStatement ps=null;
         ResultSet res=null;
         String year=(String) Selectyear.getSelectedItem();
+        //System.out.println(Mycourse);
         try {
-            if (courseType.equals("Bachelor")){
-                if (Fac.equals("All") && year.equals("All")){
-                    ps = con.prepareStatement("SELECT * from students where CourseType='Bachelor'");
-                }
-                else if (Fac.equals("All") && !year.equals("All")){
-                        ps = con.prepareStatement("SELECT * from students where CourseType='Bachelor' and year='"+year+"'");
-                }
-                else if (!Fac.equals("All") && year.equals("All")){
-                        ps = con.prepareStatement("SELECT * from students where CourseType='Bachelor' and Faculty='"+Fac+"'");
-                }
-                
-                else{
-                    ps = con.prepareStatement("SELECT * from students where CourseType='Bachelor' AND Faculty='"+Fac+"' and year='"+year+"'");
-                }
-            }
-            else if (courseType.equals("Master")){
-                if (Fac.equals("All") && year.equals("All")){
-                    ps = con.prepareStatement("SELECT * from students where CourseType='Master'");
-                }
-                else if (Fac.equals("All") && !year.equals("All")){
-                        ps = con.prepareStatement("SELECT * from students where CourseType='Master' and year='"+year+"'");
-                }
-                else if (!Fac.equals("All") && year.equals("All")){
-                        ps = con.prepareStatement("SELECT * from students where CourseType='Master' and Faculty='"+Fac+"'");
-                }
-                
-                else{
-                    ps = con.prepareStatement("SELECT * from students where CourseType='Master' AND Faculty='"+Fac+"' and year='"+year+"'");
-                }
-            }
-            else{
-                if (Fac.equals("All") && year.equals("All")){
-                    ps = con.prepareStatement("SELECT * from students");
-                }
-                else if (Fac.equals("All") && !year.equals("All")){
-                        ps = con.prepareStatement("SELECT * from students where  year='"+year+"'");
-                }
-                else if (!Fac.equals("All") && year.equals("All")){
-                        ps = con.prepareStatement("SELECT * from students where  Faculty='"+Fac+"'");
-                }
-                
-                else{
-                    ps = con.prepareStatement("SELECT * from students where Faculty='"+Fac+"' and year='"+year+"'");
-                }
-            }
+
+            ps=con.prepareStatement("SELECT Stu_id,FullName,NIC,BirthDay,Address,"
+                    + "Gender,MobileNo,RegisteredDate FROM studentsug WHERE Course='"+Mycourse+"' AND year='"+year+"'");
+            
+
             
             res=ps.executeQuery(); 
             
@@ -153,7 +121,7 @@ public class ViewDetails extends javax.swing.JFrame {
         try {
             //ResultSet res=null;
             if (!Stu_id.equals("") && !value.equals("")){
-            ps = con.prepareStatement("UPDATE students set "+ column+"='"+value+"' WHERE Stu_id='"+Stu_id+"'");
+            ps = con.prepareStatement("UPDATE studentsug set "+ column+"='"+value+"' WHERE Stu_id='"+Stu_id+"'");
             ps.executeUpdate();
             JOptionPane.showMessageDialog(null," UPDATE Successfull.");
             show_details();
@@ -171,36 +139,28 @@ public class ViewDetails extends javax.swing.JFrame {
         String Gettext=getSelectedTable();
         //Stu_idBtn.setText(Gettext);
         //String Stu_id=(String) Stu_idBtn.getText();
+        
         String Stu_id=Gettext;
         Connection con=getConnection();
         PreparedStatement ps=null;
+        if (Stu_id.equals("")){
         try {
             //ResultSet res=null;
-            if (Stu_id!=""){
-            ps = con.prepareStatement("DELETE from students where Stu_id='"+Stu_id+"'");
+          
+            ps = con.prepareStatement("DELETE from studentsug where Stu_id='"+Stu_id+"'");
             ps.executeUpdate();
             JOptionPane.showMessageDialog(null, Stu_id+" Deleted.");
-            show_details();
-            }
             
-        } catch (SQLException ex) {
-            Logger.getLogger(ViewDetails.class.getName()).log(Level.SEVERE, null, ex);
+            
+            show_details();
+            
+            
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "Please Selecte a Row");
+            //Logger.getLogger(ViewDetails.class.getName()).log(Level.SEVERE, null, ex);
+        }
         }
         
-        try {
-            //ResultSet res=null;
-            if (Stu_id!=""){
-                System.out.println(Stu_id.substring(4,6));
-                if (Stu_id.substring(4,6).equals("cs")){
-                    System.out.println("check");
-                    ps = con.prepareStatement("DELETE from markscs11 where Stu_id='"+Stu_id+"'");
-                }
-                ps.executeUpdate();
-            }
-            
-        } catch (SQLException ex) {
-            Logger.getLogger(ViewDetails.class.getName()).log(Level.SEVERE, null, ex);
-        }
             
             //resultSetToTableModel(res,Stu_table);
         
@@ -257,9 +217,9 @@ public class ViewDetails extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         Stu_table = new javax.swing.JTable();
         jLabel3 = new javax.swing.JLabel();
-        selectType = new javax.swing.JComboBox<>();
+        course = new javax.swing.JComboBox<>();
         fac = new javax.swing.JLabel();
-        selectFac = new javax.swing.JComboBox<>();
+        faculty = new javax.swing.JComboBox<>();
         StuName = new javax.swing.JTextField();
         exit = new javax.swing.JButton();
         View = new javax.swing.JButton();
@@ -277,6 +237,7 @@ public class ViewDetails extends javax.swing.JFrame {
         updateBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(255, 255, 255));
         setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(44, 62, 80));
@@ -332,8 +293,7 @@ public class ViewDetails extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 556, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(2, 2, 2))
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -359,17 +319,17 @@ public class ViewDetails extends javax.swing.JFrame {
             .addGap(0, 12, Short.MAX_VALUE)
         );
 
-        Stu_table.setBackground(new java.awt.Color(204, 255, 255));
-        Stu_table.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        Stu_table.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         Stu_table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Stu_id", "FirstName", "LastName", "BirthDay", "Address", "MobileNo", "Email", "Gender", "Faculty", "Course_type", "Year"
+                "Stu_id", "FullName", "NIC", "BirthDay", "Address", "Gender", "MobileNo", "RegisteredDate"
             }
         ));
         Stu_table.setColumnSelectionAllowed(true);
+        Stu_table.setGridColor(new java.awt.Color(255, 255, 255));
         Stu_table.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 Stu_tableMouseClicked(evt);
@@ -380,18 +340,26 @@ public class ViewDetails extends javax.swing.JFrame {
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel3.setText("Course Type :");
+        jLabel3.setText("Course :");
 
-        selectType.setForeground(new java.awt.Color(102, 102, 102));
-        selectType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "All", "Master", "Bachelor" }));
-        selectType.setSelectedItem(View);
+        course.setBackground(new java.awt.Color(153, 153, 255));
+        course.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        course.setForeground(new java.awt.Color(255, 255, 255));
+        course.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Business Management", "Business Analysis" }));
 
         fac.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         fac.setForeground(new java.awt.Color(102, 102, 102));
         fac.setText("Year :");
 
-        selectFac.setForeground(new java.awt.Color(102, 102, 102));
-        selectFac.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "All", "School Of Business", "School Of Computing", "School Of Engineering" }));
+        faculty.setBackground(new java.awt.Color(153, 153, 255));
+        faculty.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        faculty.setForeground(new java.awt.Color(255, 255, 255));
+        faculty.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "School Of Business", "School Of Computing", "School Of Engineering" }));
+        faculty.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                facultyActionPerformed(evt);
+            }
+        });
 
         StuName.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         StuName.setForeground(new java.awt.Color(51, 51, 51));
@@ -441,9 +409,10 @@ public class ViewDetails extends javax.swing.JFrame {
         jLabel4.setForeground(new java.awt.Color(102, 102, 102));
         jLabel4.setText("Faculty :");
 
-        Selectyear.setForeground(new java.awt.Color(102, 102, 102));
-        Selectyear.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "All", "1st", "2nd", "3rd" }));
-        Selectyear.setSelectedItem(View);
+        Selectyear.setBackground(new java.awt.Color(153, 153, 255));
+        Selectyear.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        Selectyear.setForeground(new java.awt.Color(255, 255, 255));
+        Selectyear.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1st", "2nd", "3rd" }));
         Selectyear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 SelectyearActionPerformed(evt);
@@ -452,7 +421,9 @@ public class ViewDetails extends javax.swing.JFrame {
 
         jLabel5.setText("To Delete, Select row & click");
 
-        selected.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Stu_id", "FirstName", "LastName", "BirthDay", "Address", "MobileNo", "Email", "Gender", "Faculty", "CourseType", "year" }));
+        selected.setBackground(new java.awt.Color(153, 153, 255));
+        selected.setForeground(new java.awt.Color(255, 255, 255));
+        selected.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Stu_id", "FullName", "NIC", "BirthDay", "Address", "Gender", "MobileNo" }));
 
         stuID.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -490,34 +461,34 @@ public class ViewDetails extends javax.swing.JFrame {
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jScrollPane2)
             .addGroup(layout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(fac)
-                        .addGap(18, 18, 18)
-                        .addComponent(Selectyear, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(34, 34, 34)
-                        .addComponent(jLabel3)
-                        .addGap(18, 18, 18)
-                        .addComponent(selectType, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(50, 50, 50)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel4)
                         .addGap(18, 18, 18)
-                        .addComponent(selectFac, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(faculty, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel3)
+                            .addComponent(fac))
                         .addGap(18, 18, 18)
-                        .addComponent(View, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(StuName)
-                    .addComponent(Search, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(26, 26, 26)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(course, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(Selectyear, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(View, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addGap(38, 38, 38)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(Search, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(StuName, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(39, 39, 39)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(DeleteBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
+                .addGap(19, 19, 19)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel6)
                             .addComponent(jLabel7)
@@ -528,10 +499,10 @@ public class ViewDetails extends javax.swing.JFrame {
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(selected, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(stuID, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(107, 107, 107))
+                        .addGap(105, 105, 105))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(63, 63, 63)
-                        .addComponent(updateBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(38, 38, 38)
+                        .addComponent(updateBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 167, Short.MAX_VALUE)
                         .addGap(18, 18, 18)
                         .addComponent(exit, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap())))
@@ -540,35 +511,10 @@ public class ViewDetails extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(0, 0, 0)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(fac)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(Selectyear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(selectType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jLabel3)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(selectFac, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel4)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(StuName, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel5))
-                                .addGap(4, 4, 4)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(Search, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(DeleteBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(View, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(21, 21, 21)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(selected, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel6))
@@ -580,13 +526,43 @@ public class ViewDetails extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(newVal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel8))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(exit, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(updateBtn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(6, 6, 6))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(26, 26, 26)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel5)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(DeleteBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(StuName, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(Search, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(15, 15, 15)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(faculty, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4))
+                        .addGap(7, 7, 7)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(course, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(0, 1, Short.MAX_VALUE)
-                                .addComponent(exit, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(updateBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(6, 6, 6)))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(Selectyear)
+                                    .addComponent(fac))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(View, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -626,7 +602,11 @@ public class ViewDetails extends javax.swing.JFrame {
 
     private void DeleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteBtnActionPerformed
         // TODO add your handling code here:
+        try{
         delete_details();
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Please Selecte a Row");
+        }
     }//GEN-LAST:event_DeleteBtnActionPerformed
 
     private void SelectyearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SelectyearActionPerformed
@@ -652,9 +632,27 @@ public class ViewDetails extends javax.swing.JFrame {
         stuID.setText(s);
     }//GEN-LAST:event_Stu_tableMouseClicked
 
+    private void facultyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_facultyActionPerformed
+        // TODO add your handling code here:
+        String fac=(String) faculty.getSelectedItem();
+        course.removeAllItems();
+        if(fac.equals("School Of Computing")){
+            course.addItem("Computer Science");
+            course.addItem("Information System");
+        }
+        else if(fac.equals("School Of Business")){
+            course.addItem("Business Management");
+            course.addItem("Business Analysis");
+        }
+        else{
+            course.addItem("Civil Engineering");
+            course.addItem("Electronic Engineering");
+        }
+    }//GEN-LAST:event_facultyActionPerformed
+
     
       public void setColor(JPanel panel){
-        panel.setBackground(new java.awt.Color(44,28,47));
+        panel.setBackground(new java.awt.Color(44,100,98));
         
     }
     public void resetColor(JPanel panel){
@@ -706,8 +704,10 @@ public class ViewDetails extends javax.swing.JFrame {
     private javax.swing.JTable Stu_table;
     private javax.swing.JButton View;
     private javax.swing.JLabel adds;
+    private javax.swing.JComboBox<String> course;
     private javax.swing.JButton exit;
     private javax.swing.JLabel fac;
+    private javax.swing.JComboBox<String> faculty;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -721,8 +721,6 @@ public class ViewDetails extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextField newVal;
-    private javax.swing.JComboBox<String> selectFac;
-    private javax.swing.JComboBox<String> selectType;
     private javax.swing.JComboBox<String> selected;
     private javax.swing.JTextField stuID;
     private javax.swing.JButton updateBtn;

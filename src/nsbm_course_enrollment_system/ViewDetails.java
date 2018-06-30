@@ -92,8 +92,11 @@ public class ViewDetails extends javax.swing.JFrame {
                     + "Gender,MobileNo,RegisteredDate FROM studentsug WHERE Course='"+Mycourse+"' AND year='"+year+"'");
             
 
-            
-            res=ps.executeQuery(); 
+            try{
+            res=ps.executeQuery();
+            }catch(Exception e){
+                
+            }
             
             resultSetToTableModel(res,Stu_table);
         } catch (SQLException ex) {

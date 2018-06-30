@@ -5,6 +5,7 @@
  */
 package nsbm_course_enrollment_system;
 
+import java.awt.Color;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -29,6 +30,7 @@ public class ViewLecDetails extends javax.swing.JFrame {
      */
     public ViewLecDetails() {
         initComponents();
+        this.getContentPane().setBackground(Color.white);
     }
     
     public Connection getConnection()
@@ -38,7 +40,7 @@ public class ViewLecDetails extends javax.swing.JFrame {
         ResultSet res=null;
         
         try {
-            con = DriverManager.getConnection("jdbc:mysql://localhost/nsbm_db","root","");
+            con = DriverManager.getConnection("jdbc:mysql://localhost/nsbm","root","");
             //JOptionPane.showMessageDialog(null,"Congratulation. Register Successful.");
             return con;
         } catch (java.sql.SQLException ex) {
@@ -87,7 +89,7 @@ public class ViewLecDetails extends javax.swing.JFrame {
         ResultSet res=null;
         try {
             if (!lec_Name.equals("")){
-            ps = con.prepareStatement("SELECT * from lecturer where FirstName LIKE '%"+lec_Name+"%' OR LastName LIKE'%"+lec_Name+"%'");            
+            ps = con.prepareStatement("SELECT * from staff where FullName LIKE '%"+lec_Name+"%'");            
             res=ps.executeQuery(); 
             
             resultSetToTableModel(res,Lec_table);
@@ -102,35 +104,32 @@ public class ViewLecDetails extends javax.swing.JFrame {
     
     public void show_details()
     {
-        String Fac =(String) selectFac.getSelectedItem();
+        
+        String Mycourse=(String) course.getSelectedItem();
+        String Fac =(String) faculty.getSelectedItem();
         Connection con=getConnection();
         PreparedStatement ps=null;
         ResultSet res=null;
+ 
+        //System.out.println(Mycourse);
         try {
-            if (Fac.equals("All")){
-                ps = con.prepareStatement("SELECT * from lecturer");
-                }
-            else if (Fac.equals("School Of Computing")){
-                ps = con.prepareStatement("SELECT * from lecturer  where faculty='School Of Computing'");
-                }
-            else if (Fac.equals("School Of Business")){
-                ps = con.prepareStatement("SELECT * from lecturer  where faculty='School Of Business'");
-                }
-            else{
-                ps = con.prepareStatement("SELECT * from lecturer  where faculty='School Of Engineering'");
+
+            ps=con.prepareStatement("SELECT ID,FullName,NIC,Type,Address,Gender,MobileNo,RegisteredDate"
+                    + " FROM staff WHERE Course='"+Mycourse+"'");
+            
+
+            try{
+            res=ps.executeQuery();
+            }catch(Exception e){
+                
             }
             
-            res=ps.executeQuery(); 
-            
             resultSetToTableModel(res,Lec_table);
-            
         } catch (SQLException ex) {
             Logger.getLogger(ViewDetails.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
     }
-    
-    public String getSelectedTable()
+     public String getSelectedTable()
     {
         int column=0;
         int row=Lec_table.getSelectedRow();
@@ -139,10 +138,40 @@ public class ViewLecDetails extends javax.swing.JFrame {
     }
     
     
-    public void updateData(){
+     public void delete_details()
+    {
+        String Gettext=getSelectedTable();
+        //Stu_idBtn.setText(Gettext);
+        //String Stu_id=(String) Stu_idBtn.getText();
+        
+        String Lec_id=Gettext;
+        Connection con=getConnection();
+        PreparedStatement ps=null;
+        if (!Lec_id.equals("")){
+        
+        try {
+            //ResultSet res=null;
+          
+            ps = con.prepareStatement("DELETE from staff where ID='"+Lec_id+"'");
+            ps.executeUpdate();
+            JOptionPane.showMessageDialog(null, Lec_id+" Deleted.");
+            
+            
+            show_details();
+            
+            
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "Please Selecte a Row");
+            //Logger.getLogger(ViewDetails.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        }
+    
+    }
+     
+     public void updateData(){
         
         String column=(String) selected.getSelectedItem();
-        String Lec_id=lecID.getText();
+        String Lec_id=id.getText();
         String value=newVal.getText();
         
         Connection con=getConnection();
@@ -150,46 +179,16 @@ public class ViewLecDetails extends javax.swing.JFrame {
         try {
             //ResultSet res=null;
             if (!Lec_id.equals("") && !value.equals("")){
-            ps = con.prepareStatement("UPDATE lecturer set "+ column+"='"+value+"' WHERE Lec_id='"+Lec_id+"'");
+            ps = con.prepareStatement("UPDATE staff set "+ column+"='"+value+"' WHERE ID='"+Lec_id+"'");
             ps.executeUpdate();
             JOptionPane.showMessageDialog(null," UPDATE Successfull.");
             show_details();
-            }else{
-                JOptionPane.showMessageDialog(null," Please Input all Details.");
             }
             
             
         } catch (SQLException ex) {
             Logger.getLogger(ViewDetails.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }
-     public void delete_details()
-    {
-         
-        String Gettext=getSelectedTable();
-        String Lec_id=Gettext;        
-        
-        //Stu_idBtn.setText(Gettext);
-        //String Stu_id=(String) Stu_idBtn.getText();
-        Connection con=getConnection();
-        PreparedStatement ps=null;
-        try{
-            //ResultSet res=null;
-            
-            if (!Lec_id.equals("")){
-            ps = con.prepareStatement("DELETE from lecturer where Lec_id='"+Lec_id+"'");
-            ps.executeUpdate();
-            JOptionPane.showMessageDialog(null, Lec_id+" Deleted.");
-            show_details();
-            }
-            else{
-                JOptionPane.showMessageDialog(null,"Please Select the row you want to Delete.");
-            }
-            
-        } catch (SQLException ex) {
-            Logger.getLogger(ViewDetails.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    
     }
 
     /**
@@ -202,8 +201,13 @@ public class ViewLecDetails extends javax.swing.JFrame {
     private void initComponents() {
 
         selected = new javax.swing.JComboBox<>();
-        lecID = new javax.swing.JTextField();
-        selectFac = new javax.swing.JComboBox<>();
+        id = new javax.swing.JTextField();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jPanel4 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        adds = new javax.swing.JLabel();
+        faculty = new javax.swing.JComboBox<>();
         jLabel6 = new javax.swing.JLabel();
         lecName = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
@@ -213,30 +217,101 @@ public class ViewLecDetails extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         Search = new javax.swing.JButton();
         updateBtn = new javax.swing.JButton();
-        DeleteBtn = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jPanel4 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        adds = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
+        DeleteBtn = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         Lec_table = new javax.swing.JTable();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
+        course = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        selected.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Lec_Id", "FirstName", "LastName", "Email", "Address", "MobileNo", "Description", "Gender", "Faculty" }));
+        selected.setBackground(new java.awt.Color(153, 153, 255));
+        selected.setForeground(new java.awt.Color(255, 255, 255));
+        selected.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ID", "FullName", "NIC", "Type", "Address", "Gender", "MobileNo" }));
 
-        lecID.addActionListener(new java.awt.event.ActionListener() {
+        id.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                lecIDActionPerformed(evt);
+                idActionPerformed(evt);
             }
         });
 
-        selectFac.setForeground(new java.awt.Color(102, 102, 102));
-        selectFac.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "All", "School Of Business", "School Of Computing", "School Of Engineering" }));
+        jPanel1.setBackground(new java.awt.Color(44, 62, 80));
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("View/Update & Delete Staff Details");
+
+        jPanel4.setBackground(new java.awt.Color(44, 62, 80));
+        jPanel4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel4MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jPanel4MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jPanel4MouseExited(evt);
+            }
+        });
+
+        jLabel2.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("< BACK");
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addContainerGap(19, Short.MAX_VALUE)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(23, 23, 23))
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        adds.setIcon(new javax.swing.ImageIcon(getClass().getResource("/nsbm_course_enrollment_system/Images/icons8-search-64.png"))); // NOI18N
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(36, 36, 36)
+                .addComponent(adds, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 556, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addComponent(jLabel1)
+                .addContainerGap(24, Short.MAX_VALUE))
+            .addComponent(adds, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        faculty.setBackground(new java.awt.Color(153, 153, 255));
+        faculty.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        faculty.setForeground(new java.awt.Color(255, 255, 255));
+        faculty.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "School Of Business", "School Of Computing", "School Of Engineering" }));
+        faculty.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                facultyActionPerformed(evt);
+            }
+        });
 
         jLabel6.setText("Column :");
 
@@ -244,7 +319,7 @@ public class ViewLecDetails extends javax.swing.JFrame {
         lecName.setForeground(new java.awt.Color(51, 51, 51));
         lecName.setToolTipText("Enter Name");
 
-        jLabel7.setText("Lec_id :");
+        jLabel7.setText("ID :");
 
         exit.setBackground(new java.awt.Color(255, 51, 51));
         exit.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -294,86 +369,6 @@ public class ViewLecDetails extends javax.swing.JFrame {
             }
         });
 
-        DeleteBtn.setBackground(new java.awt.Color(255, 51, 51));
-        DeleteBtn.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        DeleteBtn.setForeground(new java.awt.Color(255, 255, 255));
-        DeleteBtn.setText("Delete");
-        DeleteBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                DeleteBtnActionPerformed(evt);
-            }
-        });
-
-        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel4.setText("Faculty :");
-
-        jPanel1.setBackground(new java.awt.Color(44, 62, 80));
-
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("VIEW/UPDATE & DELETE Lecturers Details");
-
-        jPanel4.setBackground(new java.awt.Color(44, 62, 80));
-        jPanel4.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jPanel4MouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jPanel4MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jPanel4MouseExited(evt);
-            }
-        });
-
-        jLabel2.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("< BACK");
-
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap(19, Short.MAX_VALUE)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(23, 23, 23))
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
-        adds.setIcon(new javax.swing.ImageIcon(getClass().getResource("/nsbm_course_enrollment_system/Images/icons8-search-64.png"))); // NOI18N
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(36, 36, 36)
-                .addComponent(adds, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 556, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(2, 2, 2))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addComponent(jLabel1)
-                .addContainerGap(24, Short.MAX_VALUE))
-            .addComponent(adds, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-
         jPanel2.setBackground(new java.awt.Color(44, 62, 80));
         jPanel2.setToolTipText("");
 
@@ -388,17 +383,27 @@ public class ViewLecDetails extends javax.swing.JFrame {
             .addGap(0, 12, Short.MAX_VALUE)
         );
 
-        Lec_table.setBackground(new java.awt.Color(204, 255, 255));
-        Lec_table.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        DeleteBtn.setBackground(new java.awt.Color(255, 51, 51));
+        DeleteBtn.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        DeleteBtn.setForeground(new java.awt.Color(255, 255, 255));
+        DeleteBtn.setText("Delete");
+        DeleteBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DeleteBtnActionPerformed(evt);
+            }
+        });
+
+        Lec_table.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         Lec_table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Lec_id", "FirstName", "LastName", "Email", "Address", "MobileNo", "Description", "Gender", "Faculty"
+                "ID", "FullName", "NIC", "Type", "Address", "Gender", "MobileNo", "RegisteredDate"
             }
         ));
         Lec_table.setColumnSelectionAllowed(true);
+        Lec_table.setGridColor(new java.awt.Color(255, 255, 255));
         Lec_table.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 Lec_tableMouseClicked(evt);
@@ -407,7 +412,20 @@ public class ViewLecDetails extends javax.swing.JFrame {
         jScrollPane2.setViewportView(Lec_table);
         Lec_table.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
 
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel4.setText("Faculty :");
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel3.setText("Course :");
+
         jLabel5.setText("To Delete, Select row & click");
+
+        course.setBackground(new java.awt.Color(153, 153, 255));
+        course.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        course.setForeground(new java.awt.Color(255, 255, 255));
+        course.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Business Management", "Business Analysis" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -417,25 +435,31 @@ public class ViewLecDetails extends javax.swing.JFrame {
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jScrollPane2)
             .addGroup(layout.createSequentialGroup()
-                .addGap(59, 59, 59)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(View, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4)
-                    .addComponent(selectFac, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(58, 58, 58)
+                .addGap(50, 50, 50)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(lecName)
-                    .addComponent(Search, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(63, 63, 63)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addGap(18, 18, 18)
+                        .addComponent(faculty, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(course, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(84, 84, 84)
+                                .addComponent(View, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addGap(38, 38, 38)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(Search, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lecName, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(39, 39, 39)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(DeleteBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5))
-                .addGap(47, 47, 47)
+                .addGap(19, 19, 19)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(48, 48, 48)
-                        .addComponent(updateBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel6)
                             .addComponent(jLabel7)
@@ -445,91 +469,73 @@ public class ViewLecDetails extends javax.swing.JFrame {
                             .addComponent(newVal, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(selected, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(lecID, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addGap(108, 108, 108)
-                .addComponent(exit, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                                .addComponent(id, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(105, 105, 105))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(38, 38, 38)
+                        .addComponent(updateBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 192, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
+                        .addComponent(exit, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(0, 0, 0)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(21, 21, 21)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(selected, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel6))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lecID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel7))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(newVal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel8))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(exit, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(updateBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(exit, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(updateBtn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(6, 6, 6))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(12, 12, 12)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel5)
-                            .addComponent(lecName, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel4)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(selectFac, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(Search, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(DeleteBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(View, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addGap(26, 26, 26)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel5)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(DeleteBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(lecName, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(Search, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(22, 22, 22)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(faculty, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel4))
+                                .addGap(7, 7, 7)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(course, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel3))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(View, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)))
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void lecIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lecIDActionPerformed
+    private void idActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_lecIDActionPerformed
-
-    private void exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitActionPerformed
-        // TODO add your handling code here:
-        System.exit(0);
-    }//GEN-LAST:event_exitActionPerformed
-
-    private void newValActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newValActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_newValActionPerformed
-
-    private void ViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ViewActionPerformed
-        // TODO add your handling code here:
-        show_details();
-    }//GEN-LAST:event_ViewActionPerformed
-
-    private void SearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchActionPerformed
-        // TODO add your handling code here:
-        search_name();
-    }//GEN-LAST:event_SearchActionPerformed
-
-    private void updateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateBtnActionPerformed
-        // TODO add your handling code here:
-        updateData();
-    }//GEN-LAST:event_updateBtnActionPerformed
-
-    private void DeleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteBtnActionPerformed
-        // TODO add your handling code here:
-        delete_details();
-    }//GEN-LAST:event_DeleteBtnActionPerformed
+    }//GEN-LAST:event_idActionPerformed
 
     private void jPanel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MouseClicked
         // TODO add your handling code here:
@@ -547,10 +553,69 @@ public class ViewLecDetails extends javax.swing.JFrame {
         resetColor(jPanel4);
     }//GEN-LAST:event_jPanel4MouseExited
 
+    private void facultyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_facultyActionPerformed
+        // TODO add your handling code here:
+        String fac=(String) faculty.getSelectedItem();
+        course.removeAllItems();
+        if(fac.equals("School Of Computing")){
+            course.addItem("Computer Science");
+            course.addItem("Information System");
+        }
+        else if(fac.equals("School Of Business")){
+            course.addItem("Business Management");
+            course.addItem("Business Analysis");
+        }
+        else{
+            course.addItem("Civil Engineering");
+            course.addItem("Electronic Engineering");
+        }
+    }//GEN-LAST:event_facultyActionPerformed
+
+    private void exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitActionPerformed
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_exitActionPerformed
+
+    private void newValActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newValActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_newValActionPerformed
+
+    private void ViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ViewActionPerformed
+        // TODO add your handling code here:
+        try{
+            show_details();
+        }catch(Exception e){
+
+        }
+    }//GEN-LAST:event_ViewActionPerformed
+
+    private void SearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchActionPerformed
+        // TODO add your handling code here:
+        search_name();
+    }//GEN-LAST:event_SearchActionPerformed
+
+    private void updateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateBtnActionPerformed
+        // TODO add your handling code here:
+        try{
+            updateData();
+        }catch(Exception e){
+
+        }
+    }//GEN-LAST:event_updateBtnActionPerformed
+
+    private void DeleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteBtnActionPerformed
+        // TODO add your handling code here:
+        try{
+            delete_details();
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Please Selecte a Row");
+        }
+    }//GEN-LAST:event_DeleteBtnActionPerformed
+
     private void Lec_tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Lec_tableMouseClicked
         // TODO add your handling code here:
         String s=getSelectedTable();
-        lecID.setText(s);
+        id.setText(s);
     }//GEN-LAST:event_Lec_tableMouseClicked
 
     public void setColor(JPanel panel){
@@ -602,9 +667,13 @@ public class ViewLecDetails extends javax.swing.JFrame {
     private javax.swing.JButton Search;
     private javax.swing.JButton View;
     private javax.swing.JLabel adds;
+    private javax.swing.JComboBox<String> course;
     private javax.swing.JButton exit;
+    private javax.swing.JComboBox<String> faculty;
+    private javax.swing.JTextField id;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -614,10 +683,8 @@ public class ViewLecDetails extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextField lecID;
     private javax.swing.JTextField lecName;
     private javax.swing.JTextField newVal;
-    private javax.swing.JComboBox<String> selectFac;
     private javax.swing.JComboBox<String> selected;
     private javax.swing.JButton updateBtn;
     // End of variables declaration//GEN-END:variables

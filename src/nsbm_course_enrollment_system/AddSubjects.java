@@ -45,6 +45,7 @@ public class AddSubjects extends javax.swing.JFrame {
         }
     }
     
+    //After clicked faculty get Course
     public void getFac(){
         String fac=(String) faculty.getSelectedItem();
         course.removeAllItems();
@@ -62,7 +63,7 @@ public class AddSubjects extends javax.swing.JFrame {
         }
     }
     
-    
+    //view subjects in textArea
     public void viewSub(){
         subject.setText("");
         String cou=(String) course.getSelectedItem();

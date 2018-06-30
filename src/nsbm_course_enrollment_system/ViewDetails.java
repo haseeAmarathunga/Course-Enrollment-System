@@ -592,7 +592,11 @@ public class ViewDetails extends javax.swing.JFrame {
 
     private void ViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ViewActionPerformed
         // TODO add your handling code here:
+        try{
         show_details();
+        }catch(Exception e){
+            
+        }
     }//GEN-LAST:event_ViewActionPerformed
 
     private void SearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchActionPerformed
@@ -623,7 +627,11 @@ public class ViewDetails extends javax.swing.JFrame {
 
     private void updateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateBtnActionPerformed
         // TODO add your handling code here:
+        try{
         updateData();
+        }catch(Exception e){
+            
+        }
     }//GEN-LAST:event_updateBtnActionPerformed
 
     private void Stu_tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Stu_tableMouseClicked

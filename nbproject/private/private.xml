@@ -5,10 +5,10 @@
         <group>
             <file>file:/E:/AndroidStudioProjects/NSBM_Course_Enrollment_System/src/nsbm_course_enrollment_system/lecMenu.java</file>
             <file>file:/E:/AndroidStudioProjects/NSBM_Course_Enrollment_System/src/nsbm_course_enrollment_system/AddSubjects.java</file>
-            <file>file:/E:/AndroidStudioProjects/NSBM_Course_Enrollment_System/src/nsbm_course_enrollment_system/Lecturer.java</file>
             <file>file:/E:/AndroidStudioProjects/NSBM_Course_Enrollment_System/src/nsbm_course_enrollment_system/ViewDetails.java</file>
             <file>file:/E:/AndroidStudioProjects/NSBM_Course_Enrollment_System/src/nsbm_course_enrollment_system/CS_subject.java</file>
-            <file>file:/E:/AndroidStudioProjects/NSBM_Course_Enrollment_System/src/nsbm_course_enrollment_system/CourseCS.java</file>
+            <file>file:/E:/AndroidStudioProjects/NSBM_Course_Enrollment_System/src/nsbm_course_enrollment_system/ViewLecDetails.java</file>
+            <file>file:/E:/AndroidStudioProjects/NSBM_Course_Enrollment_System/src/nsbm_course_enrollment_system/LecSubjects.java</file>
         </group>
     </open-files>
 </project-private>

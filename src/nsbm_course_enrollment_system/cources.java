@@ -8,6 +8,8 @@ package nsbm_course_enrollment_system;
 import java.awt.Color;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -648,6 +650,55 @@ else if(sem.getSelectedItem().equals("2nd")){
     
     }
 
+    public void viewDetails(){
+        String sub=(String) sub1.getSelectedItem();
+        details.setText("");
+        
+        Connection con=getConnection();
+        PreparedStatement ps=null;
+        PreparedStatement ps2=null;
+        ResultSet res=null;
+        ResultSet res2=null;
+        String lecId="";
+        String type="";
+        String fullName="";
+        String email="";
+        String description="";
+        try {
+            ps = con.prepareStatement("SELECT ID,Type FROM lecsub where Sub_id='"+sub+"'");
+            res=ps.executeQuery();
+            
+            while(res.next()){
+                lecId=res.getString(1);
+                type=res.getString(2);
+                //System.out.println(lecId+type);
+            }
+        } catch (Exception e) {
+           
+        }
+        try {
+            ps2=con.prepareStatement("Select FullName,Email,Description from staff where ID='"+lecId+"'");
+            res2=ps2.executeQuery();
+            
+            while(res2.next()){
+                fullName=res2.getString(1);
+                email=res2.getString(2);
+                description=res2.getString(3);
+                //System.out.println(fullName+email+description);
+                details.append("\t\tDetails\n\t"+sub);
+                details.append("\n\t"+fullName);
+                details.append("\n\t"+type);
+                details.append("\n\t"+email);
+                details.append("\n\t"+description);
+            }
+            
+        } catch (Exception ex) {
+            //Logger.getLogger(cources.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -680,6 +731,8 @@ else if(sem.getSelectedItem().equals("2nd")){
         jScrollPane3 = new javax.swing.JScrollPane();
         subject = new javax.swing.JTextArea();
         addSub = new javax.swing.JButton();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        details = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -900,6 +953,9 @@ else if(sem.getSelectedItem().equals("2nd")){
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 sub1MouseClicked(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                sub1MouseEntered(evt);
+            }
         });
         sub1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -910,7 +966,6 @@ else if(sem.getSelectedItem().equals("2nd")){
         subject.setEditable(false);
         subject.setBackground(new java.awt.Color(255, 255, 210));
         subject.setColumns(20);
-        subject.setFont(new java.awt.Font("Monospaced", 0, 18)); // NOI18N
         subject.setRows(5);
         subject.setBorder(null);
         jScrollPane3.setViewportView(subject);
@@ -924,6 +979,14 @@ else if(sem.getSelectedItem().equals("2nd")){
                 addSubActionPerformed(evt);
             }
         });
+
+        details.setEditable(false);
+        details.setBackground(new java.awt.Color(255, 255, 210));
+        details.setColumns(20);
+        details.setFont(new java.awt.Font("Monospaced", 1, 15)); // NOI18N
+        details.setRows(5);
+        details.setBorder(null);
+        jScrollPane4.setViewportView(details);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -940,29 +1003,36 @@ else if(sem.getSelectedItem().equals("2nd")){
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addGroup(layout.createSequentialGroup()
-                                                    .addGap(15, 15, 15)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addComponent(jLabel11)
-                                                        .addComponent(jLabel10)))
-                                                .addComponent(yea, javax.swing.GroupLayout.Alignment.TRAILING)
-                                                .addComponent(jLabel12, javax.swing.GroupLayout.Alignment.TRAILING))
-                                            .addComponent(yea1))
-                                        .addGap(14, 63, Short.MAX_VALUE)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(faculty, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(course, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(year, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(sem, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                        .addGroup(layout.createSequentialGroup()
+                                                            .addGap(15, 15, 15)
+                                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                                .addComponent(jLabel11)
+                                                                .addComponent(jLabel10)))
+                                                        .addComponent(yea, javax.swing.GroupLayout.Alignment.TRAILING)
+                                                        .addComponent(jLabel12, javax.swing.GroupLayout.Alignment.TRAILING))
+                                                    .addComponent(yea1))
+                                                .addGap(14, 63, Short.MAX_VALUE)
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(faculty, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(course, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(year, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(sem, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGap(0, 0, Short.MAX_VALUE)
+                                                .addComponent(sub1, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addGap(105, 105, 105))
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                         .addGap(0, 0, Short.MAX_VALUE)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(addSub, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(sub1, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                .addGap(31, 31, 31)
-                                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 469, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addComponent(addSub, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(115, 115, 115)))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(41, 41, 41)))
                         .addContainerGap())))
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
@@ -972,13 +1042,9 @@ else if(sem.getSelectedItem().equals("2nd")){
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(57, 57, 57)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(58, 58, 58)
-                                .addComponent(exit, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(year, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(yea, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -1005,7 +1071,14 @@ else if(sem.getSelectedItem().equals("2nd")){
                                     .addComponent(sub1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(18, 18, 18)
-                                .addComponent(addSub, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(addSub, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(29, 29, 29)
+                                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(exit, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(0, 0, 0)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -1091,6 +1164,8 @@ else if(sem.getSelectedItem().equals("2nd")){
         }
     }//GEN-LAST:event_facultyActionPerformed
 
+    
+    
     private void courseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_courseMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_courseMouseClicked
@@ -1098,7 +1173,7 @@ else if(sem.getSelectedItem().equals("2nd")){
     private void courseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_courseActionPerformed
         // TODO add your handling code here:
         try{
-            //viewSub();
+            viewSub();
         }catch(Exception e){
 
         }
@@ -1116,12 +1191,17 @@ else if(sem.getSelectedItem().equals("2nd")){
         // TODO add your handling code here:
         //System.out.println(checkInput
             try{
-                //ADDSubjects();
+                viewDetails();
 
             }catch(Exception e){
                 JOptionPane.showMessageDialog(null,"Something went wrong");
             }
     }//GEN-LAST:event_addSubActionPerformed
+
+    private void sub1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_sub1MouseEntered
+        // TODO add your handling code here:
+        SelectedSub();
+    }//GEN-LAST:event_sub1MouseEntered
 
      public void setColor(JPanel panel){
         panel.setBackground(new java.awt.Color(44,100,98));
@@ -1169,6 +1249,7 @@ else if(sem.getSelectedItem().equals("2nd")){
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addSub;
     private javax.swing.JComboBox<String> course;
+    private javax.swing.JTextArea details;
     private javax.swing.JButton exit;
     private javax.swing.JComboBox<String> faculty;
     private javax.swing.JLabel jLabel1;
@@ -1183,6 +1264,7 @@ else if(sem.getSelectedItem().equals("2nd")){
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JComboBox<String> sem;
     private javax.swing.JLabel stu;
     private javax.swing.JComboBox<String> sub1;

@@ -5,6 +5,7 @@
  */
 package nsbm_course_enrollment_system;
 
+import java.awt.Color;
 import javax.swing.JPanel;
 
 /**
@@ -18,6 +19,7 @@ public class cources extends javax.swing.JFrame {
      */
     public cources() {
         initComponents();
+        this.getContentPane().setBackground(Color.white);
     }
 
     /**
@@ -39,13 +41,13 @@ public class cources extends javax.swing.JFrame {
         jLabel20 = new javax.swing.JLabel();
         exit = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
-        addDetails = new javax.swing.JPanel();
+        computing = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         add = new javax.swing.JLabel();
-        addDetails1 = new javax.swing.JPanel();
+        business = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         add1 = new javax.swing.JLabel();
-        addDetails2 = new javax.swing.JPanel();
+        engineering = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         add2 = new javax.swing.JLabel();
 
@@ -172,17 +174,17 @@ public class cources extends javax.swing.JFrame {
             .addGap(0, 12, Short.MAX_VALUE)
         );
 
-        addDetails.setBackground(new java.awt.Color(44, 62, 80));
-        addDetails.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        addDetails.addMouseListener(new java.awt.event.MouseAdapter() {
+        computing.setBackground(new java.awt.Color(44, 62, 80));
+        computing.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        computing.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                addDetailsMouseClicked(evt);
+                computingMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                addDetailsMouseEntered(evt);
+                computingMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                addDetailsMouseExited(evt);
+                computingMouseExited(evt);
             }
         });
 
@@ -192,34 +194,34 @@ public class cources extends javax.swing.JFrame {
 
         add.setIcon(new javax.swing.ImageIcon(getClass().getResource("/nsbm_course_enrollment_system/Images/5.png"))); // NOI18N
 
-        javax.swing.GroupLayout addDetailsLayout = new javax.swing.GroupLayout(addDetails);
-        addDetails.setLayout(addDetailsLayout);
-        addDetailsLayout.setHorizontalGroup(
-            addDetailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(addDetailsLayout.createSequentialGroup()
+        javax.swing.GroupLayout computingLayout = new javax.swing.GroupLayout(computing);
+        computing.setLayout(computingLayout);
+        computingLayout.setHorizontalGroup(
+            computingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(computingLayout.createSequentialGroup()
                 .addGap(26, 26, 26)
                 .addComponent(add, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        addDetailsLayout.setVerticalGroup(
-            addDetailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        computingLayout.setVerticalGroup(
+            computingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(add, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 71, Short.MAX_VALUE)
         );
 
-        addDetails1.setBackground(new java.awt.Color(44, 62, 80));
-        addDetails1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        addDetails1.addMouseListener(new java.awt.event.MouseAdapter() {
+        business.setBackground(new java.awt.Color(44, 62, 80));
+        business.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        business.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                addDetails1MouseClicked(evt);
+                businessMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                addDetails1MouseEntered(evt);
+                businessMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                addDetails1MouseExited(evt);
+                businessMouseExited(evt);
             }
         });
 
@@ -229,34 +231,34 @@ public class cources extends javax.swing.JFrame {
 
         add1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/nsbm_course_enrollment_system/Images/business.png"))); // NOI18N
 
-        javax.swing.GroupLayout addDetails1Layout = new javax.swing.GroupLayout(addDetails1);
-        addDetails1.setLayout(addDetails1Layout);
-        addDetails1Layout.setHorizontalGroup(
-            addDetails1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(addDetails1Layout.createSequentialGroup()
+        javax.swing.GroupLayout businessLayout = new javax.swing.GroupLayout(business);
+        business.setLayout(businessLayout);
+        businessLayout.setHorizontalGroup(
+            businessLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(businessLayout.createSequentialGroup()
                 .addGap(26, 26, 26)
                 .addComponent(add1, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        addDetails1Layout.setVerticalGroup(
-            addDetails1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        businessLayout.setVerticalGroup(
+            businessLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(add1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 71, Short.MAX_VALUE)
         );
 
-        addDetails2.setBackground(new java.awt.Color(44, 62, 80));
-        addDetails2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        addDetails2.addMouseListener(new java.awt.event.MouseAdapter() {
+        engineering.setBackground(new java.awt.Color(44, 62, 80));
+        engineering.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        engineering.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                addDetails2MouseClicked(evt);
+                engineeringMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                addDetails2MouseEntered(evt);
+                engineeringMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                addDetails2MouseExited(evt);
+                engineeringMouseExited(evt);
             }
         });
 
@@ -266,19 +268,19 @@ public class cources extends javax.swing.JFrame {
 
         add2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/nsbm_course_enrollment_system/Images/engineering.png"))); // NOI18N
 
-        javax.swing.GroupLayout addDetails2Layout = new javax.swing.GroupLayout(addDetails2);
-        addDetails2.setLayout(addDetails2Layout);
-        addDetails2Layout.setHorizontalGroup(
-            addDetails2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(addDetails2Layout.createSequentialGroup()
+        javax.swing.GroupLayout engineeringLayout = new javax.swing.GroupLayout(engineering);
+        engineering.setLayout(engineeringLayout);
+        engineeringLayout.setHorizontalGroup(
+            engineeringLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(engineeringLayout.createSequentialGroup()
                 .addGap(26, 26, 26)
                 .addComponent(add2, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        addDetails2Layout.setVerticalGroup(
-            addDetails2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        engineeringLayout.setVerticalGroup(
+            engineeringLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(add2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
@@ -299,9 +301,9 @@ public class cources extends javax.swing.JFrame {
                                 .addContainerGap())
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(addDetails1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(addDetails, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(addDetails2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(business, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(computing, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(engineering, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(223, 223, 223))))))
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
@@ -312,11 +314,11 @@ public class cources extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(58, 58, 58)
-                        .addComponent(addDetails, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(computing, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, 0)
-                        .addComponent(addDetails1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(business, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, 0)
-                        .addComponent(addDetails2, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(engineering, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(exit, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -348,48 +350,52 @@ public class cources extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_exitActionPerformed
 
-    private void addDetailsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addDetailsMouseClicked
+    private void computingMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_computingMouseClicked
         // TODO add your handling code here:
-        new Lecturer().show();
-        this.setVisible(false);
-    }//GEN-LAST:event_addDetailsMouseClicked
+        //new Lecturer().show();
+        //this.setVisible(false);
+    }//GEN-LAST:event_computingMouseClicked
 
-    private void addDetailsMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addDetailsMouseEntered
+    private void computingMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_computingMouseEntered
         // TODO add your handling code here:
-        setColor(addDetails);
-    }//GEN-LAST:event_addDetailsMouseEntered
+        setColor(computing);
+    }//GEN-LAST:event_computingMouseEntered
 
-    private void addDetailsMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addDetailsMouseExited
+    private void computingMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_computingMouseExited
         // TODO add your handling code here:
-        resetColor(addDetails);
-    }//GEN-LAST:event_addDetailsMouseExited
+        resetColor(computing);
+    }//GEN-LAST:event_computingMouseExited
 
-    private void addDetails1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addDetails1MouseClicked
+    private void businessMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_businessMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_addDetails1MouseClicked
+    }//GEN-LAST:event_businessMouseClicked
 
-    private void addDetails1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addDetails1MouseEntered
+    private void businessMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_businessMouseEntered
         // TODO add your handling code here:
-    }//GEN-LAST:event_addDetails1MouseEntered
+        setColor(business);
+    }//GEN-LAST:event_businessMouseEntered
 
-    private void addDetails1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addDetails1MouseExited
+    private void businessMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_businessMouseExited
         // TODO add your handling code here:
-    }//GEN-LAST:event_addDetails1MouseExited
+        resetColor(business);
+    }//GEN-LAST:event_businessMouseExited
 
-    private void addDetails2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addDetails2MouseClicked
+    private void engineeringMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_engineeringMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_addDetails2MouseClicked
+    }//GEN-LAST:event_engineeringMouseClicked
 
-    private void addDetails2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addDetails2MouseEntered
+    private void engineeringMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_engineeringMouseEntered
         // TODO add your handling code here:
-    }//GEN-LAST:event_addDetails2MouseEntered
+        setColor(engineering);
+    }//GEN-LAST:event_engineeringMouseEntered
 
-    private void addDetails2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addDetails2MouseExited
+    private void engineeringMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_engineeringMouseExited
         // TODO add your handling code here:
-    }//GEN-LAST:event_addDetails2MouseExited
+        resetColor(engineering);
+    }//GEN-LAST:event_engineeringMouseExited
 
      public void setColor(JPanel panel){
-        panel.setBackground(new java.awt.Color(44,28,47));
+        panel.setBackground(new java.awt.Color(44,100,98));
         
     }
     public void resetColor(JPanel panel){
@@ -435,9 +441,9 @@ public class cources extends javax.swing.JFrame {
     private javax.swing.JLabel add;
     private javax.swing.JLabel add1;
     private javax.swing.JLabel add2;
-    private javax.swing.JPanel addDetails;
-    private javax.swing.JPanel addDetails1;
-    private javax.swing.JPanel addDetails2;
+    private javax.swing.JPanel business;
+    private javax.swing.JPanel computing;
+    private javax.swing.JPanel engineering;
     private javax.swing.JButton exit;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel16;

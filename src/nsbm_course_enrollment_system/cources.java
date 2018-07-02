@@ -6,6 +6,12 @@
 package nsbm_course_enrollment_system;
 
 import java.awt.Color;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -20,6 +26,626 @@ public class cources extends javax.swing.JFrame {
     public cources() {
         initComponents();
         this.getContentPane().setBackground(Color.white);
+    }
+    
+    
+    public Connection getConnection()
+    {
+        Connection con =null;
+        
+        try {
+            con = DriverManager.getConnection("jdbc:mysql://localhost/nsbm","root","");
+            return con;
+        } catch (SQLException ex) {
+            Logger.getLogger(AddStuDetails.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null,"Not Connected");
+            return null;
+        }
+    }
+    
+    //After clicked faculty get Course
+    public void getFac(){
+        String fac=(String) faculty.getSelectedItem();
+        course.removeAllItems();
+        if(fac.equals("School Of Computing")){
+            course.addItem("Computer Science");
+            course.addItem("Information System");
+        }
+        else if(fac.equals("School Of Business")){
+            course.addItem("Business Management");
+            course.addItem("Business Analysis");
+        }
+        else{
+            course.addItem("Civil Engineering");
+            course.addItem("Electronic Engineering");
+        }
+    }
+    
+    //view subjects in textArea
+    public void viewSub(){
+        subject.setText("");
+        String cou=(String) course.getSelectedItem();
+if(sem.getSelectedItem().equals("1st")){
+    if(year.getSelectedItem().equals("1st")){    
+        if (cou.equals("Computer Science")){
+            subject.setText("\tSubjects\n\n"
+                    + " CS1001 - Data Structures & Algorithm"
+                    + "\n CS1002 - Programming"
+                    + "\n CS1003 - Database"
+                    + "\n CS1004 - Networking"
+                    + "\n CS1005 - Labouratory"
+                    + "\n CS1006 - Computer System"
+                    + "\n CS1007 - Software Engineering");
+        }
+        else if (cou.equals("Information System")){
+            subject.setText("\tSubjects\n\n"
+                    + " IS1001 - Programming"
+                    + "\n IS1002 - System Analysis"
+                    + "\n IS1003 - Database"
+                    + "\n IS1004 - Business Studies"
+                    + "\n IS1005 - Labouratory"
+                    + "\n IS1006 - Computer System"
+                    + "\n IS1007 - Software Engineering");
+        }
+        
+        else if (cou.equals("Business Management")){
+        subject.setText("\tSubjects\n\n" +
+                    " BM1001 - Business Studies\n" +
+                    " BM1002 - System Analysis\n" +
+                    " BM1003 - Computer System\n" +
+                    " BM1004 - Programming Concept\n" +
+                    " BM1005 - Presentation Studies\n" +
+                    " BM1006 - Networking\n" +
+                    " BM1007 - Web Analysing");
+        }
+        else if (cou.equals("Business Analysis")){
+        subject.setText("\tSubjects\n\n" +
+                    " BA1001 - Business Concepts\n" +
+                    " BA1002 - System Analysis\n" +
+                    " BA1003 - Computer System\n" +
+                    " BA1004 - Programming Concept\n" +
+                    " BA1005 - Presentation Studies\n" +
+                    " BA1006 - Problem Solving\n" +
+                    " BA1007 - Web Analysing");
+        }
+        else if (cou.equals("Civil Engineering")){
+        subject.setText("\tSubjects\n\n" +
+                    " CE1001 - Statistics\n" +
+                    " CE1002 - Matrix\n" +
+                    " CE1003 - Computer Science\n" +
+                    " CE1004 - Physics\n" +
+                    " CE1005 - Mathematical Equations\n" +
+                    " CE1006 - Relative Maths\n" +
+                    " CE1007 - Calculus");
+        }
+        else if (cou.equals("Electronic Engineering")){
+        subject.setText("\tSubjects\n\n" +
+                    " EE1001 - Statistics\n" +
+                    " EE1002 - Matrix\n" +
+                    " EE1003 - Computer Science\n" +
+                    " EE1004 - Arduino\n" +
+                    " EE1005 - Programming\n" +
+                    " EE1006 - Networking\n" +
+                    " EE1007 - Robotics");
+        }
+    }
+    
+    else if(year.getSelectedItem().equals("2nd")){    
+        if (cou.equals("Computer Science")){
+            subject.setText("\tSubjects\n\n"
+                    + " CS2001 - Data Structures & Algorithm II"
+                    + "\n CS2002 - Programming II"
+                    + "\n CS2003 - FCS I"
+                    + "\n CS2004 - Networking II"
+                    + "\n CS2005 - Enhancement I"
+                    + "\n CS2006 - Computer System II"
+                    + "\n CS2007 - Software Engineering II");
+        }
+        else if (cou.equals("Information System")){
+            subject.setText("\tSubjects\n\n"
+                    + " IS2001 - Business Studies II"
+                    + "\n IS2002 - System Analysis II"
+                    + "\n IS2003 - Database II"
+                    + "\n IS2004 - Enhancement I"
+                    + "\n IS2005 - Presentation Studies"
+                    + "\n IS2006 - Computer System II"
+                    + "\n IS2007 - Software Engineering II");
+        }
+        
+        else if (cou.equals("Business Management")){
+        subject.setText("\tSubjects\n\n" +
+                    " BM2001 - Business Studies II\n" +
+                    " BM2002 - System Analysis II\n" +
+                    " BM2003 - Charted Acounting\n" +
+                    " BM2004 - Economics\n" +
+                    " BM2005 - Mathematical methods\n" +
+                    " BM2006 - Statics\n" +
+                    " BM2007 - Web Analysing II");
+        }
+        else if (cou.equals("Business Analysis")){
+        subject.setText("\tSubjects\n\n" +
+                    " BA2001 - Business Concepts II\n" +
+                    " BA2002 - System Analysis II\n" +
+                    " BA2003 - Computer System II\n" +
+                    " BA2004 - Programming II\n" +
+                    " BA2005 - Statics\n" +
+                    " BA2006 - Mathematical Methods\n" +
+                    " BA2007 - Web Analysing II");
+        }
+        else if (cou.equals("Civil Engineering")){
+        subject.setText("\tSubjects\n\n" +
+                    " CE2001 - Relative Velocity\n" +
+                    " CE2002 - Robotics\n" +
+                    " CE2003 - Computer Science II\n" +
+                    " CE2004 - Chemical\n" +
+                    " CE2005 - Mathematical Equations II\n" +
+                    " CE2006 - Matrix II\n" +
+                    " CE2007 - Calculus II");
+        }
+        else if (cou.equals("Electronic Engineering")){
+        subject.setText("\tSubjects\n\n" +
+                    " EE2001 - Statistics II\n" +
+                    " EE2002 - Matrix II\n" +
+                    " EE2003 - Computer Science II\n" +
+                    " EE2004 - Arduino Circuits\n" +
+                    " EE2005 - Programming\n" +
+                    " EE2006 - Networking II\n" +
+                    " EE2007 - Robotics II");
+        }
+    }
+    else if(year.getSelectedItem().equals("3rd")){    
+        if (cou.equals("Computer Science")){
+            subject.setText("\tSubjects\n\n"
+                    + " CS3001 - Data Structures & Algorithm III"
+                    + "\n CS3002 - Programming III"
+                    + "\n CS3003 - FCS II"
+                    + "\n CS3004 - Networking III"
+                    + "\n CS3005 - Enhancement II"
+                    + "\n CS3006 - Game Development"
+                    + "\n CS3007 - Software Engineering III");
+        }
+        else if (cou.equals("Information System")){
+            subject.setText("\tSubjects\n\n"
+                    + " IS3001 - Business Studies III"
+                    + "\n IS3002 - System Analysis III"
+                    + "\n IS3003 - Database III"
+                    + "\n IS3004 - Enhancement II"
+                    + "\n IS3005 - SAD"
+                    + "\n IS3006 - Computer System III"
+                    + "\n IS3007 - Software Engineering III");
+        }
+        
+        else if (cou.equals("Business Management")){
+        subject.setText("\tSubjects\n\n" +
+                    " BM3001 - Business Studies III\n" +
+                    " BM3002 - System Analysis III\n" +
+                    " BM3003 - Charted Acounting II\n" +
+                    " BM3004 - Economics II\n" +
+                    " BM3005 - Mathematical methods II\n" +
+                    " BM3006 - Statics II\n" +
+                    " BM3007 - Web Analysing III");
+        }
+        else if (cou.equals("Business Analysis")){
+        subject.setText("\tSubjects\n\n" +
+                    " BA3001 - Business Concepts III\n" +
+                    " BA3002 - System Analysis III\n" +
+                    " BA3003 - Computer System III\n" +
+                    " BA3004 - Programming III\n" +
+                    " BA3005 - Statics II\n" +
+                    " BA3006 - Mathematical Methods II\n" +
+                    " BA3007 - Web Analysing III");
+        }
+        else if (cou.equals("Civil Engineering")){
+        subject.setText("\tSubjects\n\n" +
+                    " CE3001 - Relative Velocity II\n" +
+                    " CE3002 - Robotics II\n" +
+                    " CE3003 - Computer Science III\n" +
+                    " CE3004 - Chemical II\n" +
+                    " CE3005 - Mathematical Equations III\n" +
+                    " CE3006 - Matrix III\n" +
+                    " CE3007 - Differentation");
+        }
+        else if (cou.equals("Electronic Engineering")){
+        subject.setText("\tSubjects\n\n" +
+                    " EE3001 - Statistics III\n" +
+                    " EE3002 - Matrix III\n" +
+                    " EE3003 - Computer Science III\n" +
+                    " EE3004 - Arduino Circuits II\n" +
+                    " EE3005 - Programming II\n" +
+                    " EE3006 - Electrone\n" +
+                    " EE3007 - Differentation");
+        }
+    }
+}    
+else if(sem.getSelectedItem().equals("2nd")){
+    if(year.getSelectedItem().equals("1st")){    
+        if (cou.equals("Computer Science")){
+            subject.setText("\tSubjects\n\n"
+                    + " CS1008 - Data Structures & Algorithm II"
+                    + "\n CS1009 - Programming II"
+                    + "\n CS1010 - Database II"
+                    + "\n CS1011 - Networking II"
+                    + "\n CS1012 - Labouratory II"
+                    + "\n CS1013 - Computer System II"
+                    + "\n CS1001 - Software Engineering II");
+        }
+        else if (cou.equals("Information System")){
+            subject.setText("\tSubjects\n\n"
+                    + " IS1008 - Programming II"
+                    + "\n IS1009 - System Analysis II"
+                    + "\n IS1010 - Database II"
+                    + "\n IS1011 - Business Studies II"
+                    + "\n IS1012 - Labouratory II"
+                    + "\n IS1013 - Computer System II"
+                    + "\n IS1014 - Software Engineering II");
+        }
+        
+        else if (cou.equals("Business Management")){
+        subject.setText("\tSubjects\n\n" +
+                    " BM1008 - Business Studies II\n" +
+                    " BM1009 - System Analysis II\n" +
+                    " BM1010 - Computer System II\n" +
+                    " BM1011 - Programming Concept II\n" +
+                    " BM1012 - Presentation Studies II\n" +
+                    " BM1013 - Networking II\n" +
+                    " BM1014 - Web Analysing II");
+        }
+        else if (cou.equals("Business Analysis")){
+        subject.setText("\tSubjects\n\n" +
+                    " BA1008 - Business Concepts II\n" +
+                    " BA1009 - System Analysis II\n" +
+                    " BA1010 - Computer System II\n" +
+                    " BA1011 - Programming Concept II\n" +
+                    " BA1012 - Presentation Studies II\n" +
+                    " BA1013 - Problem Solving II\n" +
+                    " BA1014 - Web Analysing II");
+        }
+        else if (cou.equals("Civil Engineering")){
+        subject.setText("\tSubjects\n\n" +
+                    " CE1008 - Statistics II\n" +
+                    " CE1009 - Matrix II\n" +
+                    " CE1010 - Computer Science II\n" +
+                    " CE1011 - Physics II\n" +
+                    " CE1012 - Mathematical Equations II\n" +
+                    " CE1013 - Relative Maths II\n" +
+                    " CE1014 - Calculus II");
+        }
+        else if (cou.equals("Electronic Engineering")){
+        subject.setText("\tSubjects\n\n" +
+                    " EE1009 - Statistics II\n" +
+                    " EE1010 - Matrix II\n" +
+                    " EE1011 - Computer Science II\n" +
+                    " EE1012 - Arduino II\n" +
+                    " EE1013 - Programming II\n" +
+                    " EE1014 - Networking II\n" +
+                    " EE1015 - Robotics II");
+        }
+    }
+    
+    else if(year.getSelectedItem().equals("2nd")){    
+        if (cou.equals("Computer Science")){
+            subject.setText("\tSubjects\n\n"
+                    + " CS2008 - Data Structures & Algorithm III"
+                    + "\n CS2009 - Programming III"
+                    + "\n CS2010 - FCS II"
+                    + "\n CS2011 - Networking III"
+                    + "\n CS2012 - Enhancement II"
+                    + "\n CS2013 - Computer System III"
+                    + "\n CS2014 - Software Engineering III");
+        }
+        else if (cou.equals("Information System")){
+            subject.setText("\tSubjects\n\n"
+                    + " IS2001 - Business Studies III"
+                    + "\n IS2009 - System Analysis III"
+                    + "\n IS2010 - Database III"
+                    + "\n IS2011 - Enhancement II"
+                    + "\n IS2012 - Presentation Studies"
+                    + "\n IS2013 - Computer System III"
+                    + "\n IS2014 - Software Engineering III");
+        }
+        
+        else if (cou.equals("Business Management")){
+        subject.setText("\tSubjects\n\n" +
+                    " BM2008 - Business Studies III\n" +
+                    " BM2009 - System Analysis III\n" +
+                    " BM2010 - Charted Acounting II\n" +
+                    " BM2011 - Economics II\n" +
+                    " BM2012 - Mathematical methods II\n" +
+                    " BM2013 - Statics II\n" +
+                    " BM2014 - Web Analysing III");
+        }
+        else if (cou.equals("Business Analysis")){
+        subject.setText("\tSubjects\n\n" +
+                    " BA2008 - Business Concepts III\n" +
+                    " BA2009 - System Analysis III\n" +
+                    " BA2010 - Computer System III\n" +
+                    " BA2011 - Programming III\n" +
+                    " BA2012 - Statics II\n" +
+                    " BA2013 - Mathematical Methods II\n" +
+                    " BA2014 - Web Analysing III");
+        }
+        else if (cou.equals("Civil Engineering")){
+        subject.setText("\tSubjects\n\n" +
+                    " CE2008 - Relative Velocity II\n" +
+                    " CE2009 - Robotics II\n" +
+                    " CE2010 - Computer Science III\n" +
+                    " CE2011 - Chemical II\n" +
+                    " CE2012 - Mathematical Equations III\n" +
+                    " CE2013 - Matrix III\n" +
+                    " CE2014 - Calculus III");
+        }
+        else if (cou.equals("Electronic Engineering")){
+        subject.setText("\tSubjects\n\n" +
+                    " EE2009 - Statistics III\n" +
+                    " EE2010 - Matrix III\n" +
+                    " EE2011 - Computer Science III\n" +
+                    " EE2012 - Arduino Circuits II\n" +
+                    " EE2013 - Programming II\n" +
+                    " EE2014 - Networking III\n" +
+                    " EE2015 - Robotics III");
+        }
+    }
+    else if(year.getSelectedItem().equals("3rd")){    
+        if (cou.equals("Computer Science")){
+            subject.setText("\tSubjects\n\n"
+                    + " CS3008 - Data Structures & Algorithm IV"
+                    + "\n CS3009 - Programming IV"
+                    + "\n CS3010 - FCS III"
+                    + "\n CS3011 - Networking IV"
+                    + "\n CS3012 - Enhancement III"
+                    + "\n CS3013 - Game Development II"
+                    + "\n CS3014 - Software Engineering IV");
+        }
+        else if (cou.equals("Information System")){
+            subject.setText("\tSubjects\n\n"
+                    + " IS3008 - Business Studies IV"
+                    + "\n IS3009 - System Analysis IV"
+                    + "\n IS3010 - Database IV"
+                    + "\n IS3011 - Enhancement III"
+                    + "\n IS3012 - SAD II"
+                    + "\n IS3013 - Computer System IV"
+                    + "\n IS3014 - Software Engineering IV");
+        }
+        
+        else if (cou.equals("Business Management")){
+        subject.setText("\tSubjects\n\n" +
+                    " BM3008 - Business Studies IV\n" +
+                    " BM3009 - System Analysis IV\n" +
+                    " BM3010 - Charted Acounting III\n" +
+                    " BM3011 - Economics III\n" +
+                    " BM3012 - Mathematical methods III\n" +
+                    " BM3013 - Statics III\n" +
+                    " BM3014 - Web Analysing IV");
+        }
+        else if (cou.equals("Business Analysis")){
+        subject.setText("\tSubjects\n\n" +
+                    " BA3008 - Business Concepts IV\n" +
+                    " BA3009 - System Analysis IV\n" +
+                    " BA3010 - Computer System IV\n" +
+                    " BA3011 - Programming IV\n" +
+                    " BA3012 - Statics III\n" +
+                    " BA3013 - Mathematical Methods III\n" +
+                    " BA3014 - Web Analysing IV");
+        }
+        else if (cou.equals("Civil Engineering")){
+        subject.setText("\tSubjects\n\n" +
+                    " CE3008 - Relative Velocity III\n" +
+                    " CE3009 - Robotics III\n" +
+                    " CE3010 - Computer Science IV\n" +
+                    " CE3011 - Chemical III\n" +
+                    " CE3012 - Mathematical Equations IV\n" +
+                    " CE3013 - Matrix IV\n" +
+                    " CE3014 - Differentation");
+        }
+        else if (cou.equals("Electronic Engineering")){
+        subject.setText("\tSubjects\n\n" +
+                    " EE3008 - Statistics IV\n" +
+                    " EE3009 - Matrix IV\n" +
+                    " EE3010 - Computer Science IV\n" +
+                    " EE3011 - Arduino Circuits III\n" +
+                    " EE3012 - Programming III\n" +
+                    " EE3013 - Electrone II\n" +
+                    " EE3014 - Differentation II");
+        }
+    }
+}      
+
+    
+    }
+    
+    
+    
+    public void SelectedSub(){
+        String cou=(String) course.getSelectedItem();
+        sub1.removeAllItems();
+
+        String yea="";
+        if (year.getSelectedItem().equals("1st")){
+            yea="1";
+        }
+        else if (year.getSelectedItem().equals("2nd")){
+            yea="2";
+        }
+        else if (year.getSelectedItem().equals("3rd")){
+            yea="3";
+        }
+     if(sem.getSelectedItem().equals("1st")){   
+        if (cou.equals("Computer Science")){
+           sub1.addItem("CS"+yea+"001");
+           sub1.addItem("CS"+yea+"002");
+      
+           
+           sub1.addItem("CS"+yea+"003");
+           sub1.addItem("CS"+yea+"004");
+           sub1.addItem("CS"+yea+"005");;
+           //sub1
+
+           sub1.addItem("CS"+yea+"006");
+           sub1.addItem("CS"+yea+"007");
+           
+           
+        }
+        else if (cou.equals("Information System")){
+           sub1.addItem("IS"+yea+"001");
+
+           sub1.addItem("IS"+yea+"002");
+   
+           
+           sub1.addItem("IS"+yea+"003");
+           sub1.addItem("IS"+yea+"004");
+           sub1.addItem("IS"+yea+"005");;
+           //sub1
+
+           sub1.addItem("IS"+yea+"006");
+           sub1.addItem("IS"+yea+"007");
+        }
+        else if (cou.equals("Business Management")){
+           sub1.addItem("BM"+yea+"001");
+          
+           sub1.addItem("BM"+yea+"002");
+         
+           
+           sub1.addItem("BM"+yea+"003");
+           sub1.addItem("BM"+yea+"004");
+           sub1.addItem("BM"+yea+"005");;
+           //sub1
+
+           sub1.addItem("BM"+yea+"006");
+           sub1.addItem("BM"+yea+"007");
+        }
+        else if (cou.equals("Business Analysis")){
+           sub1.addItem("BA"+yea+"001");
+           //
+           sub1.addItem("BA"+yea+"002");
+           //
+           
+           sub1.addItem("BA"+yea+"003");
+           sub1.addItem("BA"+yea+"004");
+           sub1.addItem("BA"+yea+"005");;
+           //sub1
+
+           sub1.addItem("BA"+yea+"006");
+           sub1.addItem("BA"+yea+"007");
+        }
+        else if (cou.equals("Civil Engineering")){
+           sub1.addItem("CE"+yea+"001");
+           //
+           sub1.addItem("CE"+yea+"002");
+           
+           
+           sub1.addItem("CE"+yea+"003");
+           sub1.addItem("CE"+yea+"004");
+           sub1.addItem("CE"+yea+"005");;
+           //sub1
+
+           sub1.addItem("CE"+yea+"006");
+           sub1.addItem("CE"+yea+"007");
+        }
+        else if (cou.equals("Electronic Engineering")){
+        sub1.addItem("EE"+yea+"001");
+           
+           sub1.addItem("EE"+yea+"002");
+           
+           
+           sub1.addItem("EE"+yea+"003");
+           sub1.addItem("EE"+yea+"004");
+           sub1.addItem("EE"+yea+"005");;
+           //sub1
+
+           sub1.addItem("EE"+yea+"006");
+           sub1.addItem("EE"+yea+"007");
+        }
+     } 
+     
+     else if(sem.getSelectedItem().equals("2nd")){   
+        if (cou.equals("Computer Science")){
+           sub1.addItem("CS"+yea+"008");
+           
+           sub1.addItem("CS"+yea+"009");
+           
+           
+           sub1.addItem("CS"+yea+"010");
+           sub1.addItem("CS"+yea+"011");
+           sub1.addItem("CS"+yea+"012");;
+           //sub1
+
+           sub1.addItem("CS"+yea+"013");
+           sub1.addItem("CS"+yea+"014");
+           
+           
+        }
+        else if (cou.equals("Information System")){
+           sub1.addItem("IS"+yea+"008");
+           
+           sub1.addItem("IS"+yea+"009");
+           
+           
+           sub1.addItem("IS"+yea+"010");
+           sub1.addItem("IS"+yea+"011");
+           sub1.addItem("IS"+yea+"012");;
+           //sub1
+
+           sub1.addItem("IS"+yea+"013");
+           sub1.addItem("IS"+yea+"014");
+        }
+        else if (cou.equals("Business Management")){
+           sub1.addItem("BM"+yea+"008");
+           
+           sub1.addItem("BM"+yea+"009");
+           
+           
+           sub1.addItem("BM"+yea+"010");
+           sub1.addItem("BM"+yea+"011");
+           sub1.addItem("BM"+yea+"012");;
+           //sub1
+
+           sub1.addItem("BM"+yea+"013");
+           sub1.addItem("BM"+yea+"014");
+        }
+        else if (cou.equals("Business Analysis")){
+           sub1.addItem("BA"+yea+"008");
+           
+           sub1.addItem("BA"+yea+"009");
+           
+           
+           sub1.addItem("BA"+yea+"010");
+           sub1.addItem("BA"+yea+"011");
+           sub1.addItem("BA"+yea+"012");;
+           //sub1
+
+           sub1.addItem("BA"+yea+"013");
+           sub1.addItem("BA"+yea+"014");
+        }
+        else if (cou.equals("Civil Engineering")){
+           sub1.addItem("CE"+yea+"008");
+           
+           sub1.addItem("CE"+yea+"009");
+           
+           
+           sub1.addItem("CE"+yea+"010");
+           sub1.addItem("CE"+yea+"011");
+           sub1.addItem("CE"+yea+"012");;
+           //sub1
+
+           sub1.addItem("CE"+yea+"013");
+           sub1.addItem("CE"+yea+"014");
+        }
+        else if (cou.equals("Electronic Engineering")){
+        sub1.addItem("EE"+yea+"008");
+           
+           sub1.addItem("EE"+yea+"009");
+           
+           
+           sub1.addItem("EE"+yea+"010");
+           sub1.addItem("EE"+yea+"011");
+           sub1.addItem("EE"+yea+"012");;
+           //sub1
+
+           sub1.addItem("EE"+yea+"013");
+           sub1.addItem("EE"+yea+"014");
+        }
+     }
+    
     }
 
     /**
@@ -41,15 +667,19 @@ public class cources extends javax.swing.JFrame {
         jLabel20 = new javax.swing.JLabel();
         exit = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
-        computing = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
-        add = new javax.swing.JLabel();
-        business = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
-        add1 = new javax.swing.JLabel();
-        engineering = new javax.swing.JPanel();
-        jLabel5 = new javax.swing.JLabel();
-        add2 = new javax.swing.JLabel();
+        year = new javax.swing.JComboBox<>();
+        yea = new javax.swing.JLabel();
+        yea1 = new javax.swing.JLabel();
+        sem = new javax.swing.JComboBox<>();
+        faculty = new javax.swing.JComboBox<>();
+        course = new javax.swing.JComboBox<>();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        sub1 = new javax.swing.JComboBox<>();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        subject = new javax.swing.JTextArea();
+        addSub = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -145,7 +775,7 @@ public class cources extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(165, 165, 165)
                 .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 207, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel20)
                 .addContainerGap())
         );
@@ -174,116 +804,126 @@ public class cources extends javax.swing.JFrame {
             .addGap(0, 12, Short.MAX_VALUE)
         );
 
-        computing.setBackground(new java.awt.Color(44, 62, 80));
-        computing.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        computing.addMouseListener(new java.awt.event.MouseAdapter() {
+        year.setBackground(new java.awt.Color(153, 153, 255));
+        year.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        year.setForeground(new java.awt.Color(255, 255, 255));
+        year.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1st", "2nd", "3rd" }));
+        year.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                computingMouseClicked(evt);
+                yearMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                computingMouseEntered(evt);
+                yearMouseEntered(evt);
             }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                computingMouseExited(evt);
+        });
+        year.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                yearActionPerformed(evt);
             }
         });
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("School Of Computing");
+        yea.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        yea.setForeground(new java.awt.Color(102, 102, 102));
+        yea.setText("Year :");
 
-        add.setIcon(new javax.swing.ImageIcon(getClass().getResource("/nsbm_course_enrollment_system/Images/5.png"))); // NOI18N
+        yea1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        yea1.setForeground(new java.awt.Color(102, 102, 102));
+        yea1.setText("Semester :");
 
-        javax.swing.GroupLayout computingLayout = new javax.swing.GroupLayout(computing);
-        computing.setLayout(computingLayout);
-        computingLayout.setHorizontalGroup(
-            computingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(computingLayout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addComponent(add, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        computingLayout.setVerticalGroup(
-            computingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(add, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 71, Short.MAX_VALUE)
-        );
-
-        business.setBackground(new java.awt.Color(44, 62, 80));
-        business.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        business.addMouseListener(new java.awt.event.MouseAdapter() {
+        sem.setBackground(new java.awt.Color(153, 153, 255));
+        sem.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        sem.setForeground(new java.awt.Color(255, 255, 255));
+        sem.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1st", "2nd" }));
+        sem.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                businessMouseClicked(evt);
+                semMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                businessMouseEntered(evt);
+                semMouseEntered(evt);
             }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                businessMouseExited(evt);
+        });
+        sem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                semActionPerformed(evt);
             }
         });
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("School Of Business");
-
-        add1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/nsbm_course_enrollment_system/Images/business.png"))); // NOI18N
-
-        javax.swing.GroupLayout businessLayout = new javax.swing.GroupLayout(business);
-        business.setLayout(businessLayout);
-        businessLayout.setHorizontalGroup(
-            businessLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(businessLayout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addComponent(add1, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        businessLayout.setVerticalGroup(
-            businessLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(add1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 71, Short.MAX_VALUE)
-        );
-
-        engineering.setBackground(new java.awt.Color(44, 62, 80));
-        engineering.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        engineering.addMouseListener(new java.awt.event.MouseAdapter() {
+        faculty.setBackground(new java.awt.Color(153, 153, 255));
+        faculty.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        faculty.setForeground(new java.awt.Color(255, 255, 255));
+        faculty.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "School Of Business", "School Of Computing", "School Of Engineering" }));
+        faculty.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                engineeringMouseClicked(evt);
+                facultyMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                engineeringMouseEntered(evt);
+                facultyMouseEntered(evt);
             }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                engineeringMouseExited(evt);
+        });
+        faculty.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                facultyActionPerformed(evt);
             }
         });
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("School Of Engineering");
+        course.setBackground(new java.awt.Color(153, 153, 255));
+        course.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        course.setForeground(new java.awt.Color(255, 255, 255));
+        course.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Business Management", "Business Analysis" }));
+        course.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                courseMouseClicked(evt);
+            }
+        });
+        course.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                courseActionPerformed(evt);
+            }
+        });
 
-        add2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/nsbm_course_enrollment_system/Images/engineering.png"))); // NOI18N
+        jLabel11.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel11.setText("Faculty :");
 
-        javax.swing.GroupLayout engineeringLayout = new javax.swing.GroupLayout(engineering);
-        engineering.setLayout(engineeringLayout);
-        engineeringLayout.setHorizontalGroup(
-            engineeringLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(engineeringLayout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addComponent(add2, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        engineeringLayout.setVerticalGroup(
-            engineeringLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(add2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
+        jLabel10.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel10.setText("Course :");
+
+        jLabel12.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(44, 62, 80));
+        jLabel12.setText("SUB:");
+
+        sub1.setBackground(new java.awt.Color(153, 153, 255));
+        sub1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        sub1.setForeground(new java.awt.Color(255, 255, 255));
+        sub1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                sub1MouseClicked(evt);
+            }
+        });
+        sub1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sub1ActionPerformed(evt);
+            }
+        });
+
+        subject.setEditable(false);
+        subject.setBackground(new java.awt.Color(255, 255, 210));
+        subject.setColumns(20);
+        subject.setFont(new java.awt.Font("Monospaced", 0, 18)); // NOI18N
+        subject.setRows(5);
+        subject.setBorder(null);
+        jScrollPane3.setViewportView(subject);
+
+        addSub.setBackground(new java.awt.Color(44, 62, 80));
+        addSub.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        addSub.setForeground(new java.awt.Color(255, 255, 255));
+        addSub.setText("View Details");
+        addSub.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addSubActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -294,17 +934,36 @@ public class cources extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(exit, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap())
+                            .addComponent(exit, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(business, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(computing, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(engineering, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(223, 223, 223))))))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addGroup(layout.createSequentialGroup()
+                                                    .addGap(15, 15, 15)
+                                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addComponent(jLabel11)
+                                                        .addComponent(jLabel10)))
+                                                .addComponent(yea, javax.swing.GroupLayout.Alignment.TRAILING)
+                                                .addComponent(jLabel12, javax.swing.GroupLayout.Alignment.TRAILING))
+                                            .addComponent(yea1))
+                                        .addGap(14, 63, Short.MAX_VALUE)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(faculty, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(course, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(year, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(sem, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addGap(0, 0, Short.MAX_VALUE)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(addSub, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(sub1, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addGap(31, 31, 31)
+                                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 469, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap())))
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
@@ -313,14 +972,40 @@ public class cources extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(58, 58, 58)
-                        .addComponent(computing, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, 0)
-                        .addComponent(business, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, 0)
-                        .addComponent(engineering, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(exit, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(57, 57, 57)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(58, 58, 58)
+                                .addComponent(exit, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(year, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(yea, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(5, 5, 5)
+                                        .addComponent(sem, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(yea1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(0, 0, 0)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addComponent(faculty, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(course, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(46, 46, 46))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(47, 47, 47)))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(sub1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addComponent(addSub, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(0, 0, 0)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -350,49 +1035,93 @@ public class cources extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_exitActionPerformed
 
-    private void computingMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_computingMouseClicked
+    private void yearMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_yearMouseClicked
         // TODO add your handling code here:
-        //new Lecturer().show();
-        //this.setVisible(false);
-    }//GEN-LAST:event_computingMouseClicked
+    }//GEN-LAST:event_yearMouseClicked
 
-    private void computingMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_computingMouseEntered
+    private void yearMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_yearMouseEntered
         // TODO add your handling code here:
-        setColor(computing);
-    }//GEN-LAST:event_computingMouseEntered
+    }//GEN-LAST:event_yearMouseEntered
 
-    private void computingMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_computingMouseExited
+    private void yearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_yearActionPerformed
         // TODO add your handling code here:
-        resetColor(computing);
-    }//GEN-LAST:event_computingMouseExited
+    }//GEN-LAST:event_yearActionPerformed
 
-    private void businessMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_businessMouseClicked
+    private void semMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_semMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_businessMouseClicked
+    }//GEN-LAST:event_semMouseClicked
 
-    private void businessMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_businessMouseEntered
+    private void semMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_semMouseEntered
         // TODO add your handling code here:
-        setColor(business);
-    }//GEN-LAST:event_businessMouseEntered
+    }//GEN-LAST:event_semMouseEntered
 
-    private void businessMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_businessMouseExited
+    private void semActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_semActionPerformed
         // TODO add your handling code here:
-        resetColor(business);
-    }//GEN-LAST:event_businessMouseExited
+    }//GEN-LAST:event_semActionPerformed
 
-    private void engineeringMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_engineeringMouseClicked
+    private void facultyMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_facultyMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_engineeringMouseClicked
 
-    private void engineeringMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_engineeringMouseEntered
-        // TODO add your handling code here:
-        setColor(engineering);
-    }//GEN-LAST:event_engineeringMouseEntered
+        try{
+            getFac();
+        }catch(Exception e){
 
-    private void engineeringMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_engineeringMouseExited
+        }
+    }//GEN-LAST:event_facultyMouseClicked
+
+    private void facultyMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_facultyMouseEntered
         // TODO add your handling code here:
-        resetColor(engineering);
-    }//GEN-LAST:event_engineeringMouseExited
+    }//GEN-LAST:event_facultyMouseEntered
+
+    private void facultyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_facultyActionPerformed
+        // TODO add your handling code here:
+        String fac=(String) faculty.getSelectedItem();
+        course.removeAllItems();
+        if(fac.equals("School Of Computing")){
+            course.addItem("Computer Science");
+            course.addItem("Information System");
+        }
+        else if(fac.equals("School Of Business")){
+            course.addItem("Business Management");
+            course.addItem("Business Analysis");
+        }
+        else{
+            course.addItem("Civil Engineering");
+            course.addItem("Electronic Engineering");
+        }
+    }//GEN-LAST:event_facultyActionPerformed
+
+    private void courseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_courseMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_courseMouseClicked
+
+    private void courseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_courseActionPerformed
+        // TODO add your handling code here:
+        try{
+            //viewSub();
+        }catch(Exception e){
+
+        }
+    }//GEN-LAST:event_courseActionPerformed
+
+    private void sub1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_sub1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_sub1MouseClicked
+
+    private void sub1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sub1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_sub1ActionPerformed
+
+    private void addSubActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addSubActionPerformed
+        // TODO add your handling code here:
+        //System.out.println(checkInput
+            try{
+                //ADDSubjects();
+
+            }catch(Exception e){
+                JOptionPane.showMessageDialog(null,"Something went wrong");
+            }
+    }//GEN-LAST:event_addSubActionPerformed
 
      public void setColor(JPanel panel){
         panel.setBackground(new java.awt.Color(44,100,98));
@@ -438,24 +1167,28 @@ public class cources extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel add;
-    private javax.swing.JLabel add1;
-    private javax.swing.JLabel add2;
-    private javax.swing.JPanel business;
-    private javax.swing.JPanel computing;
-    private javax.swing.JPanel engineering;
+    private javax.swing.JButton addSub;
+    private javax.swing.JComboBox<String> course;
     private javax.swing.JButton exit;
+    private javax.swing.JComboBox<String> faculty;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JComboBox<String> sem;
     private javax.swing.JLabel stu;
+    private javax.swing.JComboBox<String> sub1;
+    private javax.swing.JTextArea subject;
+    private javax.swing.JLabel yea;
+    private javax.swing.JLabel yea1;
+    private javax.swing.JComboBox<String> year;
     // End of variables declaration//GEN-END:variables
 }

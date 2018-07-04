@@ -9,7 +9,7 @@ import javax.swing.JPanel;
 
 /**
  *
- * @author ClashHacker
+ * @author Hasitha Amarathunga
  */
 public class Home extends javax.swing.JFrame {
 

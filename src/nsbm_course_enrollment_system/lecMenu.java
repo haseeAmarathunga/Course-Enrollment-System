@@ -10,7 +10,7 @@ import javax.swing.JPanel;
 
 /**
  *
- * @author ClashHacker
+ * @author Hasitha Amarathunga
  */
 public class lecMenu extends javax.swing.JFrame {
 

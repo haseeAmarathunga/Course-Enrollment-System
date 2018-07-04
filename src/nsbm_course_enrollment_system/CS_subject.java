@@ -21,7 +21,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author ClashHacker
+ * @author Hasitha Amarathunga
  */
 public class CS_subject extends javax.swing.JFrame {
 

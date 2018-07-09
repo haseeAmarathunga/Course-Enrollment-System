@@ -740,7 +740,7 @@ else if(sem.getSelectedItem().equals("2nd")){
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Cources");
+        jLabel1.setText("Subjects Details");
 
         jPanel4.setBackground(new java.awt.Color(44, 62, 80));
         jPanel4.addMouseListener(new java.awt.event.MouseAdapter() {

@@ -42,7 +42,7 @@ public class Home extends javax.swing.JFrame {
         jPanel4 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jPanel5 = new javax.swing.JPanel();
+        subjectBtn = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
@@ -152,8 +152,8 @@ public class Home extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Students");
-        jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(47, 89, -1, -1));
+        jLabel2.setText("Bachelor Students");
+        jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, -1, 20));
 
         jPanel4.setBackground(new java.awt.Color(44, 62, 80));
         jPanel4.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -167,36 +167,36 @@ public class Home extends javax.swing.JFrame {
         });
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/nsbm_course_enrollment_system/Images/7.png"))); // NOI18N
-        jPanel4.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(47, 14, 59, 64));
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/nsbm_course_enrollment_system/Images/icons/icons8-students-64.png"))); // NOI18N
+        jPanel4.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(47, 14, 70, 64));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("Subjects");
-        jPanel4.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(47, 89, -1, -1));
+        jLabel4.setText("Master Students");
+        jPanel4.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, -1, 20));
 
-        jPanel5.setBackground(new java.awt.Color(44, 62, 80));
-        jPanel5.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jPanel5.addMouseListener(new java.awt.event.MouseAdapter() {
+        subjectBtn.setBackground(new java.awt.Color(44, 62, 80));
+        subjectBtn.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        subjectBtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jPanel5MouseClicked(evt);
+                subjectBtnMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jPanel5MouseEntered(evt);
+                subjectBtnMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                jPanel5MouseExited(evt);
+                subjectBtnMouseExited(evt);
             }
         });
-        jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        subjectBtn.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/nsbm_course_enrollment_system/Images/6.png"))); // NOI18N
-        jPanel5.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(47, 14, -1, 64));
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/nsbm_course_enrollment_system/Images/7.png"))); // NOI18N
+        subjectBtn.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(47, 14, -1, 64));
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setText("Courses");
-        jPanel5.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(47, 89, 80, -1));
+        jLabel6.setText("Subjects");
+        subjectBtn.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 80, 80, 20));
 
         jPanel6.setBackground(new java.awt.Color(44, 62, 80));
         jPanel6.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -219,7 +219,7 @@ public class Home extends javax.swing.JFrame {
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Lecturers");
-        jPanel6.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(46, 89, 80, -1));
+        jPanel6.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(46, 76, 70, 30));
 
         jPanel7.setBackground(new java.awt.Color(44, 62, 80));
         jPanel7.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -239,7 +239,7 @@ public class Home extends javax.swing.JFrame {
         jLabel9.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("Time Table");
-        jPanel7.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, -1, -1));
+        jPanel7.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, -1, -1));
 
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/nsbm_course_enrollment_system/Images/11.png"))); // NOI18N
         jPanel7.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 20, 60, 63));
@@ -257,12 +257,12 @@ public class Home extends javax.swing.JFrame {
         jPanel8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/nsbm_course_enrollment_system/Images/5.png"))); // NOI18N
-        jPanel8.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 10, -1, -1));
+        jPanel8.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 20, -1, -1));
 
         jLabel12.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
         jLabel12.setText("Labs");
-        jPanel8.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 90, -1, -1));
+        jPanel8.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(62, 80, 40, -1));
 
         jPanel9.setBackground(new java.awt.Color(44, 62, 80));
         jPanel9.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -279,10 +279,10 @@ public class Home extends javax.swing.JFrame {
         jLabel14.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(255, 255, 255));
         jLabel14.setText("About");
-        jPanel9.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, -1, -1));
+        jPanel9.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 67, -1, 40));
 
         jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/nsbm_course_enrollment_system/Images/1.png"))); // NOI18N
-        jPanel9.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 20, -1, 53));
+        jPanel9.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 30, -1, 53));
 
         exit.setBackground(new java.awt.Color(255, 51, 51));
         exit.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -314,11 +314,11 @@ public class Home extends javax.swing.JFrame {
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(78, 78, 78)
-                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 167, Short.MAX_VALUE)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE)
+                .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, 167, Short.MAX_VALUE)
                 .addGap(0, 0, 0)
-                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(subjectBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(100, 100, 100))
@@ -342,7 +342,7 @@ public class Home extends javax.swing.JFrame {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(60, 60, 60)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(subjectBtn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -468,15 +468,15 @@ public class Home extends javax.swing.JFrame {
         resetColor(jPanel4);
     }//GEN-LAST:event_jPanel4MouseExited
 
-    private void jPanel5MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel5MouseEntered
+    private void subjectBtnMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_subjectBtnMouseEntered
         // TODO add your handling code here:
-        setColor(jPanel5);
-    }//GEN-LAST:event_jPanel5MouseEntered
+        setColor(subjectBtn);
+    }//GEN-LAST:event_subjectBtnMouseEntered
 
-    private void jPanel5MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel5MouseExited
+    private void subjectBtnMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_subjectBtnMouseExited
         // TODO add your handling code here:
-        resetColor(jPanel5);
-    }//GEN-LAST:event_jPanel5MouseExited
+        resetColor(subjectBtn);
+    }//GEN-LAST:event_subjectBtnMouseExited
 
     private void jPanel6MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel6MouseEntered
         // TODO add your handling code here:
@@ -529,11 +529,11 @@ public class Home extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_jPanel7MouseClicked
 
-    private void jPanel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel5MouseClicked
+    private void subjectBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_subjectBtnMouseClicked
         // TODO add your handling code here:
         new cources().show();
         this.setVisible(false);
-    }//GEN-LAST:event_jPanel5MouseClicked
+    }//GEN-LAST:event_subjectBtnMouseClicked
 
     private void jPanel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel6MouseClicked
         // TODO add your handling code here:
@@ -617,10 +617,10 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
+    private javax.swing.JPanel subjectBtn;
     // End of variables declaration//GEN-END:variables
 }

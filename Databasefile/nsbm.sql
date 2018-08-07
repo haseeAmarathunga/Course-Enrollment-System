@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 27, 2018 at 08:04 PM
+-- Generation Time: Aug 07, 2018 at 08:22 AM
 -- Server version: 5.5.32
 -- PHP Version: 5.4.19
 
@@ -21,6 +21,31 @@ SET time_zone = "+00:00";
 --
 CREATE DATABASE IF NOT EXISTS `nsbm` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
 USE `nsbm`;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `lecsub`
+--
+
+CREATE TABLE IF NOT EXISTS `lecsub` (
+  `ID` varchar(15) NOT NULL,
+  `Sub_id` varchar(8) NOT NULL,
+  `Faculty` varchar(25) NOT NULL,
+  `Course` varchar(30) NOT NULL,
+  `Year` varchar(5) NOT NULL,
+  `Semester` varchar(5) NOT NULL,
+  `Type` varchar(15) NOT NULL,
+  PRIMARY KEY (`ID`,`Sub_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `lecsub`
+--
+
+INSERT INTO `lecsub` (`ID`, `Sub_id`, `Faculty`, `Course`, `Year`, `Semester`, `Type`) VALUES
+('L/BM/001', 'BM1001', 'School Of Business', 'Business Management', '1st', '1st', 'Lecturer'),
+('L/BM/001', 'BM1002', 'School Of Business', 'Business Management', '1st', '1st', 'Lecturer');
 
 -- --------------------------------------------------------
 
@@ -652,6 +677,13 @@ CREATE TABLE IF NOT EXISTS `marksis21` (
   PRIMARY KEY (`Stu_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `marksis21`
+--
+
+INSERT INTO `marksis21` (`Stu_id`, `IS2001`, `IS2002`, `IS2003`, `IS2004`, `IS2005`, `IS2006`, `IS2007`) VALUES
+('2017/IS/001', 70, 75, 55, 0, 0, 0, 0);
+
 -- --------------------------------------------------------
 
 --
@@ -728,6 +760,13 @@ CREATE TABLE IF NOT EXISTS `staff` (
   PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `staff`
+--
+
+INSERT INTO `staff` (`ID`, `Faculty`, `Course`, `Type`, `NIC`, `FullName`, `Address`, `Gender`, `MobileNo`, `Email`, `Description`, `RegisteredDate`) VALUES
+('L/BM/001', 'School Of Business', 'Business Management', 'Lecturer', '761203454v', 'L K Jayaratne', 'Galle road Colombo 06', 'Male', '0785472541', 'jaye@gmail.com', 'Bsc Computer Science UCSC', 'Jun 30, 2018');
+
 -- --------------------------------------------------------
 
 --
@@ -759,10 +798,11 @@ CREATE TABLE IF NOT EXISTS `studentsug` (
 INSERT INTO `studentsug` (`Stu_id`, `FullName`, `Faculty`, `Course`, `NIC`, `BirthDay`, `Address`, `Gender`, `MobileNo`, `Nationality`, `EducationLevel`, `RegisteredDate`, `Year`, `email`) VALUES
 ('2016/BM/001', 'K.P Soyza', 'School Of Business', 'Business Management', '931205412v', 'Apr 29, 1993', 'Waththala Hendala', 'Male', '0751214211', 'Sinhalese', 'G.C.E A/L', 'Jun 25, 2018', '3rd', 'soyza@gmail.com'),
 ('2017/BM/001', 'S.W Ekanayake', 'School Of Business', 'Business Management', '941703720v', 'Jun 18, 1994', 'Galle road, Colombo 06', 'Male', '0711459874', 'Sinhalese', 'G.C.E A/L', 'Jun 25, 2018', '2nd', 'pasanEkanayake@gmail.com'),
+('2017/IS/001', 'Isuru Dilhan', 'School Of Computing', 'Information System', '961805142v', 'Jun 28, 1996', 'Ratnapura', 'Male', '0711451274', 'Sinhalese', 'G.C.E A/L', 'Jun 30, 2018', '2nd', 'isuru@gmail.com'),
 ('2018/BA/001', 'P.M.D Perera', 'School Of Business', 'Business Analysis', '951703190v', 'Jun 18, 1995', 'Madapatha,Piliyandala', 'female', '0711451215', 'Sinhalese', 'G.C.E O/L', 'Jun 23, 2018', '2nd', 'perera@gmail.com'),
 ('2018/BA/002', 'C.W Maldeniya', 'School Of Business', 'Business Analysis', '951025417v', 'Apr 11, 1995', 'Malambe, Battaramulla', 'female', '0712102102', 'Sinhalese', 'G.C.E A/L', 'Jun 25, 2018', '1st', 'maldeniya@gmail.com'),
 ('2018/BM/001', 'K.Bandaranayake', 'School Of Business', 'Business Management', '961703187v', 'Jun 18, 1996', 'kurunegala,Kuliyapitiya', 'Male', '0711241541', 'Sinhalese', 'G.C.E A/L', 'Jun 24, 2018', '1st', 'bandaranayakeIsuru@gmail.com'),
-('2018/BM/002', 'K.P Sinhapura', 'School Of Business', 'Business Management', '962003190v', 'Jul 18, 1996', 'Colombo 04', 'female', '0755412541', 'Sinhalese', 'G.C.E O/L', 'Jun 25, 2018', '1st', 'sinhapura@gmail.com'),
+('2018/BM/002', 'K.P Sinhapura', 'School Of Business', 'Business Management', '963105487v', 'Jul 18, 1996', 'Colombo 04', 'female', '0755412541', 'Sinhalese', 'G.C.E O/L', 'Jun 25, 2018', '1st', 'sinhapura@gmail.com'),
 ('2018/CS/001', 'A.H.V Darshana', 'School Of Computing', 'Computer Science', '961703190v', 'Jan 1, 1997', '63/A Gallewatta,Omalpe', 'Male', '0711491219', 'Sinhalese', 'G.C.E A/L', 'Jun 24, 2018', '1st', 'haseeamarathunga@gmail.com'),
 ('2018/EE/001', 'S.S Mahagama', 'School Of Engineering', 'Electronic Engineering', '951478541v', 'May 26, 1995', 'Ibbagamuwa,Kurunegala', 'Male', '0711253214', 'Tamilian', 'G.C.E A/L', 'Jun 23, 2018', '1st', 'mahagama@gmail.com'),
 ('2018/IS/001', 'B.H.H De Silva', 'School Of Computing', 'Information System', '9617215478v', 'Jun 20, 1996', 'Welimada,Bandarawela', 'Male', '0711487541', 'Sinhalese', 'G.C.E A/L', 'Jun 23, 2018', '1st', 'silva@gmail.com');
@@ -791,6 +831,7 @@ CREATE TABLE IF NOT EXISTS `subjectssem1` (
 INSERT INTO `subjectssem1` (`Stu_id`, `Year`, `Sem`, `Sub1`, `Sub2`, `Sub3`, `Sub4`) VALUES
 ('2016/BM/001', '3rd', '1st', 'BM3001', 'BM3002', 'BM3005', 'BM3006'),
 ('2017/BM/001', '2nd', '1st', 'BM2001', 'BM2002', 'BM2004', 'BM2006'),
+('2017/IS/001', '2nd', '1st', 'IS2001', 'IS2002', 'IS2003', 'IS2006'),
 ('2018/BA/002', '1st', '1st', 'BA1001', 'BA1002', 'BA1004', 'BA1006'),
 ('2018/BM/001', '1st', '1st', 'BM1001', 'BM1002', 'BM1005', 'BM1007'),
 ('2018/BM/002', '1st', '1st', 'BM1001', 'BM1002', 'BM1005', 'BM1006'),
@@ -798,9 +839,32 @@ INSERT INTO `subjectssem1` (`Stu_id`, `Year`, `Sem`, `Sub1`, `Sub2`, `Sub3`, `Su
 ('2018/EE/001', '1st', '1st', 'EE1001', 'EE1002', 'EE1003', 'EE1006'),
 ('2018/IS/001', '1st', '1st', 'IS1001', 'IS1002', 'IS1004', 'IS1006');
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `timetableug`
+--
+
+CREATE TABLE IF NOT EXISTS `timetableug` (
+  `year` char(3) NOT NULL,
+  `sem` char(3) NOT NULL,
+  `time` varchar(10) NOT NULL,
+  `monday` varchar(30) NOT NULL,
+  `tuesday` varchar(30) NOT NULL,
+  `wednesday` varchar(30) NOT NULL,
+  `thursday` varchar(30) NOT NULL,
+  `friday` varchar(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `lecsub`
+--
+ALTER TABLE `lecsub`
+  ADD CONSTRAINT `lecsub_ibfk_1` FOREIGN KEY (`ID`) REFERENCES `staff` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `marksba11`

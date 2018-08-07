@@ -14,6 +14,7 @@ import java.text.DateFormat;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
@@ -831,6 +832,7 @@ else if(sem.getSelectedItem().equals("2nd")){
         jLabel20 = new javax.swing.JLabel();
         yea1 = new javax.swing.JLabel();
         sem = new javax.swing.JComboBox<>();
+        minBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -1157,6 +1159,16 @@ else if(sem.getSelectedItem().equals("2nd")){
             }
         });
 
+        minBtn.setBackground(new java.awt.Color(255, 255, 255));
+        minBtn.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
+        minBtn.setForeground(new java.awt.Color(102, 102, 102));
+        minBtn.setText("Minimize");
+        minBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                minBtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -1208,8 +1220,10 @@ else if(sem.getSelectedItem().equals("2nd")){
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(addSub, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(246, 246, 246)
-                        .addComponent(exit, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(237, 237, 237)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(exit, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(minBtn)))
                     .addComponent(agree)
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 469, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
@@ -1270,6 +1284,8 @@ else if(sem.getSelectedItem().equals("2nd")){
                         .addContainerGap(121, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(minBtn)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(exit, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -1438,6 +1454,11 @@ else if(sem.getSelectedItem().equals("2nd")){
         // TODO add your handling code here:
     }//GEN-LAST:event_semActionPerformed
 
+    private void minBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_minBtnActionPerformed
+        // TODO add your handling code here:
+        this.setState(JFrame.ICONIFIED);
+    }//GEN-LAST:event_minBtnActionPerformed
+
      public void setColor(JPanel panel){
         panel.setBackground(new java.awt.Color(44,100,98));
         
@@ -1504,6 +1525,7 @@ else if(sem.getSelectedItem().equals("2nd")){
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JButton minBtn;
     private javax.swing.JComboBox<String> sem;
     private javax.swing.JTextField stu_id;
     private javax.swing.JComboBox<String> sub1;

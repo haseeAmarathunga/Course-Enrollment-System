@@ -44,7 +44,7 @@ public class ViewLecDetails extends javax.swing.JFrame {
             //JOptionPane.showMessageDialog(null,"Congratulation. Register Successful.");
             return con;
         } catch (java.sql.SQLException ex) {
-            Logger.getLogger(AddStuDetails.class.getName()).log(Level.SEVERE, null, ex);
+            //Logger.getLogger(AddStuDetails.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(null,"Not Connected");
             return null;
         }

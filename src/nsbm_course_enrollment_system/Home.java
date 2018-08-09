@@ -543,8 +543,8 @@ public class Home extends javax.swing.JFrame {
 
     private void jPanel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel7MouseClicked
         // TODO add your handling code here:
-        //new subjectMenu().show();
-        //this.setVisible(false);
+        new TimeTable().show();
+        this.setVisible(false);
     }//GEN-LAST:event_jPanel7MouseClicked
 
     private void subjectBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_subjectBtnMouseClicked

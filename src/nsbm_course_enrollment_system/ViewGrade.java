@@ -37,7 +37,7 @@ public class ViewGrade extends javax.swing.JFrame {
             con = DriverManager.getConnection("jdbc:mysql://localhost/nsbm","root","");
             return con;
         } catch (SQLException ex) {
-            Logger.getLogger(AddStuDetails.class.getName()).log(Level.SEVERE, null, ex);
+            //Logger.getLogger(AddStuDetails.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(null,"Not Connected");
             return null;
         }

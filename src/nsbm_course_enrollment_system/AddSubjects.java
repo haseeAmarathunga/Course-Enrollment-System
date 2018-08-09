@@ -40,7 +40,7 @@ public class AddSubjects extends javax.swing.JFrame {
             con = DriverManager.getConnection("jdbc:mysql://localhost/nsbm","root","");
             return con;
         } catch (SQLException ex) {
-            Logger.getLogger(AddStuDetails.class.getName()).log(Level.SEVERE, null, ex);
+            //Logger.getLogger(AddStuDetails.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(null,"Not Connected");
             return null;
         }
@@ -692,7 +692,15 @@ else if(sem.getSelectedItem().equals("2nd")){
         String subj3=(String) sub3.getSelectedItem();
         String subj4=(String) sub4.getSelectedItem();
         String stuId=stu_id.getText();
-        if (!stuId.equals("")){
+        if(stuId.equals("2018/CS/") || stuId.equals("2018/IS/") || stuId.equals("2018/BS/") || 
+                stuId.equals("2018/BM/") || stuId.equals("2018/EE/") || stuId.equals("2018/CE/") ||
+                stuId.equals("2017/CS/") || stuId.equals("2017/IS/") || stuId.equals("2017/BS/") || 
+                stuId.equals("2017/BM/") || stuId.equals("2017/EE/") || stuId.equals("2017/CE/") ||
+                stuId.equals("2016/CS/") || stuId.equals("2016/IS/") || stuId.equals("2016/BS/") || 
+                stuId.equals("2016/BM/") || stuId.equals("2016/EE/") || stuId.equals("2016/CE/")){
+            JOptionPane.showMessageDialog(null,"Please Enter valid Stu_Id !");
+        }
+        else if (!stuId.equals("")){
             if (!(agree.isSelected())){
                 JOptionPane.showMessageDialog(null, "Please agree.");
             }

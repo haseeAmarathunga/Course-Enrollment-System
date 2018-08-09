@@ -82,7 +82,7 @@ public class AddStuDetails extends javax.swing.JFrame {
             
             return con;
         } catch (SQLException ex) {
-            Logger.getLogger(AddStuDetails.class.getName()).log(Level.SEVERE, null, ex);
+            //Logger.getLogger(AddStuDetails.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(null,"Not Connected");
             return null;
         }

@@ -2117,7 +2117,7 @@ else if(sem.getSelectedItem().equals("2nd")){
         String det4=thursday+" ("+h4.getSelectedItem()+" Hall)";
         String det5=friday+" ("+h5.getSelectedItem()+" Hall)";
         //System.out.println(hall);
-        
+        System.out.println(monday+tuesday+wednesday+thursday+friday);
         if(!monday.equals("") || !tuesday.equals("") || !wednesday.equals("") || !thursday.equals("") || !friday.equals(""))
         {
             Connection con=getConnection();
@@ -2127,19 +2127,26 @@ else if(sem.getSelectedItem().equals("2nd")){
                 
               
                 ps = con.prepareStatement("INSERT INTO timetableug "
-                            + " VALUES(?,?,?,?,?,?,?,?,?) WHERE " );
+                            + " VALUES(?,?,?,?,?,?,?,?,?)" );
                 
-                //ps.setString(1,id.getText());
-                
-
-                
+                ps.setString(1,cou);
+                ps.setString(2,yea);
+                ps.setString(3,sems);
+                ps.setString(4,time);
+                ps.setString(5,det1);
+                ps.setString(6,det2);
+                ps.setString(7,det3);
+                ps.setString(8,det4);
+                ps.setString(9,det5);
+ 
                 ps.executeUpdate();
-                JOptionPane.showMessageDialog(null,"Subject Added Succesfull." );
-                new lecMenu().show();
+                JOptionPane.showMessageDialog(null,cou+" "+yea+" Year "+sems+" sem Time Table Update Succesfull." );
+                new TimeTable().show();
                 this.setVisible(false);
                 
-            }catch(Exception e){
+            }catch(SQLException e){
                 JOptionPane.showMessageDialog(null,"Sorry..This is Already Added.");
+                //System.out.println(e);
             }
             
         }

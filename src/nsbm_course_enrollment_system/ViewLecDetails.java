@@ -6,6 +6,7 @@
 package nsbm_course_enrollment_system;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -18,6 +19,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
 
 /**
  *
@@ -31,6 +33,10 @@ public class ViewLecDetails extends javax.swing.JFrame {
     public ViewLecDetails() {
         initComponents();
         this.getContentPane().setBackground(Color.white);
+        
+        Font f = new Font("calibri", Font.BOLD, 20);
+        JTableHeader header = Lec_table.getTableHeader();
+        header.setFont(f);
     }
     
     public Connection getConnection()

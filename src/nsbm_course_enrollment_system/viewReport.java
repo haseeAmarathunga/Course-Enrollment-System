@@ -5,6 +5,7 @@
  */
 package nsbm_course_enrollment_system;
 
+import java.awt.Color;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -26,6 +27,7 @@ public class viewReport extends javax.swing.JFrame {
      */
     public viewReport() {
         initComponents();
+        this.getContentPane().setBackground(Color.white);
     }
 
     

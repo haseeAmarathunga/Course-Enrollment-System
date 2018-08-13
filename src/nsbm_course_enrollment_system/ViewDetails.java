@@ -67,11 +67,12 @@ public class ViewDetails extends javax.swing.JFrame {
         Connection con=getConnection();
         PreparedStatement ps=null;
         ResultSet res=null;
+        
         try {
             ps = con.prepareStatement("SELECT Stu_id,FullName,NIC,BirthDay,Address,"
                     + "Gender,MobileNo,RegisteredDate FROM studentsug where FullName LIKE '%"+
-                    stuName+"%' Course='"+Mycourse+"' AND year='"+year+"'");
-            
+                    stuName+"%' and Course='"+Mycourse+"' AND year='"+year+"'");
+            //System.out.println(ps);
             res=ps.executeQuery(); 
             
             resultSetToTableModel(res,Stu_table);
@@ -152,7 +153,7 @@ public class ViewDetails extends javax.swing.JFrame {
         String Stu_id=Gettext;
         Connection con=getConnection();
         PreparedStatement ps=null;
-        if (Stu_id.equals("")){
+        if (!Stu_id.equals("")){
         try {
             //ResultSet res=null;
           

@@ -1476,6 +1476,7 @@ else if(sem.getSelectedItem().equals("2nd")){
         jLabel19 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         subject.setEditable(false);
         subject.setBackground(new java.awt.Color(255, 255, 210));

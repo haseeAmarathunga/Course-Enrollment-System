@@ -1739,7 +1739,7 @@ else if(sem.getSelectedItem().equals("2nd")){
         h1.setBackground(new java.awt.Color(153, 153, 255));
         h1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         h1.setForeground(new java.awt.Color(255, 255, 255));
-        h1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "None", "w001", "w002", "A01", "MiniAudi", "DD5", "F4" }));
+        h1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "None", "w001", "w002", "A01", "MiniAudi", "DD5", "F4", "LAB A", "LAB B", "LAB C" }));
         h1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 h1MouseClicked(evt);
@@ -1754,7 +1754,7 @@ else if(sem.getSelectedItem().equals("2nd")){
         h2.setBackground(new java.awt.Color(153, 153, 255));
         h2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         h2.setForeground(new java.awt.Color(255, 255, 255));
-        h2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "None", "w001", "w002", "A01", "MiniAudi", "DD5", "F4" }));
+        h2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "None", "w001", "w002", "A01", "MiniAudi", "DD5", "F4", "LAB A", "LAB B", "LAB C" }));
         h2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 h2MouseClicked(evt);
@@ -1782,7 +1782,7 @@ else if(sem.getSelectedItem().equals("2nd")){
         h3.setBackground(new java.awt.Color(153, 153, 255));
         h3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         h3.setForeground(new java.awt.Color(255, 255, 255));
-        h3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "None", "w001", "w002", "A01", "MiniAudi", "DD5", "F4" }));
+        h3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "None", "w001", "w002", "A01", "MiniAudi", "DD5", "F4", "LAB A", "LAB B", "LAB C" }));
         h3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 h3MouseClicked(evt);
@@ -1797,7 +1797,7 @@ else if(sem.getSelectedItem().equals("2nd")){
         h4.setBackground(new java.awt.Color(153, 153, 255));
         h4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         h4.setForeground(new java.awt.Color(255, 255, 255));
-        h4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "None", "w001", "w002", "A01", "MiniAudi", "DD5", "F4" }));
+        h4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "None", "w001", "w002", "A01", "MiniAudi", "DD5", "F4", "LAB A", "LAB B", "LAB C" }));
         h4.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 h4MouseClicked(evt);
@@ -1838,7 +1838,7 @@ else if(sem.getSelectedItem().equals("2nd")){
         h5.setBackground(new java.awt.Color(153, 153, 255));
         h5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         h5.setForeground(new java.awt.Color(255, 255, 255));
-        h5.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "None", "w001", "w002", "A01", "MiniAudi", "DD5", "F4" }));
+        h5.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "None", "w001", "w002", "A01", "MiniAudi", "DD5", "F4", "LAB A", "LAB B", "LAB C" }));
         h5.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 h5MouseClicked(evt);

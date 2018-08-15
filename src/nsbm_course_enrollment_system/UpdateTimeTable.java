@@ -787,7 +787,7 @@ else if(sem.getSelectedItem().equals("2nd")){
         hall.setBackground(new java.awt.Color(153, 153, 255));
         hall.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         hall.setForeground(new java.awt.Color(255, 255, 255));
-        hall.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "None", "w001", "w002", "A01", "MiniAudi", "DD5", "F4" }));
+        hall.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "None", "w001", "w002", "A01", "MiniAudi", "DD5", "F4", "LAB A", "LAB B", "LAB C" }));
         hall.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 hallMouseClicked(evt);

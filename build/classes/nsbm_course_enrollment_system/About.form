@@ -307,7 +307,7 @@
               <Font name="Monospaced" size="14" style="1"/>
             </Property>
             <Property name="rows" type="int" value="5"/>
-            <Property name="text" type="java.lang.String" value="Developed By &#xa;&#x9;Amarathunga Hasitha Vipul darshana&#xa;&#x9;A.H.V Darshana&#xa;&#x9;2016/CS/023"/>
+            <Property name="text" type="java.lang.String" value="Developed By &#xa;&#x9;Amarathunga Hasitha Vipul Darshana&#xa;&#x9;A.H.V Darshana&#xa;&#x9;2016/CS/023"/>
           </Properties>
         </Component>
       </SubComponents>

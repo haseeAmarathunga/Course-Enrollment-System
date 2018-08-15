@@ -185,7 +185,7 @@ public class About extends javax.swing.JFrame {
         jTextArea1.setColumns(20);
         jTextArea1.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
         jTextArea1.setRows(5);
-        jTextArea1.setText("Developed By \n\tAmarathunga Hasitha Vipul darshana\n\tA.H.V Darshana\n\t2016/CS/023");
+        jTextArea1.setText("Developed By \n\tAmarathunga Hasitha Vipul Darshana\n\tA.H.V Darshana\n\t2016/CS/023");
         jScrollPane1.setViewportView(jTextArea1);
 
         jTextField1.setEditable(false);
@@ -325,20 +325,12 @@ public class About extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton exit;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
@@ -347,9 +339,5 @@ public class About extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField2;
     private javax.swing.JButton minBtn;
     private javax.swing.JLabel stu;
-    private javax.swing.JLabel view;
-    private javax.swing.JLabel view1;
-    private javax.swing.JPanel viewDetails;
-    private javax.swing.JPanel viewDetails1;
     // End of variables declaration//GEN-END:variables
 }

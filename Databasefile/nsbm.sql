@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 07, 2018 at 08:22 AM
+-- Generation Time: Aug 17, 2018 at 10:04 AM
 -- Server version: 5.5.32
 -- PHP Version: 5.4.19
 
@@ -185,8 +185,7 @@ CREATE TABLE IF NOT EXISTS `marksbm11` (
 --
 
 INSERT INTO `marksbm11` (`Stu_id`, `BM1001`, `BM1002`, `BM1003`, `BM1004`, `BM1005`, `BM1006`, `BM1007`) VALUES
-('2018/BM/001', 75, 36, 64, 0, 75, 55, 60),
-('2018/BM/002', 0, 0, 0, 0, 0, 0, 0);
+('2018/BM/001', 75, 36, 64, 0, 75, 55, 60);
 
 -- --------------------------------------------------------
 
@@ -801,8 +800,7 @@ INSERT INTO `studentsug` (`Stu_id`, `FullName`, `Faculty`, `Course`, `NIC`, `Bir
 ('2017/IS/001', 'Isuru Dilhan', 'School Of Computing', 'Information System', '961805142v', 'Jun 28, 1996', 'Ratnapura', 'Male', '0711451274', 'Sinhalese', 'G.C.E A/L', 'Jun 30, 2018', '2nd', 'isuru@gmail.com'),
 ('2018/BA/001', 'P.M.D Perera', 'School Of Business', 'Business Analysis', '951703190v', 'Jun 18, 1995', 'Madapatha,Piliyandala', 'female', '0711451215', 'Sinhalese', 'G.C.E O/L', 'Jun 23, 2018', '2nd', 'perera@gmail.com'),
 ('2018/BA/002', 'C.W Maldeniya', 'School Of Business', 'Business Analysis', '951025417v', 'Apr 11, 1995', 'Malambe, Battaramulla', 'female', '0712102102', 'Sinhalese', 'G.C.E A/L', 'Jun 25, 2018', '1st', 'maldeniya@gmail.com'),
-('2018/BM/001', 'K.Bandaranayake', 'School Of Business', 'Business Management', '961703187v', 'Jun 18, 1996', 'kurunegala,Kuliyapitiya', 'Male', '0711241541', 'Sinhalese', 'G.C.E A/L', 'Jun 24, 2018', '1st', 'bandaranayakeIsuru@gmail.com'),
-('2018/BM/002', 'K.P Sinhapura', 'School Of Business', 'Business Management', '963105487v', 'Jul 18, 1996', 'Colombo 04', 'female', '0755412541', 'Sinhalese', 'G.C.E O/L', 'Jun 25, 2018', '1st', 'sinhapura@gmail.com'),
+('2018/BM/001', 'K.Bandaranayake', 'School Of Business', 'Business Management', '961703187v', 'Jun 18, 1996', 'kurunegala,Kuliyapitiya', 'Male', '0765581023', 'Sinhalese', 'G.C.E A/L', 'Jun 24, 2018', '1st', 'bandaranayakeIsuru@gmail.com'),
 ('2018/CS/001', 'A.H.V Darshana', 'School Of Computing', 'Computer Science', '961703190v', 'Jan 1, 1997', '63/A Gallewatta,Omalpe', 'Male', '0711491219', 'Sinhalese', 'G.C.E A/L', 'Jun 24, 2018', '1st', 'haseeamarathunga@gmail.com'),
 ('2018/EE/001', 'S.S Mahagama', 'School Of Engineering', 'Electronic Engineering', '951478541v', 'May 26, 1995', 'Ibbagamuwa,Kurunegala', 'Male', '0711253214', 'Tamilian', 'G.C.E A/L', 'Jun 23, 2018', '1st', 'mahagama@gmail.com'),
 ('2018/IS/001', 'B.H.H De Silva', 'School Of Computing', 'Information System', '9617215478v', 'Jun 20, 1996', 'Welimada,Bandarawela', 'Male', '0711487541', 'Sinhalese', 'G.C.E A/L', 'Jun 23, 2018', '1st', 'silva@gmail.com');
@@ -834,7 +832,6 @@ INSERT INTO `subjectssem1` (`Stu_id`, `Year`, `Sem`, `Sub1`, `Sub2`, `Sub3`, `Su
 ('2017/IS/001', '2nd', '1st', 'IS2001', 'IS2002', 'IS2003', 'IS2006'),
 ('2018/BA/002', '1st', '1st', 'BA1001', 'BA1002', 'BA1004', 'BA1006'),
 ('2018/BM/001', '1st', '1st', 'BM1001', 'BM1002', 'BM1005', 'BM1007'),
-('2018/BM/002', '1st', '1st', 'BM1001', 'BM1002', 'BM1005', 'BM1006'),
 ('2018/CS/001', '1st', '1st', 'CS1001', 'CS1002', 'CS1003', 'CS1006'),
 ('2018/EE/001', '1st', '1st', 'EE1001', 'EE1002', 'EE1003', 'EE1006'),
 ('2018/IS/001', '1st', '1st', 'IS1001', 'IS1002', 'IS1004', 'IS1006');
@@ -846,6 +843,7 @@ INSERT INTO `subjectssem1` (`Stu_id`, `Year`, `Sem`, `Sub1`, `Sub2`, `Sub3`, `Su
 --
 
 CREATE TABLE IF NOT EXISTS `timetableug` (
+  `course` varchar(30) NOT NULL DEFAULT '',
   `year` char(3) NOT NULL,
   `sem` char(3) NOT NULL,
   `time` varchar(10) NOT NULL,
@@ -853,8 +851,20 @@ CREATE TABLE IF NOT EXISTS `timetableug` (
   `tuesday` varchar(30) NOT NULL,
   `wednesday` varchar(30) NOT NULL,
   `thursday` varchar(30) NOT NULL,
-  `friday` varchar(30) NOT NULL
+  `friday` varchar(30) NOT NULL,
+  PRIMARY KEY (`course`,`year`,`sem`,`time`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `timetableug`
+--
+
+INSERT INTO `timetableug` (`course`, `year`, `sem`, `time`, `monday`, `tuesday`, `wednesday`, `thursday`, `friday`) VALUES
+('Business Analysis', '1st', '1st', '8-10', 'BA1001 (LAB A Hall)', 'BA1003 (w002 Hall)', 'None (None Hall)', 'None (None Hall)', 'BA1004 (A01 Hall)'),
+('Business Management', '1st', '1st', '1-3', 'BM1001 (w001 Hall)', 'BM1002 (MiniAudi Hall)', 'None (None Hall)', 'None (None Hall)', 'None (None Hall)'),
+('Business Management', '1st', '1st', '10-12', 'BM1003 (LAB C Hall)', 'BM1003 (w002 Hall)', 'None (None Hall)', 'BM1003 (w002 Hall)', 'None (None Hall)'),
+('Business Management', '1st', '1st', '3-5', 'BM1003 (MiniAudi Hall)', 'BM1001 (MiniAudi Hall)', 'BM1004 (w002 Hall)', 'BM1006 (w001 Hall)', 'BM1007 (w002 Hall)'),
+('Business Management', '1st', '1st', '8-10', 'BM1001 (MiniAudi Hall)', 'BM1003 (w001 Hall)', 'BM1001 (MiniAudi Hall)', 'BM1004 (A01 Hall)', 'None (None Hall)');
 
 --
 -- Constraints for dumped tables

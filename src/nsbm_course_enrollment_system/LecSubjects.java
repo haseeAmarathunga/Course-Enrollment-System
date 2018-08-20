@@ -762,6 +762,7 @@ else if(sem.getSelectedItem().equals("2nd")){
         jLabel13 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         agree.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         agree.setText("I  agree above Details are Correct.");
@@ -1372,8 +1373,6 @@ else if(sem.getSelectedItem().equals("2nd")){
     private javax.swing.JComboBox<String> sem;
     private javax.swing.JComboBox<String> sub1;
     private javax.swing.JTextArea subject;
-    private javax.swing.JComboBox<String> type;
-    private javax.swing.JComboBox<String> type1;
     private javax.swing.JLabel yea;
     private javax.swing.JLabel yea1;
     private javax.swing.JComboBox<String> year;

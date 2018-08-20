@@ -735,6 +735,7 @@ else if(sem.getSelectedItem().equals("2nd")){
         details = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(44, 62, 80));
 

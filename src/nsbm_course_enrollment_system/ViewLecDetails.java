@@ -233,6 +233,7 @@ public class ViewLecDetails extends javax.swing.JFrame {
         course = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         selected.setBackground(new java.awt.Color(153, 153, 255));
         selected.setForeground(new java.awt.Color(255, 255, 255));
